@@ -29,7 +29,7 @@ export const templatePages: TemplatePage[] = [
     category: "main",
     status: "ready",
     lastModified: "2026-04-13",
-    path: "/jazeel/pages/home.html",
+    path: "/jazeel/home.html",
     previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
@@ -62,7 +62,7 @@ export const templatePages: TemplatePage[] = [
     category: "main",
     status: "ready",
     lastModified: "2026-04-13",
-    path: "/jazeel/pages/donor-portal.html",
+    path: "/jazeel/donor-portal.html",
     previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
@@ -73,7 +73,7 @@ export const templatePages: TemplatePage[] = [
     category: "main",
     status: "ready",
     lastModified: "2026-04-13",
-    path: "/jazeel/pages/ngo-portal.html",
+    path: "/jazeel/ngo-portal.html",
     previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
@@ -84,7 +84,7 @@ export const templatePages: TemplatePage[] = [
     category: "cta",
     status: "ready",
     lastModified: "2026-04-13",
-    path: "/jazeel/pages/pricing.html",
+    path: "/jazeel/pricing.html",
     previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
