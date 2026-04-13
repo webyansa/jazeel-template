@@ -82,9 +82,9 @@ export const templatePages: TemplatePage[] = [
     fileName: "pricing.html",
     description: "صفحة عرض باقات الاشتراك والأسعار مع مقارنة المميزات",
     category: "cta",
-    status: "development",
+    status: "ready",
     lastModified: "2026-04-13",
-    path: "/jazeel/pricing.html",
+    path: "/jazeel/pages/pricing.html",
     previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
