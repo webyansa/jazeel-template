@@ -936,6 +936,13 @@
     document.getElementById('mobileMenu').classList.toggle('active');
   });
 
+  // ─── Login Dropdown close on outside click ───
+  document.addEventListener('click', (e) => {
+    const dd = document.getElementById('loginDropdown');
+    const wrap = e.target.closest('.login-dropdown-wrap');
+    if (!wrap && dd) dd.classList.remove('open');
+  });
+
   // ─── Reveal on Scroll ───
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
