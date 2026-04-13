@@ -9,10 +9,10 @@
   <link rel="icon" href="/jazeel-logo.svg">
   <style>
     /* ============================================
-       Grants Page — Premium Styles
+       Grants Page — Premium Refined
        ============================================ */
 
-    /* Hero — Grants specific */
+    /* Hero */
     .grants-hero {
       position: relative;
       overflow: hidden;
@@ -62,7 +62,7 @@
     }
     @media (min-width: 640px) { .grants-hero-desc { font-size: 1.125rem; } }
 
-    /* Stats strip */
+    /* Stats */
     .grants-stats {
       display: flex;
       justify-content: center;
@@ -91,24 +91,11 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .grants-stat-icon svg {
-      width: 1.125rem;
-      height: 1.125rem;
-      color: #1DBA8C;
-    }
-    .grants-stat-num {
-      font-size: 1.375rem;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1;
-    }
-    .grants-stat-label {
-      font-size: 0.8125rem;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.2;
-    }
+    .grants-stat-icon svg { width: 1.125rem; height: 1.125rem; color: #1DBA8C; }
+    .grants-stat-num { font-size: 1.375rem; font-weight: 800; color: #fff; line-height: 1; }
+    .grants-stat-label { font-size: 0.8125rem; color: rgba(255,255,255,0.5); line-height: 1.2; }
 
-    /* Search bar in hero */
+    /* Search */
     .grants-search {
       position: relative;
       max-width: 44rem;
@@ -168,7 +155,7 @@
     }
 
     /* ============================================
-       Filter Bar — Sticky
+       Filter Bar
        ============================================ */
     .grants-filter-bar {
       position: sticky;
@@ -177,7 +164,6 @@
       background: rgba(255,255,255,0.97);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--jz-border-light);
-      padding: 0;
     }
     .grants-filter-inner {
       display: flex;
@@ -187,13 +173,7 @@
       overflow-x: auto;
     }
     .grants-filter-inner::-webkit-scrollbar { display: none; }
-
-    /* Status pills */
-    .gf-pills {
-      display: flex;
-      gap: 0.375rem;
-      flex-shrink: 0;
-    }
+    .gf-pills { display: flex; gap: 0.375rem; flex-shrink: 0; }
     .gf-pill {
       white-space: nowrap;
       padding: 0.5rem 1rem;
@@ -221,20 +201,8 @@
       text-align: center;
     }
     .gf-pill.active .gf-pill-count { background: rgba(255,255,255,0.2); }
-
-    /* Divider */
-    .gf-divider {
-      width: 1px;
-      height: 1.5rem;
-      background: var(--jz-border);
-      flex-shrink: 0;
-    }
-
-    /* Filter dropdowns */
-    .gf-select-wrap {
-      position: relative;
-      flex-shrink: 0;
-    }
+    .gf-divider { width: 1px; height: 1.5rem; background: var(--jz-border); flex-shrink: 0; }
+    .gf-select-wrap { position: relative; flex-shrink: 0; }
     .gf-select {
       height: 2.5rem;
       padding: 0 2rem 0 0.875rem;
@@ -255,8 +223,6 @@
     }
     .gf-select:hover { border-color: var(--jz-green); }
     .gf-select:focus { outline: none; border-color: var(--jz-green); box-shadow: 0 0 0 3px rgba(29,186,140,0.1); }
-
-    /* Filter toggle button */
     .gf-toggle-btn {
       display: inline-flex;
       align-items: center;
@@ -276,30 +242,13 @@
     .gf-toggle-btn svg { width: 1.125rem; height: 1.125rem; color: var(--jz-text-muted); }
     .gf-toggle-btn:hover { border-color: var(--jz-green); background: var(--jz-mint); }
 
-    /* Expanded filters panel */
-    .gf-expanded {
-      display: none;
-      border-top: 1px solid var(--jz-border-light);
-      padding: 1.25rem 0;
-      background: rgba(250,252,251,0.5);
-    }
-    .gf-expanded.open {
-      display: block;
-    }
-    .gf-expanded-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-    }
+    /* Expanded filters */
+    .gf-expanded { display: none; border-top: 1px solid var(--jz-border-light); padding: 1.25rem 0; background: rgba(250,252,251,0.5); }
+    .gf-expanded.open { display: block; }
+    .gf-expanded-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
     @media (max-width: 1023px) { .gf-expanded-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 639px) { .gf-expanded-grid { grid-template-columns: 1fr; } }
-    .gf-expanded-label {
-      display: block;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--jz-text);
-      margin-bottom: 0.5rem;
-    }
+    .gf-expanded-label { display: block; font-size: 0.875rem; font-weight: 600; color: var(--jz-text); margin-bottom: 0.5rem; }
     .gf-expanded-select {
       width: 100%;
       height: 2.75rem;
@@ -317,14 +266,7 @@
       background-position: left 0.75rem center;
     }
     .gf-expanded-select:focus { outline: none; border-color: var(--jz-green); box-shadow: 0 0 0 3px rgba(29,186,140,0.1); }
-    .gf-expanded-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--jz-border-light);
-    }
+    .gf-expanded-actions { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--jz-border-light); }
     .gf-reset-btn {
       display: inline-flex;
       align-items: center;
@@ -353,25 +295,10 @@
       flex-wrap: wrap;
       gap: 0.75rem;
     }
-    .grants-results-count {
-      font-size: 1rem;
-      color: var(--jz-text-muted);
-    }
-    .grants-results-count strong {
-      color: var(--jz-text);
-      font-weight: 700;
-    }
-    .grants-sort {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .grants-sort-label {
-      font-size: 0.875rem;
-      color: var(--jz-text-muted);
-      font-weight: 500;
-      white-space: nowrap;
-    }
+    .grants-results-count { font-size: 1rem; color: var(--jz-text-muted); }
+    .grants-results-count strong { color: var(--jz-text); font-weight: 700; }
+    .grants-sort { display: flex; align-items: center; gap: 0.5rem; }
+    .grants-sort-label { font-size: 0.875rem; color: var(--jz-text-muted); font-weight: 500; white-space: nowrap; }
     .grants-sort-select {
       height: 2.25rem;
       padding: 0 2rem 0 0.75rem;
@@ -389,7 +316,7 @@
     }
 
     /* ============================================
-       Grant Cards — Premium
+       Grant Cards — Redesigned Premium
        ============================================ */
     .grants-grid {
       display: grid;
@@ -415,36 +342,60 @@
       transform: translateY(-3px);
     }
 
-    /* Card header */
-    .grant-card-head {
+    /* — Closed card state — */
+    .grant-card.is-closed {
+      opacity: 0.7;
+    }
+    .grant-card.is-closed:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(7,19,63,0.06);
+    }
+    .grant-card.is-closed .grant-card-head-area {
+      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    }
+
+    /* Card Header Area — prominent donor branding */
+    .grant-card-head-area {
+      padding: 1.5rem 1.5rem 1.25rem;
+      background: linear-gradient(135deg, var(--jz-mint) 0%, #f0fdf8 100%);
+      border-bottom: 1px solid var(--jz-border-light);
+      position: relative;
+    }
+    .grant-card-donor-row {
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding: 1.25rem 1.25rem 0;
     }
     .grant-card-logo {
-      width: 4rem;
-      height: 4rem;
-      border-radius: 1rem;
-      border: 1.5px solid var(--jz-border-light);
+      width: 5rem;
+      height: 5rem;
+      border-radius: 1.125rem;
+      border: 2px solid #fff;
       background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.5rem;
+      padding: 0.625rem;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
       transition: transform 0.3s;
     }
-    .grant-card:hover .grant-card-logo { transform: scale(1.08); }
+    .grant-card:hover .grant-card-logo { transform: scale(1.06); }
     .grant-card-logo img { width: 100%; height: 100%; object-fit: contain; }
     .grant-card-donor-info { flex: 1; min-width: 0; }
     .grant-card-donor-name {
-      font-size: 0.9375rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--jz-text);
       line-height: 1.3;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .grant-card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      align-items: center;
     }
 
     /* Status badges */
@@ -452,16 +403,18 @@
       display: inline-flex;
       align-items: center;
       gap: 0.375rem;
-      padding: 0.25rem 0.75rem;
+      padding: 0.3rem 0.75rem;
       border-radius: 100px;
-      font-size: 0.75rem;
+      font-size: 0.8125rem;
       font-weight: 700;
+      line-height: 1;
     }
     .grant-status::before {
       content: '';
       width: 7px;
       height: 7px;
       border-radius: 50%;
+      flex-shrink: 0;
     }
     .grant-status-open { background: #ECFDF5; color: #047857; }
     .grant-status-open::before { background: #10B981; }
@@ -472,15 +425,58 @@
     .grant-status-new { background: #EAF8F3; color: #1DBA8C; }
     .grant-status-new::before { background: #1DBA8C; }
 
+    /* Special badges */
+    .grant-badge-external {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.625rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #EDE9FE;
+      color: #6D28D9;
+      border: 1px solid rgba(109,40,217,0.12);
+    }
+    .grant-badge-external svg { width: 0.875rem; height: 0.875rem; }
+
+    .grant-badge-new-ribbon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.625rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #ECFDF5;
+      color: #047857;
+      border: 1px solid rgba(16,185,129,0.15);
+    }
+
+    .grant-badge-hot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.625rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid rgba(245,158,11,0.15);
+    }
+
     @keyframes pulse-dot {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.4; }
     }
 
-    /* Card body */
+    /* Card Body */
     .grant-card-body {
       flex: 1;
-      padding: 1rem 1.25rem 1.25rem;
+      padding: 1.25rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
     }
     .grant-card-title {
       font-size: 1.125rem;
@@ -511,63 +507,79 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.375rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.125rem;
     }
     .grant-tag {
-      padding: 0.25rem 0.625rem;
+      padding: 0.3rem 0.75rem;
       border-radius: 0.5rem;
-      font-size: 0.75rem;
+      font-size: 0.8125rem;
       font-weight: 600;
       background: #F3F4F6;
       color: var(--jz-text-muted);
       transition: all 0.2s;
     }
     .grant-card:hover .grant-tag { background: var(--jz-mint); color: var(--jz-green); }
-    .grant-tag-new {
-      background: #EAF8F3;
-      color: #1DBA8C;
-      border: 1px solid rgba(29,186,140,0.15);
-    }
-    .grant-tag-hot {
-      background: #FEF3C7;
-      color: #92400E;
-      border: 1px solid rgba(245,158,11,0.15);
-    }
 
     /* Meta info */
     .grant-card-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.625rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--jz-border-light);
     }
-    .grant-meta-row {
+    .grant-meta-item {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       font-size: 0.8125rem;
       color: var(--jz-text-muted);
     }
-    .grant-meta-row svg {
+    .grant-meta-item svg {
       width: 1rem;
       height: 1rem;
       color: var(--jz-green);
       flex-shrink: 0;
     }
-    .grant-meta-row strong {
+    .grant-meta-item strong {
       font-weight: 600;
       color: var(--jz-text);
     }
-    .grant-meta-urgent {
-      color: #DC2626;
-    }
-    .grant-meta-urgent svg { color: #DC2626; }
+    .grant-meta-item.is-urgent { color: #DC2626; }
+    .grant-meta-item.is-urgent svg { color: #DC2626; }
+    .grant-meta-item.is-urgent strong { color: #DC2626; }
+    .grant-meta-item.full-width { grid-column: 1 / -1; }
 
-    /* Card footer */
+    /* Application type indicator */
+    .grant-apply-type {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-top: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.625rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+    }
+    .grant-apply-type svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+    .grant-apply-type-jazeel {
+      background: #EAF8F3;
+      color: #047857;
+      border: 1px solid rgba(29,186,140,0.15);
+    }
+    .grant-apply-type-external {
+      background: #EDE9FE;
+      color: #6D28D9;
+      border: 1px solid rgba(109,40,217,0.1);
+    }
+
+    /* Card Footer */
     .grant-card-footer {
       display: flex;
       align-items: center;
       gap: 0.625rem;
-      padding: 1rem 1.25rem;
+      padding: 1rem 1.5rem;
       border-top: 1px solid var(--jz-border-light);
       background: rgba(249,250,251,0.4);
       transition: background 0.2s;
@@ -579,7 +591,7 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.625rem 1rem;
+      padding: 0.75rem 1rem;
       border-radius: 0.75rem;
       font-family: 'Tajawal', sans-serif;
       font-size: 0.9375rem;
@@ -587,7 +599,9 @@
       cursor: pointer;
       border: none;
       transition: all 0.2s;
+      text-decoration: none;
     }
+    .grant-card-cta svg { width: 1rem; height: 1rem; }
     .grant-card-cta-primary {
       background: var(--jz-green);
       color: #fff;
@@ -599,12 +613,33 @@
       color: var(--jz-text);
       border: 1px solid var(--jz-border);
       flex: unset;
-      padding: 0.625rem 1.25rem;
+      padding: 0.75rem 1.25rem;
     }
     .grant-card-cta-secondary:hover { border-color: var(--jz-green); color: var(--jz-green); background: var(--jz-mint); }
 
+    /* Closed CTA state */
+    .grant-card-cta-disabled {
+      background: #F3F4F6;
+      color: #9CA3AF;
+      cursor: not-allowed;
+      box-shadow: none;
+      flex: unset;
+      padding: 0.75rem 1.25rem;
+    }
+    .grant-card-cta-disabled:hover { transform: none; }
+
+    /* External CTA */
+    .grant-card-cta-external {
+      background: #7C3AED;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(124,58,237,0.2);
+      flex: unset;
+      padding: 0.75rem 1.25rem;
+    }
+    .grant-card-cta-external:hover { background: #6D28D9; transform: translateY(-1px); }
+
     /* ============================================
-       Pagination — Premium
+       Pagination
        ============================================ */
     .grants-pagination {
       display: flex;
@@ -635,7 +670,7 @@
     .grants-page-btn svg { width: 1.125rem; height: 1.125rem; }
 
     /* ============================================
-       Newsletter CTA — Premium
+       Newsletter
        ============================================ */
     .grants-newsletter {
       background: linear-gradient(135deg, #07133F 0%, #0f1f5c 60%, #132a6e 100%);
@@ -650,11 +685,7 @@
       inset: 0;
       background: radial-gradient(ellipse at 50% 0%, rgba(29,186,140,0.1) 0%, transparent 60%);
     }
-    .grants-newsletter-content {
-      position: relative;
-      max-width: 36rem;
-      margin: 0 auto;
-    }
+    .grants-newsletter-content { position: relative; max-width: 36rem; margin: 0 auto; }
     .grants-newsletter-icon {
       width: 3.5rem;
       height: 3.5rem;
@@ -666,24 +697,9 @@
       margin: 0 auto 1.25rem;
     }
     .grants-newsletter-icon svg { width: 1.5rem; height: 1.5rem; color: #1DBA8C; }
-    .grants-newsletter h2 {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 0.625rem;
-    }
-    .grants-newsletter p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 1.75rem;
-      line-height: 1.7;
-    }
-    .grants-newsletter-form {
-      display: flex;
-      max-width: 28rem;
-      margin: 0 auto;
-      gap: 0.625rem;
-    }
+    .grants-newsletter h2 { font-size: 1.75rem; font-weight: 800; color: #fff; margin-bottom: 0.625rem; }
+    .grants-newsletter p { font-size: 1rem; color: rgba(255,255,255,0.55); margin-bottom: 1.75rem; line-height: 1.7; }
+    .grants-newsletter-form { display: flex; max-width: 28rem; margin: 0 auto; gap: 0.625rem; }
     @media (max-width: 639px) { .grants-newsletter-form { flex-direction: column; } }
     .grants-newsletter-form input {
       flex: 1;
@@ -715,7 +731,6 @@
     }
     .grants-newsletter-form button:hover { background: var(--jz-green-dark); transform: translateY(-1px); }
 
-    /* Mobile filter drawer */
     @media (max-width: 767px) {
       .gf-select-wrap { display: none; }
       .gf-divider { display: none; }
@@ -758,16 +773,12 @@
     </div>
   </header>
 
-  <!-- ============================================
-       Hero — Dark Navy
-       ============================================ -->
+  <!-- Hero -->
   <section class="grants-hero">
     <div class="jz-container">
       <div class="grants-hero-content">
         <h1>اكتشف فرص المنح <span>المناسبة لمنظمتك</span></h1>
         <p class="grants-hero-desc">منصة مركزية تجمع فرص التمويل والدعم من أبرز الجهات المانحة في المملكة، وتساعدك على التقديم بكفاءة وثقة.</p>
-
-        <!-- Stats -->
         <div class="grants-stats">
           <div class="grants-stat">
             <div class="grants-stat-icon">
@@ -797,8 +808,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Search -->
         <div class="grants-search">
           <svg class="grants-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           <input type="text" class="grants-search-input" placeholder="ابحث بعنوان الفرصة، اسم الجهة المانحة، أو المجال...">
@@ -814,31 +823,23 @@
     </div>
   </section>
 
-  <!-- ============================================
-       Filter Bar — Sticky
-       ============================================ -->
+  <!-- Filter Bar -->
   <div class="grants-filter-bar">
     <div class="jz-container">
       <div class="grants-filter-inner">
-        <!-- Filter toggle -->
         <button class="gf-toggle-btn" id="jz-filter-toggle">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg>
           فلاتر متقدمة
         </button>
-
         <div class="gf-divider"></div>
-
-        <!-- Status pills -->
         <div class="gf-pills">
           <button class="gf-pill active">الكل <span class="gf-pill-count">8</span></button>
-          <button class="gf-pill">مفتوحة <span class="gf-pill-count">5</span></button>
+          <button class="gf-pill">مفتوحة <span class="gf-pill-count">4</span></button>
           <button class="gf-pill">تغلق قريباً <span class="gf-pill-count">2</span></button>
-          <button class="gf-pill">مغلقة <span class="gf-pill-count">1</span></button>
+          <button class="gf-pill">انتهت <span class="gf-pill-count">1</span></button>
+          <button class="gf-pill">خارج جزيل <span class="gf-pill-count">1</span></button>
         </div>
-
         <div class="gf-divider"></div>
-
-        <!-- Quick filters -->
         <div class="gf-select-wrap">
           <select class="gf-select">
             <option>جميع المجالات</option>
@@ -861,54 +862,23 @@
           </select>
         </div>
       </div>
-
-      <!-- Expanded filters -->
       <div class="gf-expanded" id="jz-expanded-filters">
         <div class="gf-expanded-grid">
           <div>
             <label class="gf-expanded-label">المجال</label>
-            <select class="gf-expanded-select">
-              <option>جميع المجالات</option>
-              <option>التنمية المجتمعية</option>
-              <option>الأمن الغذائي</option>
-              <option>التحول الرقمي</option>
-              <option>الصحة</option>
-              <option>تمكين المرأة</option>
-              <option>البيئة</option>
-              <option>التعليم</option>
-            </select>
+            <select class="gf-expanded-select"><option>جميع المجالات</option><option>التنمية المجتمعية</option><option>الأمن الغذائي</option><option>التحول الرقمي</option><option>الصحة</option><option>تمكين المرأة</option><option>البيئة</option><option>التعليم</option></select>
           </div>
           <div>
             <label class="gf-expanded-label">المنطقة</label>
-            <select class="gf-expanded-select">
-              <option>جميع المناطق</option>
-              <option>المنطقة الوسطى</option>
-              <option>المنطقة الغربية</option>
-              <option>المنطقة الشرقية</option>
-              <option>المناطق النائية</option>
-            </select>
+            <select class="gf-expanded-select"><option>جميع المناطق</option><option>المنطقة الوسطى</option><option>المنطقة الغربية</option><option>المنطقة الشرقية</option><option>المناطق النائية</option></select>
           </div>
           <div>
             <label class="gf-expanded-label">نوع الدعم</label>
-            <select class="gf-expanded-select">
-              <option>جميع الأنواع</option>
-              <option>مالي</option>
-              <option>فني وتدريبي</option>
-              <option>مالي وفني</option>
-              <option>مالي وإرشادي</option>
-            </select>
+            <select class="gf-expanded-select"><option>جميع الأنواع</option><option>مالي</option><option>فني وتدريبي</option><option>مالي وفني</option><option>مالي وإرشادي</option></select>
           </div>
           <div>
             <label class="gf-expanded-label">الجهة المانحة</label>
-            <select class="gf-expanded-select">
-              <option>جميع الجهات</option>
-              <option>الراجحي الإنسانية</option>
-              <option>مركز الملك سلمان للإغاثة</option>
-              <option>منصة إحسان</option>
-              <option>بنك التنمية الاجتماعية</option>
-              <option>الهيئة العامة للأوقاف</option>
-              <option>مؤسسة أبانمي الأهلية</option>
-            </select>
+            <select class="gf-expanded-select"><option>جميع الجهات</option><option>الراجحي الإنسانية</option><option>مركز الملك سلمان للإغاثة</option><option>منصة إحسان</option><option>بنك التنمية الاجتماعية</option><option>الهيئة العامة للأوقاف</option><option>مؤسسة أبانمي الأهلية</option></select>
           </div>
         </div>
         <div class="gf-expanded-actions">
@@ -921,13 +891,10 @@
     </div>
   </div>
 
-  <!-- ============================================
-       Results
-       ============================================ -->
+  <!-- Results -->
   <main style="flex:1;background:var(--jz-bg);">
     <div class="jz-container">
 
-      <!-- Results header -->
       <div class="grants-results-header">
         <p class="grants-results-count">عرض <strong>8</strong> فرصة من إجمالي <strong>24</strong> فرصة</p>
         <div class="grants-sort">
@@ -940,130 +907,157 @@
         </div>
       </div>
 
-      <!-- Cards Grid -->
       <div class="grants-grid">
 
-        <!-- Card 1 — Open + New -->
+        <!-- ===== Card 1 — Open + New + Via Jazeel ===== -->
         <a href="grant-details.html" class="grant-card">
-          <div class="grant-card-head">
-            <div class="grant-card-logo"><img src="/donors/alrajhi.png" alt="الراجحي الإنسانية"></div>
-            <div class="grant-card-donor-info">
-              <div class="grant-card-donor-name">الراجحي الإنسانية</div>
-              <span class="grant-status grant-status-open">مفتوحة</span>
+          <div class="grant-card-head-area">
+            <div class="grant-card-donor-row">
+              <div class="grant-card-logo"><img src="/donors/alrajhi.png" alt="الراجحي الإنسانية"></div>
+              <div class="grant-card-donor-info">
+                <div class="grant-card-donor-name">الراجحي الإنسانية</div>
+                <div class="grant-card-badges">
+                  <span class="grant-status grant-status-open">مفتوحة</span>
+                  <span class="grant-badge-new-ribbon">جديد</span>
+                </div>
+              </div>
             </div>
           </div>
           <div class="grant-card-body">
             <h3 class="grant-card-title">منحة تمكين المنظمات غير الربحية الناشئة</h3>
             <p class="grant-card-desc">برنامج دعم شامل للجمعيات الناشئة يشمل التمويل والتدريب والإرشاد لتعزيز قدراتها المؤسسية وتحقيق أثر تنموي مستدام.</p>
             <div class="grant-card-tags">
-              <span class="grant-tag grant-tag-new">جديد</span>
               <span class="grant-tag">التنمية المجتمعية</span>
               <span class="grant-tag">بناء القدرات</span>
             </div>
             <div class="grant-card-meta">
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                آخر موعد: <strong>15 مايو 2026</strong>
+                <strong>15 مايو 2026</strong>
               </div>
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 متبقي <strong>32 يوم</strong>
               </div>
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 جميع المناطق
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                التقديم عبر جزيل
               </div>
             </div>
           </div>
           <div class="grant-card-footer">
             <span class="grant-card-cta grant-card-cta-primary">عرض التفاصيل</span>
-            <span class="grant-card-cta grant-card-cta-secondary">بدء التقديم</span>
+            <span class="grant-card-cta grant-card-cta-secondary">تقدم عبر جزيل</span>
           </div>
         </a>
 
-        <!-- Card 2 — Closing Soon -->
+        <!-- ===== Card 2 — Closing Soon + Via Jazeel ===== -->
         <a href="grant-details.html" class="grant-card">
-          <div class="grant-card-head">
-            <div class="grant-card-logo"><img src="/donors/king-salman.png" alt="مركز الملك سلمان"></div>
-            <div class="grant-card-donor-info">
-              <div class="grant-card-donor-name">مركز الملك سلمان للإغاثة</div>
-              <span class="grant-status grant-status-closing">تغلق قريباً</span>
+          <div class="grant-card-head-area">
+            <div class="grant-card-donor-row">
+              <div class="grant-card-logo"><img src="/donors/king-salman.png" alt="مركز الملك سلمان"></div>
+              <div class="grant-card-donor-info">
+                <div class="grant-card-donor-name">مركز الملك سلمان للإغاثة</div>
+                <div class="grant-card-badges">
+                  <span class="grant-status grant-status-closing">تغلق قريباً</span>
+                  <span class="grant-badge-hot">إقبال مرتفع</span>
+                </div>
+              </div>
             </div>
           </div>
           <div class="grant-card-body">
             <h3 class="grant-card-title">برنامج دعم مشاريع الأمن الغذائي</h3>
             <p class="grant-card-desc">دعم المشاريع التي تسهم في تحقيق الأمن الغذائي وتطوير القطاع الزراعي من خلال حلول مبتكرة ومستدامة.</p>
             <div class="grant-card-tags">
-              <span class="grant-tag grant-tag-hot">إقبال مرتفع</span>
               <span class="grant-tag">الأمن الغذائي</span>
               <span class="grant-tag">الزراعة المستدامة</span>
             </div>
             <div class="grant-card-meta">
-              <div class="grant-meta-row grant-meta-urgent">
+              <div class="grant-meta-item is-urgent">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                آخر موعد: <strong>25 أبريل 2026</strong>
+                <strong>25 أبريل 2026</strong>
               </div>
-              <div class="grant-meta-row grant-meta-urgent">
+              <div class="grant-meta-item is-urgent">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 متبقي <strong>12 يوم فقط</strong>
               </div>
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 المنطقة الوسطى
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                التقديم عبر جزيل
               </div>
             </div>
           </div>
           <div class="grant-card-footer">
             <span class="grant-card-cta grant-card-cta-primary">عرض التفاصيل</span>
-            <span class="grant-card-cta grant-card-cta-secondary">بدء التقديم</span>
+            <span class="grant-card-cta grant-card-cta-secondary">تقدم عبر جزيل</span>
           </div>
         </a>
 
-        <!-- Card 3 — Open + New -->
+        <!-- ===== Card 3 — Open + New + Via Jazeel ===== -->
         <a href="grant-details.html" class="grant-card">
-          <div class="grant-card-head">
-            <div class="grant-card-logo"><img src="/donors/ehsan.png" alt="إحسان"></div>
-            <div class="grant-card-donor-info">
-              <div class="grant-card-donor-name">منصة إحسان</div>
-              <span class="grant-status grant-status-open">مفتوحة</span>
+          <div class="grant-card-head-area">
+            <div class="grant-card-donor-row">
+              <div class="grant-card-logo"><img src="/donors/ehsan.png" alt="إحسان"></div>
+              <div class="grant-card-donor-info">
+                <div class="grant-card-donor-name">منصة إحسان</div>
+                <div class="grant-card-badges">
+                  <span class="grant-status grant-status-open">مفتوحة</span>
+                  <span class="grant-badge-new-ribbon">جديد</span>
+                </div>
+              </div>
             </div>
           </div>
           <div class="grant-card-body">
             <h3 class="grant-card-title">منحة التحول الرقمي للمنظمات غير الربحية</h3>
             <p class="grant-card-desc">دعم رحلة التحول الرقمي للمنظمات غير الربحية من خلال توفير الأدوات والتدريب والاستشارات التقنية المتخصصة.</p>
             <div class="grant-card-tags">
-              <span class="grant-tag grant-tag-new">جديد</span>
               <span class="grant-tag">التحول الرقمي</span>
               <span class="grant-tag">التقنية</span>
             </div>
             <div class="grant-card-meta">
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                آخر موعد: <strong>1 يونيو 2026</strong>
+                <strong>1 يونيو 2026</strong>
               </div>
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 متبقي <strong>49 يوم</strong>
               </div>
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 جميع المناطق
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                التقديم عبر جزيل
               </div>
             </div>
           </div>
           <div class="grant-card-footer">
             <span class="grant-card-cta grant-card-cta-primary">عرض التفاصيل</span>
-            <span class="grant-card-cta grant-card-cta-secondary">بدء التقديم</span>
+            <span class="grant-card-cta grant-card-cta-secondary">تقدم عبر جزيل</span>
           </div>
         </a>
 
-        <!-- Card 4 — Open -->
+        <!-- ===== Card 4 — Open + Via Jazeel ===== -->
         <a href="grant-details.html" class="grant-card">
-          <div class="grant-card-head">
-            <div class="grant-card-logo"><img src="/donors/sdb.png" alt="بنك التنمية"></div>
-            <div class="grant-card-donor-info">
-              <div class="grant-card-donor-name">بنك التنمية الاجتماعية</div>
-              <span class="grant-status grant-status-open">مفتوحة</span>
+          <div class="grant-card-head-area">
+            <div class="grant-card-donor-row">
+              <div class="grant-card-logo"><img src="/donors/sdb.png" alt="بنك التنمية"></div>
+              <div class="grant-card-donor-info">
+                <div class="grant-card-donor-name">بنك التنمية الاجتماعية</div>
+                <div class="grant-card-badges">
+                  <span class="grant-status grant-status-open">مفتوحة</span>
+                </div>
+              </div>
             </div>
           </div>
           <div class="grant-card-body">
@@ -1074,99 +1068,216 @@
               <span class="grant-tag">التوعية المجتمعية</span>
             </div>
             <div class="grant-card-meta">
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                آخر موعد: <strong>20 مايو 2026</strong>
+                <strong>20 مايو 2026</strong>
               </div>
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 متبقي <strong>37 يوم</strong>
               </div>
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 المنطقة الغربية
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                التقديم عبر جزيل
               </div>
             </div>
           </div>
           <div class="grant-card-footer">
             <span class="grant-card-cta grant-card-cta-primary">عرض التفاصيل</span>
-            <span class="grant-card-cta grant-card-cta-secondary">بدء التقديم</span>
+            <span class="grant-card-cta grant-card-cta-secondary">تقدم عبر جزيل</span>
           </div>
         </a>
 
-        <!-- Card 5 — Open + New -->
+        <!-- ===== Card 5 — Open + New + Via Jazeel ===== -->
         <a href="grant-details.html" class="grant-card">
-          <div class="grant-card-head">
-            <div class="grant-card-logo"><img src="/donors/awqaf.png" alt="الأوقاف"></div>
-            <div class="grant-card-donor-info">
-              <div class="grant-card-donor-name">الهيئة العامة للأوقاف</div>
-              <span class="grant-status grant-status-open">مفتوحة</span>
+          <div class="grant-card-head-area">
+            <div class="grant-card-donor-row">
+              <div class="grant-card-logo"><img src="/donors/awqaf.png" alt="الأوقاف"></div>
+              <div class="grant-card-donor-info">
+                <div class="grant-card-donor-name">الهيئة العامة للأوقاف</div>
+                <div class="grant-card-badges">
+                  <span class="grant-status grant-status-open">مفتوحة</span>
+                  <span class="grant-badge-new-ribbon">جديد</span>
+                </div>
+              </div>
             </div>
           </div>
           <div class="grant-card-body">
             <h3 class="grant-card-title">منحة تمكين المرأة في ريادة الأعمال الاجتماعية</h3>
             <p class="grant-card-desc">برنامج متخصص في دعم المشاريع الريادية النسائية التي تحقق أثراً اجتماعياً إيجابياً في المجتمعات المحلية.</p>
             <div class="grant-card-tags">
-              <span class="grant-tag grant-tag-new">جديد</span>
               <span class="grant-tag">تمكين المرأة</span>
               <span class="grant-tag">ريادة الأعمال</span>
             </div>
             <div class="grant-card-meta">
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                آخر موعد: <strong>10 يونيو 2026</strong>
+                <strong>10 يونيو 2026</strong>
               </div>
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 متبقي <strong>58 يوم</strong>
               </div>
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 جميع المناطق
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                التقديم عبر جزيل
               </div>
             </div>
           </div>
           <div class="grant-card-footer">
             <span class="grant-card-cta grant-card-cta-primary">عرض التفاصيل</span>
-            <span class="grant-card-cta grant-card-cta-secondary">بدء التقديم</span>
+            <span class="grant-card-cta grant-card-cta-secondary">تقدم عبر جزيل</span>
           </div>
         </a>
 
-        <!-- Card 6 — Closing Soon -->
+        <!-- ===== Card 6 — Closing Soon + Via Jazeel ===== -->
         <a href="grant-details.html" class="grant-card">
-          <div class="grant-card-head">
-            <div class="grant-card-logo"><img src="/donors/abanumay.png" alt="أبانمي"></div>
-            <div class="grant-card-donor-info">
-              <div class="grant-card-donor-name">مؤسسة أبانمي الأهلية</div>
-              <span class="grant-status grant-status-closing">تغلق قريباً</span>
+          <div class="grant-card-head-area">
+            <div class="grant-card-donor-row">
+              <div class="grant-card-logo"><img src="/donors/abanumay.png" alt="أبانمي"></div>
+              <div class="grant-card-donor-info">
+                <div class="grant-card-donor-name">مؤسسة أبانمي الأهلية</div>
+                <div class="grant-card-badges">
+                  <span class="grant-status grant-status-closing">تغلق قريباً</span>
+                  <span class="grant-badge-hot">إقبال مرتفع</span>
+                </div>
+              </div>
             </div>
           </div>
           <div class="grant-card-body">
             <h3 class="grant-card-title">برنامج البيئة والاستدامة</h3>
             <p class="grant-card-desc">تمويل المشاريع البيئية التي تسهم في حماية البيئة وتعزيز ممارسات الاستدامة في المجتمعات المحلية.</p>
             <div class="grant-card-tags">
-              <span class="grant-tag grant-tag-hot">يغلق قريباً</span>
               <span class="grant-tag">البيئة</span>
               <span class="grant-tag">الاستدامة</span>
             </div>
             <div class="grant-card-meta">
-              <div class="grant-meta-row grant-meta-urgent">
+              <div class="grant-meta-item is-urgent">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                آخر موعد: <strong>20 أبريل 2026</strong>
+                <strong>20 أبريل 2026</strong>
               </div>
-              <div class="grant-meta-row grant-meta-urgent">
+              <div class="grant-meta-item is-urgent">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 متبقي <strong>7 أيام فقط</strong>
               </div>
-              <div class="grant-meta-row">
+              <div class="grant-meta-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 المنطقة الشرقية
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                التقديم عبر جزيل
               </div>
             </div>
           </div>
           <div class="grant-card-footer">
             <span class="grant-card-cta grant-card-cta-primary">عرض التفاصيل</span>
-            <span class="grant-card-cta grant-card-cta-secondary">بدء التقديم</span>
+            <span class="grant-card-cta grant-card-cta-secondary">تقدم عبر جزيل</span>
+          </div>
+        </a>
+
+        <!-- ===== Card 7 — External Grant ===== -->
+        <a href="grant-details.html" class="grant-card">
+          <div class="grant-card-head-area">
+            <div class="grant-card-donor-row">
+              <div class="grant-card-logo"><img src="/donors/king-salman.png" alt="مركز الملك سلمان"></div>
+              <div class="grant-card-donor-info">
+                <div class="grant-card-donor-name">مركز الملك سلمان للإغاثة</div>
+                <div class="grant-card-badges">
+                  <span class="grant-status grant-status-open">مفتوحة</span>
+                  <span class="grant-badge-external">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                    خارج جزيل
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grant-card-body">
+            <h3 class="grant-card-title">برنامج دعم المبادرات الإنسانية الدولية</h3>
+            <p class="grant-card-desc">دعم المنظمات غير الربحية في تنفيذ مشاريع إغاثية وإنسانية في المناطق المتضررة حول العالم.</p>
+            <div class="grant-card-tags">
+              <span class="grant-tag">العمل الإنساني</span>
+              <span class="grant-tag">الإغاثة</span>
+            </div>
+            <div class="grant-card-meta">
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                <strong>30 مايو 2026</strong>
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                متبقي <strong>47 يوم</strong>
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                دولي
+              </div>
+              <div class="grant-meta-item" style="color:#6D28D9;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#6D28D9;"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                التقديم عبر منصة الجهة
+              </div>
+            </div>
+          </div>
+          <div class="grant-card-footer">
+            <span class="grant-card-cta grant-card-cta-primary">عرض التفاصيل</span>
+            <span class="grant-card-cta grant-card-cta-external">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              التقديم عبر منصة الجهة
+            </span>
+          </div>
+        </a>
+
+        <!-- ===== Card 8 — Closed / Ended ===== -->
+        <a href="grant-details.html" class="grant-card is-closed">
+          <div class="grant-card-head-area">
+            <div class="grant-card-donor-row">
+              <div class="grant-card-logo"><img src="/donors/ehsan.png" alt="إحسان"></div>
+              <div class="grant-card-donor-info">
+                <div class="grant-card-donor-name">منصة إحسان</div>
+                <div class="grant-card-badges">
+                  <span class="grant-status grant-status-closed">انتهت</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grant-card-body">
+            <h3 class="grant-card-title">برنامج دعم التعليم في المناطق النائية</h3>
+            <p class="grant-card-desc">دعم المبادرات التعليمية التي تستهدف تحسين جودة التعليم في المناطق النائية وتوفير الموارد التعليمية.</p>
+            <div class="grant-card-tags">
+              <span class="grant-tag">التعليم</span>
+              <span class="grant-tag">المناطق النائية</span>
+            </div>
+            <div class="grant-card-meta">
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                <strong>1 مارس 2026</strong>
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                انتهت المدة
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                المناطق النائية
+              </div>
+              <div class="grant-meta-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                التقديم مغلق
+              </div>
+            </div>
+          </div>
+          <div class="grant-card-footer">
+            <span class="grant-card-cta grant-card-cta-primary">عرض التفاصيل</span>
+            <span class="grant-card-cta grant-card-cta-disabled">التقديم مغلق</span>
           </div>
         </a>
 
@@ -1188,9 +1299,7 @@
     </div>
   </main>
 
-  <!-- ============================================
-       Newsletter CTA
-       ============================================ -->
+  <!-- Newsletter -->
   <section class="grants-newsletter">
     <div class="jz-container">
       <div class="grants-newsletter-content">
@@ -1229,15 +1338,12 @@
           <ul class="jz-footer-links">
             <li><a href="#">عن جزيل</a></li>
             <li><a href="#">سياسة الخصوصية</a></li>
-            <li><a href="#">شروط الاستخدام</a></li>
             <li><a href="#">تواصل معنا</a></li>
           </ul>
         </div>
         <div>
           <h4>تابعنا</h4>
-          <div class="jz-footer-social">
-            <a href="#">X</a><a href="#">In</a><a href="#">f</a>
-          </div>
+          <div class="jz-footer-social"><a href="#">X</a><a href="#">In</a><a href="#">f</a></div>
         </div>
       </div>
       <div class="jz-footer-bottom">© 2026 جزيل. جميع الحقوق محفوظة.</div>
@@ -1246,11 +1352,15 @@
 
   <script src="js/jazeel-theme.js"></script>
   <script>
-    // Status pills interaction
-    document.querySelectorAll('.gf-pill').forEach(function(pill) {
+    // Filter toggle
+    document.getElementById('jz-filter-toggle')?.addEventListener('click', function() {
+      document.getElementById('jz-expanded-filters')?.classList.toggle('open');
+    });
+    // Pills active toggle
+    document.querySelectorAll('.gf-pill').forEach(pill => {
       pill.addEventListener('click', function() {
-        document.querySelectorAll('.gf-pill').forEach(function(p) { p.classList.remove('active'); });
-        pill.classList.add('active');
+        document.querySelectorAll('.gf-pill').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
       });
     });
   </script>
