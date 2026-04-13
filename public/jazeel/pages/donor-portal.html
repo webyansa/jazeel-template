@@ -74,7 +74,7 @@
     .header-scrolled { background: rgba(255,255,255,0.98) !important; box-shadow: 0 1px 8px rgba(7,19,63,0.05); backdrop-filter: blur(12px); }
 
     /* ─── Gradients ─── */
-    .hero-gradient { background: linear-gradient(160deg, #07133F 0%, #0e1650 40%, #161a52 70%, #0d1345 100%); }
+    .hero-gradient { background: linear-gradient(160deg, #ffffff 0%, #f8f5ff 30%, #f0eaff 55%, #ebe4fd 75%, #f5f2ff 100%); }
     .cta-gradient { background: linear-gradient(160deg, #0b1340 0%, #131750 50%, #0d1345 100%); }
 
     /* ─── Buttons ─── */
@@ -89,14 +89,24 @@
     .btn-primary:hover { background: #149572; box-shadow: 0 4px 16px rgba(25,181,139,0.2); }
 
     .btn-secondary {
-      background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.2);
+      background: transparent; color: #07133F; border: 1.5px solid #E5E8EB;
       padding: 0.75rem 1.75rem; border-radius: 12px;
       font-weight: 700; font-size: 0.9375rem; cursor: pointer;
       transition: all 0.2s ease;
       display: inline-flex; align-items: center; gap: 0.5rem;
       text-decoration: none;
     }
-    .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.35); }
+    .btn-secondary:hover { background: #f8f5ff; border-color: rgba(125,83,243,0.25); color: #5a34d4; }
+
+    .btn-violet {
+      background: #7D53F3; color: #fff; border: none;
+      padding: 0.75rem 1.75rem; border-radius: 12px;
+      font-weight: 700; font-size: 0.9375rem; cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      text-decoration: none;
+    }
+    .btn-violet:hover { background: #6a42e0; box-shadow: 0 4px 16px rgba(125,83,243,0.25); }
 
     .btn-outline-dark {
       background: transparent; color: #07133F; border: 1.5px solid #E5E8EB;
