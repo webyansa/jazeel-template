@@ -140,7 +140,7 @@ function TemplateShowcasePage() {
                   <span className="h-2.5 w-2.5 rounded-full bg-destructive/60" />
                   <span className="h-2.5 w-2.5 rounded-full bg-jazeel-warning/60" />
                   <span className="h-2.5 w-2.5 rounded-full bg-jazeel-green/60" />
-                  <span className="mr-3 text-[10px] text-muted-foreground">jazeel/pages/home.html</span>
+                  <span className="mr-3 text-[10px] text-muted-foreground"><span className="mr-3 text-[10px] text-muted-foreground">jazeel/home.html</span></span>
                 </div>
                 {/* Clean placeholder instead of AI image */}
                 <div className="flex aspect-[16/10] flex-col rounded-xl bg-gradient-to-b from-primary to-primary/80 p-6 text-primary-foreground">
