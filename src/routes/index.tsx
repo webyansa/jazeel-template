@@ -74,7 +74,7 @@ function TemplateShowcasePage() {
             <span className="hidden text-sm font-medium text-muted-foreground sm:inline">مكتبة القوالب</span>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" className="gap-2 rounded-xl" onClick={() => window.open("/jazeel/pages/home.html", "_blank")}>
+            <Button variant="outline" size="sm" className="gap-2 rounded-xl" onClick={() => window.open("/jazeel/home.html", "_blank")}>
               <Eye className="h-4 w-4" />
               <span className="hidden sm:inline">عرض القالب</span>
             </Button>
@@ -111,7 +111,7 @@ function TemplateShowcasePage() {
                   <Download className="h-5 w-5" />
                   تحميل القالب كاملاً
                 </Button>
-                <Button size="lg" variant="outline" className="gap-2.5 rounded-2xl px-8" onClick={() => window.open("/jazeel/pages/home.html", "_blank")}>
+                <Button size="lg" variant="outline" className="gap-2.5 rounded-2xl px-8" onClick={() => window.open("/jazeel/home.html", "_blank")}>
                   <ExternalLink className="h-5 w-5" />
                   معاينة مباشرة
                 </Button>

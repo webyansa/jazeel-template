@@ -29,7 +29,7 @@ export const templatePages: TemplatePage[] = [
     category: "main",
     status: "ready",
     lastModified: "2026-04-13",
-    path: "/jazeel/pages/home.html",
+    path: "/jazeel/home.html",
     previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
@@ -40,7 +40,7 @@ export const templatePages: TemplatePage[] = [
     category: "grants",
     status: "ready",
     lastModified: "2026-04-13",
-    path: "/jazeel/pages/grants.html",
+    path: "/jazeel/grants.html",
     previewImage: "/jazeel/images/preview-grants.jpg",
   },
   {
@@ -51,7 +51,7 @@ export const templatePages: TemplatePage[] = [
     category: "grants",
     status: "ready",
     lastModified: "2026-04-13",
-    path: "/jazeel/pages/grant-details.html",
+    path: "/jazeel/grant-details.html",
     previewImage: "/jazeel/images/preview-grant-details.jpg",
   },
   {
@@ -62,7 +62,7 @@ export const templatePages: TemplatePage[] = [
     category: "cta",
     status: "development",
     lastModified: "2026-04-13",
-    path: "/jazeel/pages/pricing.html",
+    path: "/jazeel/pricing.html",
     previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
@@ -73,7 +73,7 @@ export const templatePages: TemplatePage[] = [
     category: "info",
     status: "development",
     lastModified: "2026-04-13",
-    path: "/jazeel/pages/about.html",
+    path: "/jazeel/about.html",
     previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
@@ -84,7 +84,7 @@ export const templatePages: TemplatePage[] = [
     category: "support",
     status: "development",
     lastModified: "2026-04-13",
-    path: "/jazeel/pages/contact.html",
+    path: "/jazeel/contact.html",
     previewImage: "/jazeel/images/preview-home.jpg",
   },
 ];
