@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { label: "الرئيسية", to: "/" },
-  { label: "بوابة المانحين", to: "/" },
-  { label: "بوابة الجمعيات", to: "/" },
   { label: "فرص المنح", to: "/" },
+  { label: "مكتبة القوالب", to: "/templates" },
+  { label: "بوابة المانحين", to: "/" },
   { label: "باقات جزيل", to: "/" },
 ];
 
