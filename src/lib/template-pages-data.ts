@@ -9,6 +9,7 @@ export interface TemplatePage {
   status: "ready" | "new" | "development";
   lastModified: string;
   path: string;
+  previewImage: string;
 }
 
 export const templateCategories = {
@@ -29,6 +30,7 @@ export const templatePages: TemplatePage[] = [
     status: "ready",
     lastModified: "2026-04-13",
     path: "/jazeel/pages/home.html",
+    previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
     id: "grants",
@@ -39,6 +41,7 @@ export const templatePages: TemplatePage[] = [
     status: "ready",
     lastModified: "2026-04-13",
     path: "/jazeel/pages/grants.html",
+    previewImage: "/jazeel/images/preview-grants.jpg",
   },
   {
     id: "grant-details",
@@ -49,6 +52,7 @@ export const templatePages: TemplatePage[] = [
     status: "ready",
     lastModified: "2026-04-13",
     path: "/jazeel/pages/grant-details.html",
+    previewImage: "/jazeel/images/preview-grant-details.jpg",
   },
   {
     id: "pricing",
@@ -59,6 +63,7 @@ export const templatePages: TemplatePage[] = [
     status: "development",
     lastModified: "2026-04-13",
     path: "/jazeel/pages/pricing.html",
+    previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
     id: "about",
@@ -69,6 +74,7 @@ export const templatePages: TemplatePage[] = [
     status: "development",
     lastModified: "2026-04-13",
     path: "/jazeel/pages/about.html",
+    previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
     id: "contact",
@@ -79,5 +85,6 @@ export const templatePages: TemplatePage[] = [
     status: "development",
     lastModified: "2026-04-13",
     path: "/jazeel/pages/contact.html",
+    previewImage: "/jazeel/images/preview-home.jpg",
   },
 ];
