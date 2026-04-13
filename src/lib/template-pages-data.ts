@@ -29,7 +29,7 @@ export const templatePages: TemplatePage[] = [
     category: "main",
     status: "ready",
     lastModified: "2026-04-13",
-    path: "/jazeel/home.html",
+    path: "/jazeel/pages/home.html",
     previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
