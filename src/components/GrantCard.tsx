@@ -39,19 +39,23 @@ export function GrantCard({ grant }: { grant: Grant }) {
       params={{ grantId: grant.id }}
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm transition-all duration-300 ease-out hover:shadow-xl hover:shadow-primary/8 hover:-translate-y-1 hover:border-jazeel-green/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jazeel-green focus-visible:ring-offset-2"
     >
-      {/* Top bar with donor logo */}
-      <div className="flex items-center gap-3 border-b border-border/40 p-4 pb-3">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/40 bg-background p-1.5 transition-transform duration-300 group-hover:scale-105">
-          <img
-            src={grant.donorLogo}
-            alt={grant.donor}
-            className="h-full w-full object-contain"
-          />
+      {/* Donor logo prominent area */}
+      <div className="relative border-b border-border/40 bg-gradient-to-l from-jazeel-mint/30 to-transparent px-4 py-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border/50 bg-background p-2 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-md">
+            <img
+              src={grant.donorLogo}
+              alt={grant.donor}
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-semibold text-foreground">{grant.donor}</p>
+            <div className="mt-1">
+              <StatusBadge status={grant.status} />
+            </div>
+          </div>
         </div>
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-xs font-medium text-muted-foreground">{grant.donor}</p>
-        </div>
-        <StatusBadge status={grant.status} />
       </div>
 
       {/* Content */}
