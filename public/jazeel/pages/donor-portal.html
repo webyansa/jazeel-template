@@ -19,7 +19,7 @@
             navy: { DEFAULT: '#07133F', light: '#0d1f5c', dark: '#050e2d' },
             jgreen: { DEFAULT: '#19B58B', light: '#1fcca0', dark: '#149572', 50: '#EAF8F3', 100: '#DDF5EE' },
             neutral: { text: '#5B6470', light: '#8B929B', border: '#E5E8EB', bg: '#F8F9FA' },
-            indigo: { DEFAULT: '#5C5F99', light: '#F0EFF8', 50: '#E8E7F3', accent: '#7073AD' },
+            indigo: { DEFAULT: '#7D53F3', light: '#F3F0FF', 50: '#EDE8FF', accent: '#9574F7' },
           },
           fontSize: {
             'display': ['2.75rem', { lineHeight: '1.25', fontWeight: '800' }],
@@ -116,7 +116,7 @@
       display: inline-flex; align-items: center; gap: 0.5rem;
       text-decoration: none;
     }
-    .btn-outline-dark:hover { border-color: #5C5F99; color: #5C5F99; }
+    .btn-outline-dark:hover { border-color: #7D53F3; color: #7D53F3; }
 
     .btn-green-outline {
       background: transparent; color: #19B58B; border: 1.5px solid #19B58B;
@@ -140,7 +140,7 @@
       display: inline-flex; align-items: center; gap: 6px;
       padding: 6px 14px; border-radius: 100px;
       font-size: 0.8125rem; font-weight: 600;
-      background: #F0EFF8; color: #5C5F99;
+      background: #F3F0FF; color: #7D53F3;
     }
     .badge-green { background: #EAF8F3; color: #19B58B; }
 
@@ -157,11 +157,11 @@
     .check-icon { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
     /* ─── Model card highlight ─── */
-    .model-card-popular { border: 2px solid #5C5F99; position: relative; }
+    .model-card-popular { border: 2px solid #7D53F3; position: relative; }
     .model-card-popular::before {
       content: 'الأكثر طلبًا';
       position: absolute; top: -13px; right: 24px;
-      background: #5C5F99; color: #fff;
+      background: #7D53F3; color: #fff;
       padding: 3px 16px; border-radius: 100px;
       font-size: 0.75rem; font-weight: 700;
     }
@@ -171,7 +171,7 @@
     .journey-line::before {
       content: ''; position: absolute; top: 0; bottom: 0;
       right: 23px; width: 2px;
-      background: linear-gradient(to bottom, #5C5F99, #E5E8EB);
+      background: linear-gradient(to bottom, #7D53F3, #E5E8EB);
     }
 
     /* ─── Comparison table ─── */
@@ -418,7 +418,7 @@
       <!-- Model 2: Popular -->
       <div class="card-sys model-card-popular p-7 reveal reveal-d2 flex flex-col">
         <div class="w-12 h-12 rounded-sys bg-indigo-light flex items-center justify-center mb-5">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
         </div>
         <div class="text-micro text-indigo font-bold mb-2">النموذج الثاني</div>
         <h3 class="text-heading-sm text-navy mb-3">شغّل إدارة المنح باحتراف</h3>
@@ -427,23 +427,23 @@
         </p>
         <ul class="space-y-2.5 mb-6 text-body-sm text-neutral-text">
           <li class="flex items-start gap-2.5">
-            <span class="check-icon bg-indigo-light mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span class="check-icon bg-indigo-light mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
             إدارة كاملة للمراحل والتقييم
           </li>
           <li class="flex items-start gap-2.5">
-            <span class="check-icon bg-indigo-light mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span class="check-icon bg-indigo-light mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
             لوحات مؤشرات وتقارير تفصيلية
           </li>
           <li class="flex items-start gap-2.5">
-            <span class="check-icon bg-indigo-light mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span class="check-icon bg-indigo-light mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
             متابعة التنفيذ والمخرجات
           </li>
           <li class="flex items-start gap-2.5">
-            <span class="check-icon bg-indigo-light mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span class="check-icon bg-indigo-light mt-0.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
             إدارة الجهات المستفيدة
           </li>
         </ul>
-        <a href="#" class="btn-primary justify-center" style="background:#5C5F99;">اطلب نسخة تجريبية</a>
+        <a href="#" class="btn-primary justify-center" style="background:#7D53F3;">اطلب نسخة تجريبية</a>
       </div>
 
       <!-- Model 3 -->
@@ -505,7 +505,7 @@
       <!-- Cap 2 -->
       <div class="card-sys p-6 reveal reveal-d2">
         <div class="w-11 h-11 rounded-sys bg-indigo-light flex items-center justify-center mb-4">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="2"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
         <h3 class="text-heading-sm text-navy mb-2">إدارة فرص المنح</h3>
         <p class="text-body-sm text-neutral-text">إنشاء فرص المنح وتحديد شروطها ومعاييرها ونشرها بسهولة.</p>
@@ -523,7 +523,7 @@
       <!-- Cap 4 -->
       <div class="card-sys p-6 reveal reveal-d4">
         <div class="w-11 h-11 rounded-sys bg-indigo-light flex items-center justify-center mb-4">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
         </div>
         <h3 class="text-heading-sm text-navy mb-2">التقييم والمراجعة</h3>
         <p class="text-body-sm text-neutral-text">نظام تقييم منظم للمقترحات مع معايير واضحة ومخرجات قابلة للقياس.</p>
@@ -550,7 +550,7 @@
       <!-- Cap 7 -->
       <div class="card-sys p-6 reveal reveal-d3">
         <div class="w-11 h-11 rounded-sys bg-indigo-light flex items-center justify-center mb-4">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
         </div>
         <h3 class="text-heading-sm text-navy mb-2">التقارير والمؤشرات</h3>
         <p class="text-body-sm text-neutral-text">لوحات مؤشرات شاملة وتقارير تحليلية لدعم اتخاذ القرار.</p>
@@ -655,7 +655,7 @@
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <!-- Text -->
       <div class="reveal">
-        <div class="badge-sys mb-6" style="background:rgba(92,95,153,0.15); color:#7073AD;">
+        <div class="badge-sys mb-6" style="background:rgba(125,83,243,0.15); color:#9574F7;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           نظام مخصص بالكامل
         </div>
@@ -708,14 +708,14 @@
           <div class="flex items-center justify-between mb-5 pb-4 border-b border-white/[0.06]">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-sys bg-gradient-to-br from-indigo/30 to-indigo-accent/20 flex items-center justify-center">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7073AD" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9574F7" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
               </div>
               <div>
                 <div class="text-caption text-white/80 font-bold">مؤسسة التنمية المستدامة</div>
                 <div class="text-micro text-white/40">grants.tanmia.sa</div>
               </div>
             </div>
-            <div class="badge-sys" style="background:rgba(92,95,153,0.12); color:#7073AD; font-size:0.6875rem;">نظام مخصص</div>
+            <div class="badge-sys" style="background:rgba(125,83,243,0.12); color:#9574F7; font-size:0.6875rem;">نظام مخصص</div>
           </div>
 
           <!-- Stats -->
@@ -864,7 +864,7 @@
       <div class="card-sys p-7 reveal reveal-d2">
         <div class="flex items-start gap-4 mb-4">
           <div class="w-12 h-12 rounded-sys bg-indigo-light flex items-center justify-center flex-shrink-0">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
           <div>
             <h3 class="text-heading-sm text-navy mb-1">مجلس يبحث عن بيئة احترافية</h3>
@@ -882,7 +882,7 @@
       <div class="card-sys p-7 reveal reveal-d3">
         <div class="flex items-start gap-4 mb-4">
           <div class="w-12 h-12 rounded-sys bg-indigo-light flex items-center justify-center flex-shrink-0">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           </div>
           <div>
             <h3 class="text-heading-sm text-navy mb-1">فريق متابعة التنفيذ</h3>
@@ -900,7 +900,7 @@
       <div class="card-sys p-7 reveal reveal-d4">
         <div class="flex items-start gap-4 mb-4">
           <div class="w-12 h-12 rounded-sys bg-indigo-light flex items-center justify-center flex-shrink-0">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5C5F99" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
           </div>
           <div>
             <h3 class="text-heading-sm text-navy mb-1">جهة تريد نظامها المستقل</h3>
@@ -957,7 +957,7 @@
   </div>
 
   <div class="relative max-w-3xl mx-auto px-5 sm:px-8 text-center reveal">
-    <div class="badge-sys mx-auto mb-6" style="background:rgba(92,95,153,0.15); color:#7073AD;">ابدأ رحلتك مع جزيل</div>
+    <div class="badge-sys mx-auto mb-6" style="background:rgba(125,83,243,0.15); color:#9574F7;">ابدأ رحلتك مع جزيل</div>
     <h2 class="text-display-sm mb-5">جاهز لبناء بيئة منح أكثر احترافية؟</h2>
     <p class="text-body-lg text-white/60 mb-8 max-w-xl mx-auto">
       سواء أردت حسابًا سريعًا داخل جزيل أو نظامًا مخصصًا بالكامل لجهتك، فريقنا جاهز لمساعدتك.
