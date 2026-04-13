@@ -90,44 +90,103 @@ function TemplateShowcasePage() {
       <section className="relative overflow-hidden bg-background pb-16 pt-16 sm:pb-20 sm:pt-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(var(--jazeel-mint))_0%,_transparent_50%)] opacity-60" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/50 px-4 py-1.5 text-xs font-medium text-muted-foreground">
-              <Layers className="h-3.5 w-3.5 text-jazeel-green" />
-              قالب HTML احترافي • {readyPages.length} صفحات جاهزة
-            </div>
-            <h1 className="mb-5 text-3xl font-extrabold leading-tight text-foreground sm:text-4xl lg:text-5xl">
-              قالب <span className="text-jazeel-green">جزيل</span> لمنصات المنح
-              <br className="hidden sm:block" />
-              والقطاع غير الربحي
-            </h1>
-            <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-muted-foreground">
-              قالب احترافي عالي الجودة مصمم خصيصاً لمنصات المنح والجمعيات.
-              يشمل صفحات جاهزة بتصميم عربي حديث ومتجاوب بالكامل.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Button size="lg" className="gap-2.5 rounded-2xl bg-primary px-8 text-primary-foreground shadow-lg hover:bg-primary/90" onClick={handleDownloadAll}>
-                <Download className="h-5 w-5" />
-                تحميل القالب كاملاً
-              </Button>
-              <Button size="lg" variant="outline" className="gap-2.5 rounded-2xl px-8" onClick={() => window.open("/jazeel/pages/home.html", "_blank")}>
-                <ExternalLink className="h-5 w-5" />
-                معاينة مباشرة
-              </Button>
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            {/* Text */}
+            <div>
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/50 px-4 py-1.5 text-xs font-medium text-muted-foreground">
+                <Layers className="h-3.5 w-3.5 text-jazeel-green" />
+                قالب HTML احترافي • {readyPages.length} صفحات جاهزة
+              </div>
+              <h1 className="mb-5 text-3xl font-extrabold leading-tight text-foreground sm:text-4xl lg:text-5xl">
+                قالب <span className="text-jazeel-green">جزيل</span> لمنصات المنح
+                <br className="hidden sm:block" />
+                والقطاع غير الربحي
+              </h1>
+              <p className="mb-8 max-w-lg text-base leading-relaxed text-muted-foreground">
+                قالب احترافي عالي الجودة مصمم خصيصاً لمنصات المنح والجمعيات.
+                يشمل صفحات جاهزة بتصميم عربي حديث ومتجاوب بالكامل.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button size="lg" className="gap-2.5 rounded-2xl bg-primary px-8 text-primary-foreground shadow-lg hover:bg-primary/90" onClick={handleDownloadAll}>
+                  <Download className="h-5 w-5" />
+                  تحميل القالب كاملاً
+                </Button>
+                <Button size="lg" variant="outline" className="gap-2.5 rounded-2xl px-8" onClick={() => window.open("/jazeel/pages/home.html", "_blank")}>
+                  <ExternalLink className="h-5 w-5" />
+                  معاينة مباشرة
+                </Button>
+              </div>
+              {/* Stats */}
+              <div className="mt-10 flex gap-10">
+                <div>
+                  <div className="text-2xl font-extrabold text-foreground">{readyPages.length}</div>
+                  <p className="mt-0.5 text-xs text-muted-foreground">صفحات جاهزة</p>
+                </div>
+                <div>
+                  <div className="text-2xl font-extrabold text-foreground">{templatePages.length}</div>
+                  <p className="mt-0.5 text-xs text-muted-foreground">إجمالي الصفحات</p>
+                </div>
+                <div>
+                  <div className="text-2xl font-extrabold text-jazeel-green">RTL</div>
+                  <p className="mt-0.5 text-xs text-muted-foreground">دعم عربي كامل</p>
+                </div>
+              </div>
             </div>
 
-            {/* Stats */}
-            <div className="mx-auto mt-12 flex max-w-sm justify-center gap-10">
-              <div className="text-center">
-                <div className="text-2xl font-extrabold text-foreground">{readyPages.length}</div>
-                <p className="mt-0.5 text-xs text-muted-foreground">صفحات جاهزة</p>
+            {/* Browser Mockup */}
+            <div className="relative hidden lg:block">
+              <div className="rounded-2xl border border-border/60 bg-background p-2 shadow-2xl">
+                <div className="flex items-center gap-1.5 px-3 py-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-destructive/60" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-jazeel-warning/60" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-jazeel-green/60" />
+                  <span className="mr-3 text-[10px] text-muted-foreground">jazeel/pages/home.html</span>
+                </div>
+                {/* Clean placeholder instead of AI image */}
+                <div className="flex aspect-[16/10] flex-col rounded-xl bg-gradient-to-b from-primary to-primary/80 p-6 text-primary-foreground">
+                  {/* Fake nav */}
+                  <div className="mb-6 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="h-5 w-14 rounded bg-primary-foreground/20" />
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="h-3 w-10 rounded bg-primary-foreground/15" />
+                      <div className="h-3 w-10 rounded bg-primary-foreground/15" />
+                      <div className="h-3 w-10 rounded bg-primary-foreground/15" />
+                    </div>
+                  </div>
+                  {/* Fake hero */}
+                  <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
+                    <div className="h-4 w-48 rounded bg-primary-foreground/25" />
+                    <div className="h-3 w-36 rounded bg-primary-foreground/15" />
+                    <div className="mt-2 flex gap-2">
+                      <div className="h-6 w-20 rounded-lg bg-jazeel-green/80" />
+                      <div className="h-6 w-20 rounded-lg bg-primary-foreground/15" />
+                    </div>
+                  </div>
+                  {/* Fake cards */}
+                  <div className="mt-auto grid grid-cols-3 gap-2">
+                    <div className="rounded-lg bg-primary-foreground/10 p-3">
+                      <div className="mb-2 h-2 w-12 rounded bg-primary-foreground/20" />
+                      <div className="h-1.5 w-full rounded bg-primary-foreground/10" />
+                    </div>
+                    <div className="rounded-lg bg-primary-foreground/10 p-3">
+                      <div className="mb-2 h-2 w-12 rounded bg-primary-foreground/20" />
+                      <div className="h-1.5 w-full rounded bg-primary-foreground/10" />
+                    </div>
+                    <div className="rounded-lg bg-primary-foreground/10 p-3">
+                      <div className="mb-2 h-2 w-12 rounded bg-primary-foreground/20" />
+                      <div className="h-1.5 w-full rounded bg-primary-foreground/10" />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-extrabold text-foreground">{templatePages.length}</div>
-                <p className="mt-0.5 text-xs text-muted-foreground">إجمالي الصفحات</p>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-extrabold text-jazeel-green">RTL</div>
-                <p className="mt-0.5 text-xs text-muted-foreground">دعم عربي كامل</p>
+              {/* Floating badge */}
+              <div className="absolute -bottom-4 -right-4 rounded-xl border border-border/60 bg-background p-3 shadow-lg">
+                <div className="flex items-center gap-2 text-xs font-medium text-foreground">
+                  <FileText className="h-4 w-4 text-jazeel-green" />
+                  {readyPages.length} صفحات جاهزة للتحميل
+                </div>
               </div>
             </div>
           </div>
