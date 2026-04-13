@@ -80,37 +80,44 @@ function GrantDetailPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-bl from-jazeel-mint/60 via-background to-jazeel-mint/30">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-            <div className="flex-1">
-              <div className="mb-4 flex flex-wrap items-center gap-3">
-                <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-background p-2 shadow-sm border border-border/40">
-                  <img src={grant.donorLogo} alt={grant.donor} className="h-full w-full object-contain" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">{grant.donor}</p>
-                  <StatusBadge status={grant.status} />
-                </div>
-              </div>
-              <h1 className="mb-3 text-2xl font-extrabold leading-tight text-foreground sm:text-3xl lg:text-4xl">
+      <section className="relative overflow-hidden bg-gradient-to-bl from-jazeel-mint/60 via-background to-jazeel-mint/30">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--jazeel-mint-dark)_0%,_transparent_50%)] opacity-30" />
+        <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+          {/* Donor banner */}
+          <div className="mb-6 flex items-center gap-5">
+            <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border/50 bg-background p-3 shadow-md sm:h-24 sm:w-24">
+              <img src={grant.donorLogo} alt={grant.donor} className="h-full w-full object-contain" />
+            </div>
+            <div className="space-y-1.5">
+              <p className="text-base font-bold text-foreground sm:text-lg">{grant.donor}</p>
+              <StatusBadge status={grant.status} />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+            <div className="flex-1 max-w-3xl">
+              <h1 className="mb-4 text-2xl font-extrabold leading-tight text-foreground sm:text-3xl lg:text-[2.5rem] lg:leading-[1.2]">
                 {grant.title}
               </h1>
-              <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+              <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 {grant.description}
               </p>
 
-              {/* Quick meta */}
-              <div className="mt-5 flex flex-wrap gap-4 text-sm text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5">
+              {/* Quick meta pills */}
+              <div className="mt-6 flex flex-wrap gap-3">
+                <span className="inline-flex items-center gap-2 rounded-xl border border-border/50 bg-background/80 px-4 py-2 text-sm text-muted-foreground shadow-sm backdrop-blur-sm">
                   <CalendarDays className="h-4 w-4 text-jazeel-green" />
-                  آخر موعد: {grant.closingDate}
+                  آخر موعد: <span className="font-semibold text-foreground">{grant.closingDate}</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-2 rounded-xl border border-border/50 bg-background/80 px-4 py-2 text-sm text-muted-foreground shadow-sm backdrop-blur-sm">
                   <Clock className="h-4 w-4 text-jazeel-green" />
-                  {grant.daysRemaining > 0 ? `متبقي ${grant.daysRemaining} يوم` : "انتهت المدة"}
+                  {grant.daysRemaining > 0 ? (
+                    <>المتبقي: <span className="font-semibold text-foreground">{grant.daysRemaining} يوم</span></>
+                  ) : (
+                    <span className="font-semibold text-destructive">انتهت المدة</span>
+                  )}
                 </span>
-                <span className="inline-flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-2 rounded-xl border border-border/50 bg-background/80 px-4 py-2 text-sm text-muted-foreground shadow-sm backdrop-blur-sm">
                   <MapPin className="h-4 w-4 text-jazeel-green" />
                   {grant.region}
                 </span>
@@ -118,22 +125,22 @@ function GrantDetailPage() {
             </div>
 
             {/* Hero Actions */}
-            <div className="flex flex-wrap gap-2 sm:flex-col sm:items-end">
+            <div className="flex flex-wrap gap-3 lg:flex-col lg:items-stretch lg:min-w-[200px]">
               {grant.status !== "closed" && (
-                <Button className="gap-2 rounded-xl bg-jazeel-green px-6 text-jazeel-green-foreground hover:bg-jazeel-green/90">
+                <Button size="lg" className="gap-2 rounded-xl bg-jazeel-green px-8 text-jazeel-green-foreground shadow-lg shadow-jazeel-green/20 hover:bg-jazeel-green/90 hover:shadow-xl hover:shadow-jazeel-green/30 transition-all duration-200">
                   <Send className="h-4 w-4" />
                   التقديم على المنحة
                 </Button>
               )}
-              <Button variant="outline" className="gap-2 rounded-xl">
+              <Button variant="outline" size="lg" className="gap-2 rounded-xl border-border/60 bg-background/80 backdrop-blur-sm hover:bg-accent transition-all duration-200">
                 <FileText className="h-4 w-4" />
                 إعداد المشروع
               </Button>
               <div className="flex gap-2">
-                <Button variant="ghost" size="icon" className="rounded-xl" aria-label="مشاركة">
+                <Button variant="ghost" size="icon" className="rounded-xl hover:bg-background/80 transition-colors" aria-label="مشاركة">
                   <Share2 className="h-4 w-4" />
                 </Button>
-                <Button variant="ghost" size="icon" className="rounded-xl" aria-label="حفظ">
+                <Button variant="ghost" size="icon" className="rounded-xl hover:bg-background/80 transition-colors" aria-label="حفظ">
                   <Bookmark className="h-4 w-4" />
                 </Button>
               </div>
