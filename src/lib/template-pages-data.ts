@@ -66,6 +66,17 @@ export const templatePages: TemplatePage[] = [
     previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
+    id: "ngo-portal",
+    name: "بوابة الجمعيات",
+    fileName: "ngo-portal.html",
+    description: "صفحة تسويقية احترافية للجمعيات غير الربحية تعرض المنظومة المتكاملة لإدارة المشاريع والمقترحات وفرص المنح",
+    category: "main",
+    status: "ready",
+    lastModified: "2026-04-13",
+    path: "/jazeel/pages/ngo-portal.html",
+    previewImage: "/jazeel/images/preview-home.jpg",
+  },
+  {
     id: "pricing",
     name: "باقات جزيل",
     fileName: "pricing.html",
