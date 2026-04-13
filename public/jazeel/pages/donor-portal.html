@@ -19,7 +19,7 @@
             navy: { DEFAULT: '#07133F', light: '#0d1f5c', dark: '#050e2d' },
             jgreen: { DEFAULT: '#19B58B', light: '#1fcca0', dark: '#149572', 50: '#EAF8F3', 100: '#DDF5EE' },
             neutral: { text: '#5B6470', light: '#8B929B', border: '#E5E8EB', bg: '#F8F9FA' },
-            lavender: { DEFAULT: '#7C6FBF', light: '#F3F1FA', 50: '#EEEDFA' },
+            indigo: { DEFAULT: '#5C5F99', light: '#F0EFF8', 50: '#E8E7F3', accent: '#7073AD' },
           },
           fontSize: {
             'display': ['2.75rem', { lineHeight: '1.25', fontWeight: '800' }],
@@ -74,8 +74,8 @@
     .header-scrolled { background: rgba(255,255,255,0.98) !important; box-shadow: 0 1px 8px rgba(7,19,63,0.05); backdrop-filter: blur(12px); }
 
     /* ─── Gradients ─── */
-    .hero-gradient { background: linear-gradient(160deg, #07133F 0%, #0d1f5c 45%, #101d4c 100%); }
-    .cta-gradient { background: linear-gradient(160deg, #07133F 0%, #0d1f5c 50%, #0a1745 100%); }
+    .hero-gradient { background: linear-gradient(160deg, #07133F 0%, #0e1650 40%, #161a52 70%, #0d1345 100%); }
+    .cta-gradient { background: linear-gradient(160deg, #0b1340 0%, #131750 50%, #0d1345 100%); }
 
     /* ─── Buttons ─── */
     .btn-primary {
@@ -106,7 +106,7 @@
       display: inline-flex; align-items: center; gap: 0.5rem;
       text-decoration: none;
     }
-    .btn-outline-dark:hover { border-color: #19B58B; color: #19B58B; }
+    .btn-outline-dark:hover { border-color: #5C5F99; color: #5C5F99; }
 
     .btn-green-outline {
       background: transparent; color: #19B58B; border: 1.5px solid #19B58B;
@@ -130,8 +130,9 @@
       display: inline-flex; align-items: center; gap: 6px;
       padding: 6px 14px; border-radius: 100px;
       font-size: 0.8125rem; font-weight: 600;
-      background: #EAF8F3; color: #19B58B;
+      background: #F0EFF8; color: #5C5F99;
     }
+    .badge-green { background: #EAF8F3; color: #19B58B; }
 
     /* ─── Mobile menu ─── */
     .mobile-menu { display: none; position: absolute; top: 100%; right: 0; left: 0; background: #fff; border-top: 1px solid #E5E8EB; box-shadow: 0 8px 30px rgba(0,0,0,0.08); padding: 1rem; }
@@ -146,11 +147,11 @@
     .check-icon { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
     /* ─── Model card highlight ─── */
-    .model-card-popular { border: 2px solid #19B58B; position: relative; }
+    .model-card-popular { border: 2px solid #5C5F99; position: relative; }
     .model-card-popular::before {
       content: 'الأكثر طلبًا';
       position: absolute; top: -13px; right: 24px;
-      background: #19B58B; color: #fff;
+      background: #5C5F99; color: #fff;
       padding: 3px 16px; border-radius: 100px;
       font-size: 0.75rem; font-weight: 700;
     }
@@ -160,7 +161,7 @@
     .journey-line::before {
       content: ''; position: absolute; top: 0; bottom: 0;
       right: 23px; width: 2px;
-      background: linear-gradient(to bottom, #19B58B, #E5E8EB);
+      background: linear-gradient(to bottom, #5C5F99, #E5E8EB);
     }
 
     /* ─── Comparison table ─── */
