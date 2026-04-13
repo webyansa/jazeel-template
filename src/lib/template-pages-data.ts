@@ -55,6 +55,17 @@ export const templatePages: TemplatePage[] = [
     previewImage: "/jazeel/images/preview-grant-details.jpg",
   },
   {
+    id: "donor-portal",
+    name: "بوابة المانحين",
+    fileName: "donor-portal.html",
+    description: "صفحة تسويقية احترافية للجهات المانحة تعرض نماذج الاستخدام والقدرات التشغيلية وخيار النظام المخصص",
+    category: "main",
+    status: "ready",
+    lastModified: "2026-04-13",
+    path: "/jazeel/pages/donor-portal.html",
+    previewImage: "/jazeel/images/preview-home.jpg",
+  },
+  {
     id: "pricing",
     name: "باقات جزيل",
     fileName: "pricing.html",
