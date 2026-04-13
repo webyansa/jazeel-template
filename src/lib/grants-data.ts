@@ -13,7 +13,6 @@ export interface Grant {
   status: "open" | "closing_soon" | "closed";
   supportType: string;
   badges: string[];
-  /* Detail page fields */
   fullDescription?: string;
   objectives?: string[];
   eligibility?: string[];
@@ -27,8 +26,8 @@ export const grantsData: Grant[] = [
   {
     id: "1",
     title: "منحة تمكين المنظمات غير الربحية الناشئة",
-    donor: "مؤسسة الملك خالد",
-    donorLogo: "🏛️",
+    donor: "الراجحي الإنسانية",
+    donorLogo: "/donors/alrajhi.png",
     description: "برنامج دعم شامل للجمعيات الناشئة يشمل التمويل والتدريب والإرشاد لتعزيز قدراتها المؤسسية وتحقيق أثر تنموي مستدام في المجتمع.",
     closingDate: "2026-05-15",
     daysRemaining: 32,
@@ -52,8 +51,8 @@ export const grantsData: Grant[] = [
   {
     id: "2",
     title: "برنامج دعم مشاريع الأمن الغذائي",
-    donor: "صندوق التنمية الزراعية",
-    donorLogo: "🌾",
+    donor: "مركز الملك سلمان للإغاثة",
+    donorLogo: "/donors/king-salman.png",
     description: "دعم المشاريع التي تسهم في تحقيق الأمن الغذائي وتطوير القطاع الزراعي من خلال حلول مبتكرة ومستدامة.",
     closingDate: "2026-04-25",
     daysRemaining: 12,
@@ -68,15 +67,13 @@ export const grantsData: Grant[] = [
     requirements: ["دراسة جدوى للمشروع", "خطة تنفيذية مفصلة", "ميزانية المشروع"],
     targetGroups: ["الجمعيات الزراعية", "التعاونيات الريفية"],
     applicationSteps: ["التسجيل في المنصة", "تقديم دراسة الجدوى", "مراجعة الطلب"],
-    faq: [
-      { question: "ما مدة التنفيذ؟", answer: "مدة التنفيذ 12 شهراً قابلة للتمديد." },
-    ],
+    faq: [{ question: "ما مدة التنفيذ؟", answer: "مدة التنفيذ 12 شهراً قابلة للتمديد." }],
   },
   {
     id: "3",
     title: "منحة التحول الرقمي للمنظمات غير الربحية",
-    donor: "هيئة الحكومة الرقمية",
-    donorLogo: "💻",
+    donor: "منصة إحسان",
+    donorLogo: "/donors/ehsan.png",
     description: "دعم رحلة التحول الرقمي للمنظمات غير الربحية من خلال توفير الأدوات والتدريب والاستشارات التقنية المتخصصة.",
     closingDate: "2026-06-01",
     daysRemaining: 49,
@@ -96,8 +93,8 @@ export const grantsData: Grant[] = [
   {
     id: "4",
     title: "برنامج تعزيز صحة المجتمع",
-    donor: "وزارة الصحة",
-    donorLogo: "🏥",
+    donor: "بنك التنمية الاجتماعية",
+    donorLogo: "/donors/sdb.png",
     description: "دعم المبادرات الصحية المجتمعية التي تسهم في تعزيز الوعي الصحي والوقاية من الأمراض المزمنة.",
     closingDate: "2026-05-20",
     daysRemaining: 37,
@@ -117,8 +114,8 @@ export const grantsData: Grant[] = [
   {
     id: "5",
     title: "منحة تمكين المرأة في ريادة الأعمال الاجتماعية",
-    donor: "مؤسسة التنمية الاجتماعية",
-    donorLogo: "👩‍💼",
+    donor: "الهيئة العامة للأوقاف",
+    donorLogo: "/donors/awqaf.png",
     description: "برنامج متخصص في دعم المشاريع الريادية النسائية التي تحقق أثراً اجتماعياً إيجابياً في المجتمعات المحلية.",
     closingDate: "2026-06-10",
     daysRemaining: 58,
@@ -138,8 +135,8 @@ export const grantsData: Grant[] = [
   {
     id: "6",
     title: "برنامج البيئة والاستدامة",
-    donor: "المركز الوطني للرقابة البيئية",
-    donorLogo: "🌿",
+    donor: "مؤسسة أبانمي سليمان الأهلية",
+    donorLogo: "/donors/abanumay.png",
     description: "تمويل المشاريع البيئية التي تسهم في حماية البيئة وتعزيز ممارسات الاستدامة في المجتمعات المحلية.",
     closingDate: "2026-04-20",
     daysRemaining: 7,
@@ -159,8 +156,8 @@ export const grantsData: Grant[] = [
   {
     id: "7",
     title: "منحة تطوير التعليم في المناطق النائية",
-    donor: "مؤسسة تكافل",
-    donorLogo: "📚",
+    donor: "مؤسسة الجميح الأهلية",
+    donorLogo: "/donors/aljumaih.png",
     description: "دعم المشاريع التعليمية التي تستهدف المناطق النائية وتسهم في توفير فرص تعليمية متكافئة ومتميزة.",
     closingDate: "2026-03-30",
     daysRemaining: 0,
@@ -180,8 +177,8 @@ export const grantsData: Grant[] = [
   {
     id: "8",
     title: "برنامج الابتكار الاجتماعي",
-    donor: "مسك الخيرية",
-    donorLogo: "🚀",
+    donor: "الراجحي الإنسانية",
+    donorLogo: "/donors/alrajhi.png",
     description: "دعم الأفكار والمشاريع المبتكرة التي تقدم حلولاً إبداعية للتحديات الاجتماعية في المملكة العربية السعودية.",
     closingDate: "2026-07-01",
     daysRemaining: 79,

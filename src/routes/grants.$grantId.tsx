@@ -85,9 +85,9 @@ function GrantDetailPage() {
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex-1">
               <div className="mb-4 flex flex-wrap items-center gap-3">
-                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-background text-2xl shadow-sm border border-border/40">
-                  {grant.donorLogo}
-                </span>
+                <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-background p-2 shadow-sm border border-border/40">
+                  <img src={grant.donorLogo} alt={grant.donor} className="h-full w-full object-contain" />
+                </div>
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">{grant.donor}</p>
                   <StatusBadge status={grant.status} />
