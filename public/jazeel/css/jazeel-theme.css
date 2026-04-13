@@ -146,12 +146,12 @@ ul, ol { list-style: none; }
 .jz-header-logo img { height: 2.25rem; }
 .jz-header-nav { display: flex; align-items: center; gap: 0.25rem; }
 .jz-header-nav a {
-  padding: 0.5rem 0.75rem; border-radius: var(--jz-radius);
-  font-size: 0.875rem; font-weight: 500; color: var(--jz-text-muted);
+  padding: 0.5rem 0.875rem; border-radius: var(--jz-radius);
+  font-size: 0.9375rem; font-weight: 500; color: var(--jz-text-muted);
   transition: all 0.2s;
 }
 .jz-header-nav a:hover { background: var(--jz-mint); color: var(--jz-text); }
-.jz-header-nav a.active { background: var(--jz-mint); color: var(--jz-green); font-weight: 700; }
+.jz-header-nav a.active { background: var(--jz-mint); color: var(--jz-green); font-weight: 600; }
 .jz-header-actions { display: flex; align-items: center; gap: 0.5rem; }
 .jz-mobile-toggle { display: none; padding: 0.5rem; border-radius: var(--jz-radius); background: none; border: none; cursor: pointer; color: var(--jz-text-muted); }
 @media (max-width: 1023px) {
