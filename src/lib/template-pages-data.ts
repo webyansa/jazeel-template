@@ -9,7 +9,6 @@ export interface TemplatePage {
   status: "ready" | "new" | "development";
   lastModified: string;
   path: string;
-  previewImage: string;
 }
 
 export const templateCategories = {
@@ -28,9 +27,8 @@ export const templatePages: TemplatePage[] = [
     description: "صفحة الهبوط الرئيسية لمنصة جزيل مع عرض المميزات والشركاء والإحصائيات وأزرار الإجراء",
     category: "main",
     status: "ready",
-    lastModified: "2026-04-13",
+    lastModified: "2026-04-14",
     path: "/jazeel/home.html",
-    previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
     id: "grants",
@@ -39,9 +37,8 @@ export const templatePages: TemplatePage[] = [
     description: "صفحة عرض جميع فرص المنح المتاحة مع فلاتر البحث والتصنيف وبطاقات الفرص",
     category: "grants",
     status: "ready",
-    lastModified: "2026-04-13",
+    lastModified: "2026-04-14",
     path: "/jazeel/grants.html",
-    previewImage: "/jazeel/images/preview-grants.jpg",
   },
   {
     id: "grant-details",
@@ -50,20 +47,18 @@ export const templatePages: TemplatePage[] = [
     description: "صفحة تفاصيل فرصة المنح مع معلومات الجهة المانحة والأهداف ومعايير القبول وآلية التقديم",
     category: "grants",
     status: "ready",
-    lastModified: "2026-04-13",
+    lastModified: "2026-04-14",
     path: "/jazeel/grant-details.html",
-    previewImage: "/jazeel/images/preview-grant-details.jpg",
   },
   {
     id: "donor-portal",
-    name: "بوابة المانحين",
+    name: "بوابة الجهات المانحة",
     fileName: "donor-portal.html",
     description: "صفحة تسويقية احترافية للجهات المانحة تعرض نماذج الاستخدام والقدرات التشغيلية وخيار النظام المخصص",
     category: "main",
     status: "ready",
-    lastModified: "2026-04-13",
+    lastModified: "2026-04-14",
     path: "/jazeel/donor-portal.html",
-    previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
     id: "ngo-portal",
@@ -72,20 +67,28 @@ export const templatePages: TemplatePage[] = [
     description: "صفحة تسويقية احترافية للجمعيات غير الربحية تعرض المنظومة المتكاملة لإدارة المشاريع والمقترحات وفرص المنح",
     category: "main",
     status: "ready",
-    lastModified: "2026-04-13",
+    lastModified: "2026-04-14",
     path: "/jazeel/ngo-portal.html",
-    previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
     id: "pricing",
-    name: "باقات جزيل",
+    name: "باقات الاشتراك",
     fileName: "pricing.html",
-    description: "صفحة عرض باقات الاشتراك والأسعار مع مقارنة المميزات",
+    description: "صفحة عرض باقات الاشتراك والأسعار مع مقارنة المميزات وجدول المقارنة التفصيلي",
     category: "cta",
     status: "ready",
-    lastModified: "2026-04-13",
+    lastModified: "2026-04-14",
     path: "/jazeel/pricing.html",
-    previewImage: "/jazeel/images/preview-home.jpg",
+  },
+  {
+    id: "donors-directory",
+    name: "دليل المانحين",
+    fileName: "donors-directory.html",
+    description: "صفحة دليل الجهات المانحة مع بطاقات احترافية وفلاتر بحث وتصنيف حسب التخصص",
+    category: "info",
+    status: "ready",
+    lastModified: "2026-04-14",
+    path: "/jazeel/donors-directory.html",
   },
   {
     id: "about",
@@ -94,9 +97,8 @@ export const templatePages: TemplatePage[] = [
     description: "صفحة تعريفية عن منصة جزيل ورؤيتها ورسالتها وفريق العمل",
     category: "info",
     status: "development",
-    lastModified: "2026-04-13",
+    lastModified: "2026-04-14",
     path: "/jazeel/about.html",
-    previewImage: "/jazeel/images/preview-home.jpg",
   },
   {
     id: "contact",
@@ -105,8 +107,7 @@ export const templatePages: TemplatePage[] = [
     description: "صفحة نموذج التواصل ومعلومات الاتصال بمنصة جزيل",
     category: "support",
     status: "development",
-    lastModified: "2026-04-13",
+    lastModified: "2026-04-14",
     path: "/jazeel/contact.html",
-    previewImage: "/jazeel/images/preview-home.jpg",
   },
 ];
