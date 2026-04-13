@@ -1047,17 +1047,7 @@
   function updateHeader() {
     const scrolled = window.scrollY > 40;
     header.classList.toggle('header-scrolled', scrolled);
-    if (scrolled) {
-      navLinks.forEach(l => { l.classList.remove('text-white/90','text-white/60'); l.classList.add('text-navy','hover:text-jgreen'); });
-      if (loginLink) { loginLink.classList.remove('text-white/70'); loginLink.classList.add('text-navy'); }
-      if (langBtn) { langBtn.classList.remove('text-white/50'); langBtn.classList.add('text-neutral-text'); }
-      document.getElementById('mobileToggle').classList.remove('text-white'); document.getElementById('mobileToggle').classList.add('text-navy');
-    } else {
-      navLinks.forEach((l, i) => { l.classList.add(i === 1 ? 'text-white/90' : 'text-white/60'); l.classList.remove('text-navy','hover:text-jgreen'); });
-      if (loginLink) { loginLink.classList.add('text-white/70'); loginLink.classList.remove('text-navy'); }
-      if (langBtn) { langBtn.classList.add('text-white/50'); langBtn.classList.remove('text-neutral-text'); }
-      document.getElementById('mobileToggle').classList.add('text-white'); document.getElementById('mobileToggle').classList.remove('text-navy');
-    }
+    // Hero is light, so nav stays dark always — only add shadow on scroll
   }
   window.addEventListener('scroll', updateHeader);
   updateHeader();
