@@ -229,54 +229,55 @@
      ═══════════════════════════════════════════════════════════════ -->
 <section class="hero-gradient relative overflow-hidden min-h-[90vh] flex items-center pt-[68px]">
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute top-24 left-16 w-80 h-80 rounded-full bg-indigo-accent/[0.06] blur-[100px]"></div>
-    <div class="absolute bottom-16 right-20 w-96 h-96 rounded-full bg-indigo-accent/[0.04] blur-[120px]"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-jgreen/[0.02] blur-[140px]"></div>
+    <div class="absolute top-24 left-16 w-80 h-80 rounded-full blur-[120px]" style="background:rgba(125,83,243,0.08);"></div>
+    <div class="absolute bottom-16 right-20 w-96 h-96 rounded-full blur-[140px]" style="background:rgba(125,83,243,0.05);"></div>
+    <div class="absolute top-1/2 left-1/3 w-[500px] h-[300px] rounded-full blur-[160px]" style="background:rgba(25,181,139,0.04);"></div>
   </div>
 
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8 py-16 lg:py-20 w-full">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <!-- Text Column -->
       <div>
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-indigo-accent/20 mb-6 reveal visible" style="animation: fadeUp 0.6s ease both;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7073AD" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          <span class="text-micro text-indigo-accent/80">منظومة إدارة المنح المتقدمة</span>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6 reveal visible" style="animation: fadeUp 0.6s ease both; background:rgba(125,83,243,0.06); border-color:rgba(125,83,243,0.15);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span class="text-micro font-semibold" style="color:#7D53F3;">منظومة إدارة المنح المتقدمة</span>
         </div>
 
-        <h1 class="text-display text-white mb-5 reveal visible" style="animation: fadeUp 0.6s 0.1s ease both;">
+        <h1 class="text-display text-navy mb-5 reveal visible" style="animation: fadeUp 0.6s 0.1s ease both;">
           بيئة تشغيلية متكاملة<br>
-          <span class="text-jgreen">للجهات المانحة</span>
+          <span style="color:#7D53F3;">للجهات المانحة</span>
         </h1>
 
-        <p class="text-body-lg text-white/65 mb-8 max-w-lg reveal visible" style="animation: fadeUp 0.6s 0.2s ease both;">
+        <p class="text-body-lg text-neutral-text mb-8 max-w-lg reveal visible" style="animation: fadeUp 0.6s 0.2s ease both;">
           نظّم مبادراتك، وأعلن عن فرص المنح، واستقبل الطلبات وقيّمها، وتابع التنفيذ والنتائج — من حسابك في جزيل أو عبر نظام مخصص بالكامل لجهتك.
         </p>
 
         <div class="flex flex-wrap gap-3 mb-10 reveal visible" style="animation: fadeUp 0.6s 0.3s ease both;">
-          <a href="#" class="btn-primary">
-            اطلب نسخة تجريبية
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="#" class="btn-violet">
+            تسجيل دخول المانحين
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>
           </a>
-          <a href="#models" class="btn-secondary">
-            اطلب نظامًا مخصصًا
+          <a href="#custom-system" class="btn-secondary">
+            اطلب منصة مخصصة
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0022 16z"/></svg>
           </a>
         </div>
 
         <!-- Hero Stats -->
         <div class="flex items-center gap-8 reveal visible" style="animation: fadeUp 0.6s 0.4s ease both;">
           <div>
-            <div class="text-heading text-white font-bold counter-value" data-target="850">0</div>
-            <div class="text-caption text-white/50">جهة مستفيدة</div>
+            <div class="text-heading text-navy font-bold counter-value" data-target="850">0</div>
+            <div class="text-caption text-neutral-text">جهة مستفيدة</div>
           </div>
-          <div class="w-px h-10 bg-white/10"></div>
+          <div class="w-px h-10 bg-neutral-border"></div>
           <div>
-            <div class="text-heading text-white font-bold counter-value" data-target="120">0</div>
-            <div class="text-caption text-white/50">فرصة منح ناجحة</div>
+            <div class="text-heading text-navy font-bold counter-value" data-target="120">0</div>
+            <div class="text-caption text-neutral-text">فرصة منح ناجحة</div>
           </div>
-          <div class="w-px h-10 bg-white/10"></div>
+          <div class="w-px h-10 bg-neutral-border"></div>
           <div>
-            <div class="text-heading text-indigo-accent font-bold">+40%</div>
-            <div class="text-caption text-white/50">كفاءة تشغيلية</div>
+            <div class="text-heading font-bold" style="color:#7D53F3;">+40%</div>
+            <div class="text-caption text-neutral-text">كفاءة تشغيلية</div>
           </div>
         </div>
       </div>
@@ -284,56 +285,56 @@
       <!-- Visual Column: Dashboard Mockup -->
       <div class="relative reveal visible" style="animation: fadeUp 0.8s 0.3s ease both;">
         <!-- Main Dashboard Card -->
-        <div class="bg-white/[0.06] backdrop-blur-md border border-white/[0.08] rounded-sys-xl p-5 shadow-sys-lg">
+        <div class="rounded-sys-xl p-5 shadow-sys-lg border" style="background:rgba(255,255,255,0.85); backdrop-filter:blur(12px); border-color:rgba(125,83,243,0.1);">
           <!-- Top Bar -->
-          <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/[0.06]">
+          <div class="flex items-center justify-between mb-4 pb-3" style="border-bottom:1px solid rgba(125,83,243,0.08);">
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-indigo-accent/20 flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7073AD" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(125,83,243,0.1);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
               </div>
-              <span class="text-caption text-white/80 font-bold">لوحة تحكم المانح</span>
+              <span class="text-caption text-navy font-bold">لوحة تحكم المانح</span>
             </div>
             <div class="flex gap-1.5">
-              <div class="w-2.5 h-2.5 rounded-full bg-indigo-accent/60"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-white/20"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-white/20"></div>
+              <div class="w-2.5 h-2.5 rounded-full" style="background:#7D53F3;"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-neutral-border"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-neutral-border"></div>
             </div>
           </div>
 
           <!-- Stat Cards Row -->
           <div class="grid grid-cols-3 gap-3 mb-4">
-            <div class="bg-white/[0.04] rounded-sys p-3 text-center">
-              <div class="text-heading-sm text-indigo-accent font-bold">24</div>
-              <div class="text-micro text-white/50">فرصة نشطة</div>
+            <div class="rounded-sys p-3 text-center" style="background:rgba(125,83,243,0.05);">
+              <div class="text-heading-sm font-bold" style="color:#7D53F3;">24</div>
+              <div class="text-micro text-neutral-text">فرصة نشطة</div>
             </div>
-            <div class="bg-white/[0.04] rounded-sys p-3 text-center">
-              <div class="text-heading-sm text-white font-bold">187</div>
-              <div class="text-micro text-white/50">طلب مستلم</div>
+            <div class="rounded-sys p-3 text-center bg-neutral-bg">
+              <div class="text-heading-sm text-navy font-bold">187</div>
+              <div class="text-micro text-neutral-text">طلب مستلم</div>
             </div>
-            <div class="bg-white/[0.04] rounded-sys p-3 text-center">
-              <div class="text-heading-sm text-white font-bold">12</div>
-              <div class="text-micro text-white/50">مبادرة قائمة</div>
+            <div class="rounded-sys p-3 text-center bg-neutral-bg">
+              <div class="text-heading-sm text-navy font-bold">12</div>
+              <div class="text-micro text-neutral-text">مبادرة قائمة</div>
             </div>
           </div>
 
           <!-- Progress Bars -->
           <div class="space-y-3">
-            <div class="bg-white/[0.04] rounded-sys p-3">
+            <div class="rounded-sys p-3 bg-neutral-bg">
               <div class="flex justify-between mb-2">
-                <span class="text-micro text-white/70 font-semibold">برنامج تمكين الشباب</span>
+                <span class="text-micro text-navy/70 font-semibold">برنامج تمكين الشباب</span>
                 <span class="text-micro text-jgreen font-bold">78%</span>
               </div>
-              <div class="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+              <div class="w-full h-1.5 bg-neutral-border/50 rounded-full overflow-hidden">
                 <div class="h-full bg-jgreen rounded-full" style="width:78%"></div>
               </div>
             </div>
-            <div class="bg-white/[0.04] rounded-sys p-3">
+            <div class="rounded-sys p-3 bg-neutral-bg">
               <div class="flex justify-between mb-2">
-                <span class="text-micro text-white/70 font-semibold">مبادرة الابتكار الاجتماعي</span>
-                <span class="text-micro text-jgreen font-bold">45%</span>
+                <span class="text-micro text-navy/70 font-semibold">مبادرة الابتكار الاجتماعي</span>
+                <span class="text-micro font-bold" style="color:#7D53F3;">45%</span>
               </div>
-              <div class="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
-                <div class="h-full bg-jgreen rounded-full" style="width:45%"></div>
+              <div class="w-full h-1.5 bg-neutral-border/50 rounded-full overflow-hidden">
+                <div class="h-full rounded-full" style="width:45%;background:#7D53F3;"></div>
               </div>
             </div>
           </div>
@@ -341,24 +342,24 @@
 
         <!-- Floating Cards -->
         <div class="absolute -right-4 top-8 float-slow">
-          <div class="bg-white/[0.08] backdrop-blur-md border border-indigo-accent/15 rounded-sys-lg p-3 flex items-center gap-3" style="min-width:180px;">
-            <div class="w-9 h-9 rounded-lg bg-indigo-accent/15 flex items-center justify-center">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7073AD" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <div class="rounded-sys-lg p-3 flex items-center gap-3 shadow-sys-md border" style="min-width:180px; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-color:rgba(125,83,243,0.12);">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(125,83,243,0.08);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             </div>
             <div>
-              <div class="text-micro text-white/50">الطلبات الجديدة</div>
-              <div class="text-caption text-white font-bold">+23 اليوم</div>
+              <div class="text-micro text-neutral-text">الطلبات الجديدة</div>
+              <div class="text-caption text-navy font-bold">+23 اليوم</div>
             </div>
           </div>
         </div>
 
         <div class="absolute -left-4 bottom-12 float-slow-d">
-          <div class="bg-white/[0.08] backdrop-blur-md border border-white/[0.1] rounded-sys-lg p-3 flex items-center gap-3" style="min-width:180px;">
-            <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <div class="rounded-sys-lg p-3 flex items-center gap-3 shadow-sys-md bg-white border border-neutral-border" style="min-width:180px;">
+            <div class="w-9 h-9 rounded-lg bg-jgreen-50 flex items-center justify-center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19B58B" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
             </div>
             <div>
-              <div class="text-micro text-white/50">تم اعتماده</div>
+              <div class="text-micro text-neutral-text">تم اعتماده</div>
               <div class="text-caption text-jgreen font-bold">8 مقترحات</div>
             </div>
           </div>
