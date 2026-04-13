@@ -1,256 +1,246 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useMemo } from "react";
-import { Search, SlidersHorizontal, X, Building2, Target, Users } from "lucide-react";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { GrantCard } from "@/components/GrantCard";
-import { NewsletterCTA } from "@/components/NewsletterCTA";
-import { Input } from "@/components/ui/input";
+import { Download, Eye, FileText, Layers, ExternalLink, CheckCircle, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { grantsData } from "@/lib/grants-data";
+import { templatePages, templateCategories } from "@/lib/template-pages-data";
+import type { TemplatePage } from "@/lib/template-pages-data";
 
 export const Route = createFileRoute("/")({
-  component: GrantsListingPage,
+  component: TemplateShowcasePage,
   head: () => ({
     meta: [
-      { title: "فرص المنح — جزيل" },
-      { name: "description", content: "استكشف فرص المنح المتاحة للجمعيات والمنظمات غير الربحية عبر منصة جزيل" },
+      { title: "قالب جزيل — قوالب احترافية للقطاع غير الربحي" },
+      { name: "description", content: "قالب جزيل الاحترافي لمنصات المنح والقطاع غير الربحي. صفحات HTML جاهزة بتصميم عربي حديث." },
     ],
   }),
 });
 
-const fieldOptions = ["التنمية المجتمعية", "الأمن الغذائي", "التحول الرقمي", "الصحة", "تمكين المرأة", "البيئة", "التعليم", "الابتكار الاجتماعي"];
-const regionOptions = ["جميع المناطق", "المنطقة الوسطى", "المنطقة الغربية", "المنطقة الشرقية", "المناطق النائية"];
-const statusOptions = [
-  { value: "all", label: "الكل" },
-  { value: "open", label: "مفتوحة" },
-  { value: "closing_soon", label: "تغلق قريباً" },
-  { value: "closed", label: "مغلقة" },
-];
+const readyPages = templatePages.filter((p) => p.status === "ready");
 
-function GrantsListingPage() {
-  const [search, setSearch] = useState("");
-  const [fieldFilter, setFieldFilter] = useState("");
-  const [regionFilter, setRegionFilter] = useState("");
-  const [statusFilter, setStatusFilter] = useState("all");
-  const [showFilters, setShowFilters] = useState(false);
+function handleDownloadAll() {
+  readyPages.forEach((page) => {
+    const a = document.createElement("a");
+    a.href = page.path;
+    a.download = page.fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+}
 
-  const filtered = useMemo(() => {
-    return grantsData.filter((g) => {
-      if (search && !g.title.includes(search) && !g.donor.includes(search)) return false;
-      if (fieldFilter && !g.fields.some((f) => f.includes(fieldFilter))) return false;
-      if (regionFilter && g.region !== regionFilter) return false;
-      if (statusFilter !== "all" && g.status !== statusFilter) return false;
-      return true;
-    });
-  }, [search, fieldFilter, regionFilter, statusFilter]);
+function handleDownloadPage(page: TemplatePage) {
+  const a = document.createElement("a");
+  a.href = page.path;
+  a.download = page.fileName;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
 
-  const hasFilters = search || fieldFilter || regionFilter || statusFilter !== "all";
-
-  const resetFilters = () => {
-    setSearch("");
-    setFieldFilter("");
-    setRegionFilter("");
-    setStatusFilter("all");
-  };
-
-  const stats = {
-    active: grantsData.filter((g) => g.status !== "closed").length,
-    donors: new Set(grantsData.map((g) => g.donor)).size,
-    fields: new Set(grantsData.flatMap((g) => g.fields)).size,
-  };
-
+function StatusBadge({ status }: { status: TemplatePage["status"] }) {
+  if (status === "ready") {
+    return (
+      <span className="inline-flex items-center gap-1 rounded-full bg-jazeel-green/10 px-2.5 py-1 text-[11px] font-semibold text-jazeel-green">
+        <CheckCircle className="h-3 w-3" />
+        جاهز
+      </span>
+    );
+  }
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
+    <span className="inline-flex items-center gap-1 rounded-full bg-muted px-2.5 py-1 text-[11px] font-semibold text-muted-foreground">
+      <Clock className="h-3 w-3" />
+      تحت التطوير
+    </span>
+  );
+}
+
+function TemplateShowcasePage() {
+  return (
+    <div className="flex min-h-screen flex-col bg-background">
+      {/* Minimal Header */}
+      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-md">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3">
+            <img src="/jazeel-logo.svg" alt="جزيل" className="h-9" />
+            <span className="hidden text-sm font-medium text-muted-foreground sm:inline">مكتبة القوالب</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" className="gap-2 rounded-xl" onClick={() => window.open("/jazeel/pages/home.html", "_blank")}>
+              <Eye className="h-4 w-4" />
+              <span className="hidden sm:inline">عرض القالب</span>
+            </Button>
+            <Button size="sm" className="gap-2 rounded-xl bg-jazeel-green text-white hover:bg-jazeel-green/90" onClick={handleDownloadAll}>
+              <Download className="h-4 w-4" />
+              تحميل القالب
+            </Button>
+          </div>
+        </div>
+      </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-bl from-jazeel-mint via-background to-jazeel-mint/40 pb-8 pt-12 sm:pb-12 sm:pt-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--jazeel-mint-dark)_0%,_transparent_60%)] opacity-40" />
-        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <h1 className="mb-4 text-3xl font-extrabold leading-tight text-foreground sm:text-4xl lg:text-5xl">
-            استكشف فرص المنح المناسبة <br className="hidden sm:block" />
-            <span className="text-jazeel-green">لمشاريعك التنموية</span>
-          </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            منصة جزيل تربط بين المانحين والجمعيات لتسهيل الوصول إلى فرص التمويل والدعم المناسبة
-          </p>
+      <section className="relative overflow-hidden border-b border-border/40">
+        <div className="absolute inset-0 bg-gradient-to-bl from-jazeel-mint via-background to-jazeel-mint/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--jazeel-green)/0.08)_0%,_transparent_60%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            {/* Text */}
+            <div>
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-jazeel-green/20 bg-jazeel-green/5 px-4 py-1.5 text-xs font-semibold text-jazeel-green">
+                <Layers className="h-3.5 w-3.5" />
+                قالب HTML احترافي
+              </div>
+              <h1 className="mb-4 text-3xl font-extrabold leading-tight text-foreground sm:text-4xl lg:text-[2.75rem]">
+                قالب <span className="text-jazeel-green">جزيل</span> لمنصات
+                <br />المنح والقطاع غير الربحي
+              </h1>
+              <p className="mb-8 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
+                قالب احترافي عالي الجودة مصمم خصيصاً لمنصات المنح والجمعيات غير الربحية.
+                يشمل {readyPages.length} صفحات جاهزة بتصميم عربي حديث ومتجاوب بالكامل.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button size="lg" className="gap-2.5 rounded-2xl bg-jazeel-green px-8 text-white shadow-lg shadow-jazeel-green/25 hover:bg-jazeel-green/90" onClick={handleDownloadAll}>
+                  <Download className="h-5 w-5" />
+                  تحميل القالب كاملاً
+                </Button>
+                <Button size="lg" variant="outline" className="gap-2.5 rounded-2xl px-8" onClick={() => window.open("/jazeel/pages/home.html", "_blank")}>
+                  <ExternalLink className="h-5 w-5" />
+                  معاينة مباشرة
+                </Button>
+              </div>
 
-          {/* Stats */}
-          <div className="mx-auto mb-8 flex max-w-lg justify-center gap-6 sm:gap-10">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1.5 text-2xl font-extrabold text-primary sm:text-3xl">
-                <Target className="h-5 w-5 text-jazeel-green" />
-                {stats.active}
+              {/* Quick stats */}
+              <div className="mt-10 flex gap-8">
+                <div>
+                  <div className="text-2xl font-extrabold text-foreground">{readyPages.length}</div>
+                  <p className="text-xs text-muted-foreground">صفحات جاهزة</p>
+                </div>
+                <div>
+                  <div className="text-2xl font-extrabold text-foreground">{templatePages.length}</div>
+                  <p className="text-xs text-muted-foreground">إجمالي الصفحات</p>
+                </div>
+                <div>
+                  <div className="text-2xl font-extrabold text-foreground">RTL</div>
+                  <p className="text-xs text-muted-foreground">دعم عربي كامل</p>
+                </div>
               </div>
-              <p className="mt-1 text-xs text-muted-foreground">فرصة نشطة</p>
             </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1.5 text-2xl font-extrabold text-primary sm:text-3xl">
-                <Building2 className="h-5 w-5 text-jazeel-green" />
-                {stats.donors}
-              </div>
-              <p className="mt-1 text-xs text-muted-foreground">جهة مانحة</p>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1.5 text-2xl font-extrabold text-primary sm:text-3xl">
-                <Users className="h-5 w-5 text-jazeel-green" />
-                {stats.fields}
-              </div>
-              <p className="mt-1 text-xs text-muted-foreground">مجال متاح</p>
-            </div>
-          </div>
 
-          {/* Search */}
-          <div className="mx-auto max-w-2xl">
-            <div className="relative">
-              <Search className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="ابحث بعنوان الفرصة أو اسم الجهة المانحة..."
-                className="h-12 rounded-2xl border-border/60 bg-background pe-4 ps-12 text-sm shadow-sm"
-              />
+            {/* Hero Preview */}
+            <div className="relative hidden lg:block">
+              <div className="relative rounded-2xl border border-border/60 bg-background p-2 shadow-2xl">
+                <div className="flex items-center gap-1.5 px-3 py-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
+                  <span className="mr-3 text-[10px] text-muted-foreground">jazeel/pages/home.html</span>
+                </div>
+                <img
+                  src="/jazeel/images/preview-home.jpg"
+                  alt="معاينة الصفحة الرئيسية"
+                  className="w-full rounded-xl"
+                  width={1280}
+                  height={800}
+                />
+              </div>
+              {/* Floating card */}
+              <div className="absolute -bottom-4 -right-4 rounded-xl border border-border/60 bg-background p-3 shadow-lg">
+                <div className="flex items-center gap-2 text-xs font-medium text-foreground">
+                  <FileText className="h-4 w-4 text-jazeel-green" />
+                  {readyPages.length} صفحات جاهزة للتحميل
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="sticky top-16 z-40 border-b border-border/60 bg-background/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
-          <Button
-            variant="outline"
-            size="sm"
-            className="gap-2 rounded-xl"
-            onClick={() => setShowFilters(!showFilters)}
-          >
-            <SlidersHorizontal className="h-4 w-4" />
-            الفلاتر
-          </Button>
+      {/* Pages Grid */}
+      <main className="flex-1">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="mb-2 text-2xl font-extrabold text-foreground sm:text-3xl">صفحات القالب</h2>
+            <p className="text-sm text-muted-foreground">استعرض جميع صفحات القالب وحمّل ما تحتاج</p>
+          </div>
 
-          {/* Quick status filters */}
-          <div className="flex flex-1 gap-1.5 overflow-x-auto">
-            {statusOptions.map((opt) => (
-              <button
-                key={opt.value}
-                onClick={() => setStatusFilter(opt.value)}
-                className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
-                  statusFilter === opt.value
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-muted/80"
-                }`}
-              >
-                {opt.label}
-              </button>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {templatePages.map((page) => (
+              <PageCard key={page.id} page={page} />
             ))}
           </div>
-
-          {hasFilters && (
-            <Button variant="ghost" size="sm" onClick={resetFilters} className="gap-1 text-xs text-muted-foreground">
-              <X className="h-3.5 w-3.5" />
-              إعادة تعيين
-            </Button>
-          )}
-        </div>
-
-        {/* Expanded filters */}
-        {showFilters && (
-          <div className="border-t border-border/40 bg-background">
-            <div className="mx-auto grid max-w-7xl gap-3 px-4 py-4 sm:grid-cols-3 sm:px-6 lg:px-8">
-              <div>
-                <label className="mb-1.5 block text-xs font-medium text-muted-foreground">المجال</label>
-                <select
-                  value={fieldFilter}
-                  onChange={(e) => setFieldFilter(e.target.value)}
-                  className="h-9 w-full rounded-xl border border-input bg-background px-3 text-sm"
-                >
-                  <option value="">جميع المجالات</option>
-                  {fieldOptions.map((f) => (
-                    <option key={f} value={f}>{f}</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="mb-1.5 block text-xs font-medium text-muted-foreground">المنطقة</label>
-                <select
-                  value={regionFilter}
-                  onChange={(e) => setRegionFilter(e.target.value)}
-                  className="h-9 w-full rounded-xl border border-input bg-background px-3 text-sm"
-                >
-                  <option value="">جميع المناطق</option>
-                  {regionOptions.map((r) => (
-                    <option key={r} value={r}>{r}</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="mb-1.5 block text-xs font-medium text-muted-foreground">نوع الدعم</label>
-                <select className="h-9 w-full rounded-xl border border-input bg-background px-3 text-sm">
-                  <option value="">جميع الأنواع</option>
-                  <option>مالي</option>
-                  <option>فني وتدريبي</option>
-                  <option>مالي وفني</option>
-                  <option>مالي وإرشادي</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        )}
-      </section>
-
-      {/* Results */}
-      <main className="flex-1">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-          {/* Results count */}
-          <div className="mb-6 flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">
-              عرض <span className="font-bold text-foreground">{filtered.length}</span> فرصة
-            </p>
-          </div>
-
-          {filtered.length > 0 ? (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((grant) => (
-                <GrantCard key={grant.id} grant={grant} />
-              ))}
-            </div>
-          ) : (
-            /* Empty State */
-            <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border/60 bg-muted/30 px-6 py-20 text-center">
-              <Search className="mb-4 h-12 w-12 text-muted-foreground/40" />
-              <h3 className="mb-2 text-lg font-bold text-foreground">لم يتم العثور على نتائج</h3>
-              <p className="mb-4 max-w-sm text-sm text-muted-foreground">
-                جرّب تعديل معايير البحث أو الفلاتر للعثور على فرص المنح المناسبة
-              </p>
-              <Button variant="outline" size="sm" onClick={resetFilters} className="rounded-xl">
-                إعادة تعيين الفلاتر
-              </Button>
-            </div>
-          )}
-
-          {/* Pagination placeholder */}
-          {filtered.length > 0 && (
-            <div className="mt-10 flex items-center justify-center gap-1.5">
-              {[1, 2, 3].map((p) => (
-                <button
-                  key={p}
-                  className={`flex h-9 w-9 items-center justify-center rounded-xl text-sm font-medium transition-colors ${
-                    p === 1
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80"
-                  }`}
-                >
-                  {p}
-                </button>
-              ))}
-            </div>
-          )}
         </div>
       </main>
 
-      <NewsletterCTA />
-      <Footer />
+      {/* Footer */}
+      <footer className="border-t border-border/60 bg-primary py-8 text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <img src="/jazeel-logo.svg" alt="جزيل" className="mx-auto mb-3 h-8 brightness-0 invert" />
+          <p className="text-sm text-primary-foreground/60">
+            قالب جزيل — قوالب احترافية للقطاع غير الربحي
+          </p>
+          <p className="mt-2 text-xs text-primary-foreground/40">
+            © 2026 جزيل. جميع الحقوق محفوظة.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function PageCard({ page }: { page: TemplatePage }) {
+  const cat = templateCategories[page.category];
+  const isReady = page.status === "ready";
+
+  return (
+    <div className="group relative overflow-hidden rounded-2xl border border-border/60 bg-background transition-all duration-300 hover:border-jazeel-green/30 hover:shadow-xl hover:shadow-jazeel-green/5">
+      {/* Preview Image */}
+      <div className="relative overflow-hidden">
+        <img
+          src={page.previewImage}
+          alt={page.name}
+          className="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+          width={1280}
+          height={800}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        {/* Hover actions overlay */}
+        <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 transition-all duration-300 group-hover:opacity-100">
+          {isReady && (
+            <>
+              <Button
+                size="sm"
+                className="rounded-xl bg-white/95 text-foreground shadow-lg backdrop-blur-sm hover:bg-white"
+                onClick={() => window.open(page.path, "_blank")}
+              >
+                <Eye className="mr-1.5 h-4 w-4" />
+                معاينة
+              </Button>
+              <Button
+                size="sm"
+                className="rounded-xl bg-jazeel-green text-white shadow-lg hover:bg-jazeel-green/90"
+                onClick={() => handleDownloadPage(page)}
+              >
+                <Download className="mr-1.5 h-4 w-4" />
+                تحميل
+              </Button>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Info */}
+      <div className="p-4">
+        <div className="mb-2 flex items-center justify-between">
+          <h3 className="text-sm font-bold text-foreground">{page.name}</h3>
+          <StatusBadge status={page.status} />
+        </div>
+        <p className="mb-3 line-clamp-2 text-xs leading-relaxed text-muted-foreground">{page.description}</p>
+        <div className="flex items-center justify-between">
+          <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${cat.color}`}>
+            {cat.label}
+          </span>
+          <span className="text-[10px] text-muted-foreground">{page.fileName}</span>
+        </div>
+      </div>
     </div>
   );
 }
