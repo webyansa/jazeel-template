@@ -89,6 +89,21 @@
       .mobile-menu a { display: block; padding: 0.75rem 1rem; color: #07133F; font-weight: 600; font-size: 0.9375rem; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
       .mobile-menu a:hover { background: #EAF8F3; }
 
+      /* Login Dropdown */
+      .login-dropdown-wrap { position: relative; }
+      .login-dropdown {
+        display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+        background: #fff; border: 1px solid #E5E8EB; border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(7,19,63,0.1); min-width: 220px; padding: 6px; z-index: 100;
+      }
+      .login-dropdown.open { display: block; animation: fadeUp 0.2s ease; }
+      .login-dropdown a {
+        display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px;
+        font-size: 0.875rem; font-weight: 600; color: #07133F; text-decoration: none; transition: background 0.15s;
+      }
+      .login-dropdown a:hover { background: #F8F9FA; }
+      .login-dropdown .dd-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
       .plan-card {
         background: #fff; border: 1.5px solid #E5E8EB; border-radius: 20px;
         transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -183,38 +198,30 @@
             <img src="/jazeel-logo.svg" alt="جزيل" class="h-8" />
           </a>
           <nav class="hidden lg:flex items-center gap-0.5">
-            <a
-              href="home.html"
-              class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all"
-              >الرئيسية</a
-            >
-            <a
-              href="donor-portal.html"
-              class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all"
-              >بوابة المانحين</a
-            >
-            <a
-              href="ngo-portal.html"
-              class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all"
-              >بوابة الجمعيات</a
-            >
-            <a
-              href="grants.html"
-              class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all"
-              >فرص المنح</a
-            >
-            <a
-              href="pricing.html"
-              class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy hover:bg-navy/5 transition-all"
-              >باقات جزيل</a
-            >
+            <a href="home.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">الرئيسية</a>
+            <a href="donor-portal.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">بوابة الجهات المانحة</a>
+            <a href="ngo-portal.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">بوابة الجمعيات</a>
+            <a href="pricing.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy hover:bg-navy/5 transition-all">الأسعار</a>
+            <a href="grants.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">فرص المنح</a>
+            <a href="donors-directory.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">دليل المانحين</a>
           </nav>
           <div class="hidden lg:flex items-center gap-3">
-            <a
-              href="#"
-              class="text-[0.9375rem] font-semibold px-4 py-2 rounded-lg text-navy/60 hover:text-navy transition-all"
-              >تسجيل الدخول</a
-            >
+            <div class="login-dropdown-wrap">
+              <button class="text-[0.9375rem] font-semibold px-4 py-2 rounded-lg text-navy/60 hover:text-navy transition-all flex items-center gap-1.5" onclick="document.getElementById('loginDropdown').classList.toggle('open')">
+                تسجيل الدخول
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="login-dropdown" id="loginDropdown">
+                <a href="ngo-portal.html">
+                  <span class="dd-icon" style="background:#EAF8F3;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19B58B" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                  <div><div class="text-navy">دخول الجمعيات</div><div style="font-size:11px;font-weight:400;color:#5B6470;margin-top:1px;">إدارة المقترحات والمشاريع</div></div>
+                </a>
+                <a href="donor-portal.html">
+                  <span class="dd-icon" style="background:rgba(125,83,243,0.08);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7D53F3" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg></span>
+                  <div><div class="text-navy">دخول الجهات المانحة</div><div style="font-size:11px;font-weight:400;color:#5B6470;margin-top:1px;">نشر الفرص وتقييم المقترحات</div></div>
+                </a>
+              </div>
+            </div>
             <a href="#plans" class="btn-primary text-sm !py-2.5 !px-5">ابدأ الآن</a>
           </div>
           <button
@@ -228,10 +235,11 @@
         </div>
         <div id="mobileMenu" class="mobile-menu">
           <a href="home.html">الرئيسية</a>
-          <a href="donor-portal.html">بوابة المانحين</a>
+          <a href="donor-portal.html">بوابة الجهات المانحة</a>
           <a href="ngo-portal.html">بوابة الجمعيات</a>
+          <a href="pricing.html" style="color:#19B58B;">الأسعار</a>
           <a href="grants.html">فرص المنح</a>
-          <a href="pricing.html" style="color:#19B58B;">باقات جزيل</a>
+          <a href="donors-directory.html">دليل المانحين</a>
         </div>
       </div>
     </header>
@@ -1439,6 +1447,13 @@
       }
       document.getElementById('serviceModal').addEventListener('click', function(e) {
         if (e.target === this) closeServiceModal();
+      });
+      // Close login dropdown on outside click
+      document.addEventListener('click', function(e) {
+        const dd = document.getElementById('loginDropdown');
+        if (dd && !e.target.closest('.login-dropdown-wrap')) {
+          dd.classList.remove('open');
+        }
       });
     </script>
   </body>
