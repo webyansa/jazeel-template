@@ -741,6 +741,32 @@
     if (window.scrollY > 20) h.classList.add('header-scrolled');
     else h.classList.remove('header-scrolled');
   });
+
+  // Service modal
+  function openServiceModal(serviceName) {
+    document.getElementById('serviceModalName').textContent = serviceName;
+    document.getElementById('serviceForm').classList.remove('hidden');
+    document.getElementById('serviceFormSuccess').classList.add('hidden');
+    document.getElementById('serviceForm').reset();
+    const modal = document.getElementById('serviceModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeServiceModal() {
+    const modal = document.getElementById('serviceModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  function submitServiceForm(e) {
+    e.preventDefault();
+    document.getElementById('serviceForm').classList.add('hidden');
+    document.getElementById('serviceFormSuccess').classList.remove('hidden');
+  }
+  document.getElementById('serviceModal').addEventListener('click', function(e) {
+    if (e.target === this) closeServiceModal();
+  });
 </script>
 
 </body>
