@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import {
   Download, Eye, ExternalLink, Layers, CheckCircle, Clock,
   Home, ListFilter, FileSearch, Building2, Users, CreditCard, BookOpen,
@@ -20,6 +20,16 @@ export const Route = createFileRoute("/")({
 });
 
 const readyPages = templatePages.filter((p) => p.status === "ready");
+
+const previewImages: Record<string, string> = {
+  home: "/jazeel/previews/home.png",
+  grants: "/jazeel/previews/grants.png",
+  "grant-details": "/jazeel/previews/grants.png",
+  "donor-portal": "/jazeel/previews/donor-portal.png",
+  "ngo-portal": "/jazeel/previews/ngo-portal.png",
+  pricing: "/jazeel/previews/pricing.png",
+  "donors-directory": "/jazeel/previews/donors-directory.png",
+};
 
 function handleDownloadAll() {
   readyPages.forEach((page) => {
@@ -70,31 +80,6 @@ function StatusBadge({ status }: { status: TemplatePage["status"] }) {
   );
 }
 
-function IframePreview({ src, title }: { src: string; title: string }) {
-  const ref = useRef<HTMLIFrameElement>(null);
-  const [loaded, setLoaded] = useState(false);
-
-  return (
-    <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted/40">
-      {!loaded && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="h-6 w-6 animate-spin rounded-full border-2 border-muted-foreground/20 border-t-primary" />
-        </div>
-      )}
-      <iframe
-        ref={ref}
-        src={src}
-        title={title}
-        className="h-[600%] w-[600%] origin-top-right scale-[0.1667] pointer-events-none"
-        style={{ transformOrigin: "top right" }}
-        onLoad={() => setLoaded(true)}
-        loading="lazy"
-        sandbox="allow-same-origin"
-      />
-    </div>
-  );
-}
-
 function TemplateShowcasePage() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
@@ -138,7 +123,6 @@ function TemplateShowcasePage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-bl from-[#07133F] via-[#0d1f5c] to-[#132a6e] pt-16 pb-20 sm:pt-20 sm:pb-28">
-        {/* Decorative */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 right-10 w-72 h-72 rounded-full bg-[#19B58B]/[0.06] blur-[100px]" />
           <div className="absolute bottom-10 left-20 w-96 h-96 rounded-full bg-[#19B58B]/[0.04] blur-[120px]" />
@@ -213,10 +197,9 @@ function TemplateShowcasePage() {
               </div>
             </div>
 
-            {/* Browser Mockup with real iframe */}
+            {/* Browser Mockup with screenshot */}
             <div className="relative hidden lg:block">
               <div className="rounded-2xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] p-2 shadow-2xl">
-                {/* Browser bar */}
                 <div className="flex items-center gap-2 px-3 py-2.5 border-b border-white/[0.06]">
                   <div className="flex items-center gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
@@ -226,17 +209,19 @@ function TemplateShowcasePage() {
                   <div className="flex-1 mx-4">
                     <div className="flex items-center justify-center gap-1.5 rounded-md bg-white/[0.06] px-3 py-1">
                       <svg className="h-2.5 w-2.5 text-white/25" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                      <span className="text-[10px] text-white/30 font-mono">jazeel.sa/home</span>
+                      <span className="text-[10px] text-white/30 font-mono">jazeel.sa</span>
                     </div>
                   </div>
                 </div>
-                {/* Iframe preview */}
                 <div className="rounded-b-xl overflow-hidden">
-                  <IframePreview src="/jazeel/home.html" title="الصفحة الرئيسية" />
+                  <img
+                    src="/jazeel/previews/home.png"
+                    alt="معاينة الصفحة الرئيسية"
+                    className="w-full h-auto block"
+                  />
                 </div>
               </div>
 
-              {/* Floating badge */}
               <div className="absolute -bottom-5 -left-5 rounded-xl border border-border/50 bg-background p-3.5 shadow-xl">
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50">
@@ -312,12 +297,8 @@ function TemplateShowcasePage() {
       <footer className="border-t border-border/50 bg-[#07133F] py-10 text-white">
         <div className="mx-auto max-w-7xl px-5 text-center sm:px-8">
           <img src="/jazeel-logo.svg" alt="جزيل" className="mx-auto mb-4 h-9 brightness-0 invert" />
-          <p className="text-sm text-white/50">
-            قالب جزيل — قوالب احترافية للقطاع غير الربحي
-          </p>
-          <p className="mt-2 text-xs text-white/30">
-            © 2026 جزيل. جميع الحقوق محفوظة.
-          </p>
+          <p className="text-sm text-white/50">قالب جزيل — قوالب احترافية للقطاع غير الربحي</p>
+          <p className="mt-2 text-xs text-white/30">© 2026 جزيل. جميع الحقوق محفوظة.</p>
         </div>
       </footer>
     </div>
@@ -327,13 +308,21 @@ function TemplateShowcasePage() {
 function PageCard({ page }: { page: TemplatePage }) {
   const cat = templateCategories[page.category];
   const isReady = page.status === "ready";
+  const preview = previewImages[page.id];
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-background shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#19B58B]/25">
-      {/* Preview */}
+      {/* Preview Image */}
       <div className="relative overflow-hidden border-b border-border/30">
-        {isReady ? (
-          <IframePreview src={page.path} title={page.name} />
+        {preview ? (
+          <div className="aspect-[16/10] overflow-hidden bg-muted/30">
+            <img
+              src={preview}
+              alt={page.name}
+              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
         ) : (
           <div className="flex aspect-[16/10] items-center justify-center bg-muted/30">
             <div className="flex flex-col items-center gap-2 text-muted-foreground/30">
