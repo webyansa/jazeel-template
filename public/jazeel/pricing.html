@@ -1448,6 +1448,13 @@
       document.getElementById('serviceModal').addEventListener('click', function(e) {
         if (e.target === this) closeServiceModal();
       });
+      // Close login dropdown on outside click
+      document.addEventListener('click', function(e) {
+        const dd = document.getElementById('loginDropdown');
+        if (dd && !e.target.closest('.login-dropdown-wrap')) {
+          dd.classList.remove('open');
+        }
+      });
     </script>
   </body>
 </html>
