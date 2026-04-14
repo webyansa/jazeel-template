@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="/jazeel-logo.svg">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -19,6 +21,7 @@
             navy: { DEFAULT: '#07133F', light: '#0d1f5c', dark: '#050e2d' },
             jgreen: { DEFAULT: '#19B58B', light: '#1fcca0', dark: '#149572', 50: '#EAF8F3', 100: '#DDF5EE' },
             neutral: { text: '#5B6470', light: '#8B929B', border: '#E5E8EB', bg: '#F8F9FA' },
+            purple: { DEFAULT: '#7C3AED', light: '#8B5CF6', dark: '#6D28D9', 50: '#F5F3FF', 100: '#EDE9FE' },
           },
           borderRadius: { 'sys': '12px', 'sys-lg': '16px', 'sys-xl': '20px' },
           boxShadow: {
@@ -35,53 +38,49 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Tajawal', sans-serif; color: #1a1a2e; background: #fff; -webkit-font-smoothing: antialiased; }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-d1 { transition-delay: 0.08s; }
     .reveal-d2 { transition-delay: 0.16s; }
 
     .header-scrolled { background: rgba(255,255,255,0.98) !important; box-shadow: 0 1px 8px rgba(7,19,63,0.05); backdrop-filter: blur(12px); }
-
     .mobile-menu { display: none; position: absolute; top: 100%; right: 0; left: 0; background: #fff; border-top: 1px solid #E5E8EB; box-shadow: 0 8px 30px rgba(0,0,0,0.08); padding: 1rem; }
     .mobile-menu.active { display: block; }
-    .mobile-menu a { display: block; padding: 0.75rem 1rem; color: #07133F; font-weight: 600; font-size: 0.9375rem; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
+    .mobile-menu a { display: block; padding: 0.75rem 1rem; color: #07133F; font-weight: 500; font-size: 0.9375rem; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
     .mobile-menu a:hover { background: #EAF8F3; }
 
     .btn-primary {
       background: #19B58B; color: #fff; border: none;
       padding: 0.75rem 1.75rem; border-radius: 12px;
       font-weight: 700; font-size: 0.9375rem; cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      text-decoration: none;
+      transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;
     }
     .btn-primary:hover { background: #149572; box-shadow: 0 4px 16px rgba(25,181,139,0.2); }
 
     .donor-card {
       background: #fff; border: 1px solid #E5E8EB; border-radius: 16px;
-      padding: 2rem; transition: all 0.25s ease; position: relative; overflow: hidden;
+      padding: 1.75rem; transition: all 0.3s ease; position: relative; overflow: hidden; cursor: pointer;
     }
-    .donor-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(7,19,63,0.07); border-color: rgba(25,181,139,0.2); }
+    .donor-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(7,19,63,0.08); border-color: rgba(25,181,139,0.25); }
+    .donor-card::after { content: ''; position: absolute; top: 0; right: 0; left: 0; height: 3px; background: linear-gradient(90deg, #19B58B, #07133F); opacity: 0; transition: opacity 0.3s; }
+    .donor-card:hover::after { opacity: 1; }
 
     .donor-logo-wrap {
-      width: 5rem; height: 5rem; border-radius: 16px; background: #F8F9FA; border: 1px solid #E5E8EB;
-      display: flex; align-items: center; justify-content: center; padding: 0.75rem;
+      width: 4.5rem; height: 4.5rem; border-radius: 14px; background: #F8F9FA; border: 1px solid #E5E8EB;
+      display: flex; align-items: center; justify-content: center; padding: 0.6rem;
       flex-shrink: 0; transition: all 0.25s ease;
     }
     .donor-card:hover .donor-logo-wrap { border-color: rgba(25,181,139,0.25); background: #EAF8F3; }
 
     .donor-tag {
       display: inline-flex; align-items: center; gap: 4px;
-      padding: 4px 12px; border-radius: 100px; font-size: 0.75rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 100px; font-size: 0.7rem; font-weight: 600;
       background: #F8F9FA; color: #5B6470; border: 1px solid #E5E8EB;
     }
 
     .search-input {
-      width: 100%; padding: 0.875rem 1.25rem 0.875rem 3rem; border-radius: 12px;
+      width: 100%; padding: 0.75rem 1.25rem 0.75rem 3rem; border-radius: 12px;
       border: 1.5px solid #E5E8EB; font-size: 0.9375rem; font-family: 'Tajawal', sans-serif;
       transition: all 0.2s; background: #fff; color: #07133F;
     }
@@ -90,17 +89,80 @@
 
     .filter-pill {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 18px; border-radius: 100px; font-size: 0.8125rem; font-weight: 600;
-      background: #fff; color: #5B6470; border: 1.5px solid #E5E8EB; cursor: pointer;
-      transition: all 0.2s;
+      padding: 6px 16px; border-radius: 100px; font-size: 0.8125rem; font-weight: 600;
+      background: #fff; color: #5B6470; border: 1.5px solid #E5E8EB; cursor: pointer; transition: all 0.2s;
     }
     .filter-pill:hover { border-color: #19B58B; color: #19B58B; }
     .filter-pill.active { background: #07133F; color: #fff; border-color: #07133F; }
 
-    .stat-mini {
-      display: flex; align-items: center; gap: 6px; font-size: 0.8125rem; color: #5B6470;
+    .stat-mini { display: flex; align-items: center; gap: 5px; font-size: 0.78rem; color: #5B6470; }
+    .stat-mini svg { width: 13px; height: 13px; color: #19B58B; }
+
+    .view-toggle { display: inline-flex; border: 1.5px solid #E5E8EB; border-radius: 10px; overflow: hidden; }
+    .view-toggle button { padding: 7px 14px; border: none; background: #fff; cursor: pointer; display: flex; align-items: center; gap: 5px; font-size: 0.8125rem; font-weight: 600; color: #8B929B; transition: all 0.2s; font-family: 'Tajawal'; }
+    .view-toggle button.active { background: #07133F; color: #fff; }
+    .view-toggle button:not(:last-child) { border-left: 1.5px solid #E5E8EB; }
+    [dir="rtl"] .view-toggle button:not(:last-child) { border-left: none; border-right: 1.5px solid #E5E8EB; }
+    .view-toggle button:first-child { border-right: none; }
+
+    .select-filter {
+      padding: 7px 14px; border-radius: 10px; border: 1.5px solid #E5E8EB; font-size: 0.8125rem;
+      font-weight: 600; color: #5B6470; background: #fff; cursor: pointer; font-family: 'Tajawal';
+      appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B929B' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: left 12px center; padding-left: 32px;
+      transition: all 0.2s;
     }
-    .stat-mini svg { width: 14px; height: 14px; color: #19B58B; }
+    .select-filter:focus { outline: none; border-color: #19B58B; }
+
+    /* Table View */
+    .table-view { display: none; }
+    .table-view.active { display: block; }
+    .grid-view { display: none; }
+    .grid-view.active { display: grid; }
+
+    .donors-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+    .donors-table thead th {
+      padding: 12px 16px; font-size: 0.78rem; font-weight: 700; color: #5B6470; text-align: right;
+      background: #F8F9FA; border-bottom: 2px solid #E5E8EB; white-space: nowrap;
+    }
+    .donors-table thead th:first-child { border-radius: 0 12px 0 0; }
+    .donors-table thead th:last-child { border-radius: 12px 0 0 0; }
+    .donors-table tbody tr { transition: background 0.2s; cursor: pointer; }
+    .donors-table tbody tr:hover { background: #f0fdf8; }
+    .donors-table tbody td {
+      padding: 14px 16px; font-size: 0.875rem; border-bottom: 1px solid #f0f0f0; vertical-align: middle;
+    }
+    .donors-table tbody tr:last-child td { border-bottom: none; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 100; background: rgba(7,19,63,0.5); backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: #fff; border-radius: 20px; max-width: 640px; width: 100%; max-height: 90vh;
+      overflow-y: auto; box-shadow: 0 20px 60px rgba(7,19,63,0.15); position: relative;
+      animation: modalIn 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+    @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+    .modal-close {
+      position: absolute; top: 16px; left: 16px; width: 36px; height: 36px; border-radius: 10px;
+      border: 1px solid #E5E8EB; background: #fff; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.2s; z-index: 5;
+    }
+    .modal-close:hover { background: #fee2e2; border-color: #fca5a5; }
+
+    .export-btn {
+      display: inline-flex; align-items: center; gap: 6px; padding: 7px 18px; border-radius: 10px;
+      font-size: 0.8125rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+      background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; border: none;
+      font-family: 'Tajawal'; box-shadow: 0 2px 8px rgba(239,68,68,0.2);
+    }
+    .export-btn:hover { box-shadow: 0 4px 16px rgba(239,68,68,0.3); transform: translateY(-1px); }
+
+    .results-count { font-size: 0.8125rem; color: #8B929B; font-weight: 500; }
+    .results-count strong { color: #07133F; font-weight: 700; }
   </style>
 </head>
 <body>
@@ -113,15 +175,15 @@
         <img src="/jazeel-logo.svg" alt="جزيل" class="h-8">
       </a>
       <nav class="hidden lg:flex items-center gap-0.5">
-        <a href="home.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">الرئيسية</a>
-        <a href="donor-portal.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">بوابة الجهات المانحة</a>
-        <a href="ngo-portal.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">بوابة الجمعيات</a>
-        <a href="pricing.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">الأسعار</a>
-        <a href="grants.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">فرص المنح</a>
-        <a href="donors-directory.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-semibold text-navy hover:bg-navy/5 transition-all">دليل المانحين</a>
+        <a href="home.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-medium text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">الرئيسية</a>
+        <a href="donor-portal.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-medium text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">بوابة الجهات المانحة</a>
+        <a href="ngo-portal.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-medium text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">بوابة الجمعيات</a>
+        <a href="pricing.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-medium text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">الأسعار</a>
+        <a href="grants.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-medium text-navy/50 hover:text-navy hover:bg-navy/5 transition-all">فرص المنح</a>
+        <a href="donors-directory.html" class="px-4 py-2 rounded-lg text-[0.9375rem] font-medium text-navy hover:bg-navy/5 transition-all">دليل المانحين</a>
       </nav>
       <div class="hidden lg:flex items-center gap-3">
-        <a href="#" class="text-[0.9375rem] font-semibold px-4 py-2 rounded-lg text-navy/60 hover:text-navy transition-all">تسجيل الدخول</a>
+        <a href="#" class="text-[0.9375rem] font-medium px-4 py-2 rounded-lg text-navy/60 hover:text-navy transition-all">تسجيل الدخول</a>
         <a href="#" class="btn-primary" style="padding:0.5rem 1.25rem;font-size:0.8125rem;">ابدأ التجربة المجانية</a>
       </div>
       <button onclick="document.getElementById('mobileMenu').classList.toggle('active')" class="lg:hidden p-2 rounded-lg hover:bg-neutral-bg transition-all">
@@ -140,297 +202,166 @@
 </header>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
-<section class="pt-28 pb-12 sm:pt-36 sm:pb-16" style="background: linear-gradient(160deg, #07133F 0%, #0d1f5c 45%, #101d4c 100%);">
-  <div class="max-w-7xl mx-auto px-5 sm:px-8 text-center">
+<section class="pt-28 pb-10 sm:pt-36 sm:pb-14" style="background: linear-gradient(160deg, #07133F 0%, #0d1f5c 45%, #101d4c 100%); position: relative; overflow: hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 70%, rgba(25,181,139,0.06) 0%, transparent 50%);"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(circle at 80% 20%, rgba(124,58,237,0.04) 0%, transparent 50%);"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 text-center relative z-10">
     <div class="reveal" style="animation: fadeUp 0.6s ease both;">
-      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold mb-6" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold mb-5" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19B58B" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>
         دليل الجهات المانحة
       </span>
     </div>
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-5 reveal" style="animation: fadeUp 0.6s 0.1s ease both;line-height:1.3;">
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 reveal" style="animation: fadeUp 0.6s 0.1s ease both;line-height:1.3;">
       تعرّف على <span style="color:#19B58B;">الجهات المانحة</span> في جزيل
     </h1>
-    <p class="text-lg text-white/50 max-w-2xl mx-auto mb-8 reveal" style="animation: fadeUp 0.6s 0.15s ease both;line-height:1.75;">
-      دليل شامل للجهات المانحة والمؤسسات الداعمة المسجلة في المنصة، مع تفاصيل مجالات الدعم والنطاق الجغرافي وعدد الفرص النشطة.
+    <p class="text-base sm:text-lg text-white/50 max-w-2xl mx-auto mb-8 reveal" style="animation: fadeUp 0.6s 0.15s ease both;line-height:1.75;">
+      دليل شامل للجهات المانحة والمؤسسات الداعمة المسجلة في المنصة، مع تفاصيل مجالات الدعم والنطاق الجغرافي.
     </p>
-    <div class="flex flex-wrap justify-center gap-6 reveal" style="animation: fadeUp 0.6s 0.2s ease both;">
-      <div class="flex items-center gap-2">
-        <span class="text-2xl font-extrabold text-white">12</span>
-        <span class="text-sm text-white/40">جهة مانحة</span>
+    <div class="flex flex-wrap justify-center gap-8 reveal" style="animation: fadeUp 0.6s 0.2s ease both;">
+      <div class="text-center">
+        <div class="text-3xl font-extrabold text-white mb-1">12</div>
+        <div class="text-xs text-white/35 font-medium">جهة مانحة</div>
       </div>
-      <div class="w-px h-8 bg-white/10"></div>
-      <div class="flex items-center gap-2">
-        <span class="text-2xl font-extrabold" style="color:#19B58B;">38</span>
-        <span class="text-sm text-white/40">فرصة نشطة</span>
+      <div class="w-px h-12 bg-white/10 self-center"></div>
+      <div class="text-center">
+        <div class="text-3xl font-extrabold mb-1" style="color:#19B58B;">38</div>
+        <div class="text-xs text-white/35 font-medium">فرصة نشطة</div>
       </div>
-      <div class="w-px h-8 bg-white/10"></div>
-      <div class="flex items-center gap-2">
-        <span class="text-2xl font-extrabold text-white">6</span>
-        <span class="text-sm text-white/40">مجالات دعم</span>
+      <div class="w-px h-12 bg-white/10 self-center"></div>
+      <div class="text-center">
+        <div class="text-3xl font-extrabold text-white mb-1">6</div>
+        <div class="text-xs text-white/35 font-medium">مجالات دعم</div>
+      </div>
+      <div class="w-px h-12 bg-white/10 self-center"></div>
+      <div class="text-center">
+        <div class="text-3xl font-extrabold text-white mb-1">4</div>
+        <div class="text-xs text-white/35 font-medium">مناطق جغرافية</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ SEARCH & FILTERS ═══════════════════ -->
-<section class="py-8 bg-white border-b border-neutral-border/40 sticky top-[68px] z-40" style="backdrop-filter:blur(12px);background:rgba(255,255,255,0.97);">
+<!-- ═══════════════════ TOOLBAR ═══════════════════ -->
+<section class="py-5 bg-white border-b border-neutral-border/40 sticky top-[68px] z-40" style="backdrop-filter:blur(12px);background:rgba(255,255,255,0.97);">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+    <!-- Row 1: Search + Actions -->
+    <div class="flex flex-col md:flex-row gap-3 items-start md:items-center mb-4">
       <div class="relative flex-1 w-full">
         <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" class="search-input" placeholder="ابحث عن جهة مانحة بالاسم أو المجال...">
+        <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن جهة مانحة بالاسم أو المجال...">
       </div>
-      <div class="flex flex-wrap gap-2">
-        <button class="filter-pill active">الكل</button>
-        <button class="filter-pill">تعليم</button>
-        <button class="filter-pill">صحة</button>
-        <button class="filter-pill">تمكين</button>
-        <button class="filter-pill">إسكان</button>
-        <button class="filter-pill">إنسانية</button>
+      <div class="flex items-center gap-2">
+        <div class="view-toggle">
+          <button class="active" data-view="grid" title="عرض شبكة">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            شبكة
+          </button>
+          <button data-view="table" title="عرض جدول">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+            جدول
+          </button>
+        </div>
+        <button class="export-btn" onclick="exportPDF()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
+          تصدير PDF
+        </button>
       </div>
+    </div>
+    <!-- Row 2: Filters -->
+    <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+      <div class="flex flex-wrap gap-2 flex-1">
+        <span class="text-xs font-bold text-navy/40 self-center ml-2">مجال الدعم:</span>
+        <button class="filter-pill active" data-filter="field" data-value="all">الكل</button>
+        <button class="filter-pill" data-filter="field" data-value="تعليم">تعليم</button>
+        <button class="filter-pill" data-filter="field" data-value="صحة">صحة</button>
+        <button class="filter-pill" data-filter="field" data-value="تمكين">تمكين</button>
+        <button class="filter-pill" data-filter="field" data-value="إنسانية">إنسانية</button>
+        <button class="filter-pill" data-filter="field" data-value="تمويل">تمويل</button>
+        <button class="filter-pill" data-filter="field" data-value="أوقاف">أوقاف</button>
+      </div>
+      <div class="flex gap-2 items-center">
+        <select class="select-filter" id="regionFilter">
+          <option value="all">كل المناطق</option>
+          <option value="المملكة">المملكة</option>
+          <option value="دولي">دولي</option>
+          <option value="الخليج">الخليج</option>
+        </select>
+        <select class="select-filter" id="typeFilter">
+          <option value="all">نوع الجهة</option>
+          <option value="مؤسسة خيرية">مؤسسة خيرية</option>
+          <option value="جهة حكومية">جهة حكومية</option>
+          <option value="وقف">وقف</option>
+          <option value="منصة وطنية">منصة وطنية</option>
+        </select>
+      </div>
+    </div>
+    <div class="mt-3 flex items-center justify-between">
+      <div class="results-count">عرض <strong id="resultsCount">7</strong> جهة مانحة</div>
+      <button id="clearFilters" class="text-xs font-bold text-jgreen hover:underline hidden" onclick="clearAllFilters()">مسح الفلاتر</button>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ DONORS GRID ═══════════════════ -->
-<section class="py-12 sm:py-16 bg-neutral-bg">
+<!-- ═══════════════════ DONORS CONTENT ═══════════════════ -->
+<section class="py-10 sm:py-14 bg-neutral-bg min-h-[400px]">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <!-- Donor 1 -->
-      <div class="donor-card reveal">
-        <div class="flex items-start gap-4 mb-5">
-          <div class="donor-logo-wrap">
-            <img src="/donors/alrajhi.png" alt="الراجحي الإنسانية" class="w-full h-full object-contain">
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-lg font-bold text-navy mb-1 truncate">الراجحي الإنسانية</h3>
-            <p class="text-sm text-neutral-text">مؤسسة سليمان بن عبدالعزيز الراجحي الخيرية</p>
-          </div>
-        </div>
-        <p class="text-sm text-neutral-text leading-relaxed mb-5">مؤسسة رائدة في العمل الخيري والإنساني، تركز على دعم المشاريع التنموية والتعليمية والصحية في المملكة.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="donor-tag">تعليم</span>
-          <span class="donor-tag">صحة</span>
-          <span class="donor-tag">تمكين</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-neutral-border/40">
-          <div class="flex gap-4">
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-              <span><strong class="text-navy">5</strong> فرص نشطة</span>
-            </div>
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>المملكة</span>
-            </div>
-          </div>
-          <a href="grants.html" class="text-sm font-bold text-jgreen hover:underline">عرض الفرص</a>
-        </div>
-      </div>
-
-      <!-- Donor 2 -->
-      <div class="donor-card reveal reveal-d1">
-        <div class="flex items-start gap-4 mb-5">
-          <div class="donor-logo-wrap">
-            <img src="/donors/king-salman.png" alt="مركز الملك سلمان" class="w-full h-full object-contain">
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-lg font-bold text-navy mb-1 truncate">مركز الملك سلمان للإغاثة</h3>
-            <p class="text-sm text-neutral-text">مركز إغاثي وإنساني دولي</p>
-          </div>
-        </div>
-        <p class="text-sm text-neutral-text leading-relaxed mb-5">مركز إنساني دولي رائد يقدم المساعدات الإغاثية والإنسانية والتنموية للمحتاجين حول العالم.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="donor-tag">إنسانية</span>
-          <span class="donor-tag">إغاثة</span>
-          <span class="donor-tag">تنمية</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-neutral-border/40">
-          <div class="flex gap-4">
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-              <span><strong class="text-navy">8</strong> فرص نشطة</span>
-            </div>
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>دولي</span>
-            </div>
-          </div>
-          <a href="grants.html" class="text-sm font-bold text-jgreen hover:underline">عرض الفرص</a>
-        </div>
-      </div>
-
-      <!-- Donor 3 -->
-      <div class="donor-card reveal reveal-d2">
-        <div class="flex items-start gap-4 mb-5">
-          <div class="donor-logo-wrap">
-            <img src="/donors/ehsan.png" alt="إحسان" class="w-full h-full object-contain">
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-lg font-bold text-navy mb-1 truncate">منصة إحسان</h3>
-            <p class="text-sm text-neutral-text">المنصة الوطنية للعمل الخيري</p>
-          </div>
-        </div>
-        <p class="text-sm text-neutral-text leading-relaxed mb-5">منصة وطنية تسعى لتسهيل العمل الخيري وتوحيد جهود التبرع والعطاء في المملكة العربية السعودية.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="donor-tag">خيري</span>
-          <span class="donor-tag">تمكين</span>
-          <span class="donor-tag">مجتمعي</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-neutral-border/40">
-          <div class="flex gap-4">
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-              <span><strong class="text-navy">3</strong> فرص نشطة</span>
-            </div>
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>المملكة</span>
-            </div>
-          </div>
-          <a href="grants.html" class="text-sm font-bold text-jgreen hover:underline">عرض الفرص</a>
-        </div>
-      </div>
-
-      <!-- Donor 4 -->
-      <div class="donor-card reveal">
-        <div class="flex items-start gap-4 mb-5">
-          <div class="donor-logo-wrap">
-            <img src="/donors/sdb.png" alt="بنك التنمية الاجتماعية" class="w-full h-full object-contain">
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-lg font-bold text-navy mb-1 truncate">بنك التنمية الاجتماعية</h3>
-            <p class="text-sm text-neutral-text">جهة حكومية تمويلية</p>
-          </div>
-        </div>
-        <p class="text-sm text-neutral-text leading-relaxed mb-5">يقدم حلولاً تمويلية للأفراد والمنشآت الصغيرة ويساهم في تمكين الأسر المنتجة والمشاريع الاجتماعية.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="donor-tag">تمويل</span>
-          <span class="donor-tag">تمكين</span>
-          <span class="donor-tag">ريادة أعمال</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-neutral-border/40">
-          <div class="flex gap-4">
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-              <span><strong class="text-navy">4</strong> فرص نشطة</span>
-            </div>
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>المملكة</span>
-            </div>
-          </div>
-          <a href="grants.html" class="text-sm font-bold text-jgreen hover:underline">عرض الفرص</a>
-        </div>
-      </div>
-
-      <!-- Donor 5 -->
-      <div class="donor-card reveal reveal-d1">
-        <div class="flex items-start gap-4 mb-5">
-          <div class="donor-logo-wrap">
-            <img src="/donors/awqaf.png" alt="الهيئة العامة للأوقاف" class="w-full h-full object-contain">
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-lg font-bold text-navy mb-1 truncate">الهيئة العامة للأوقاف</h3>
-            <p class="text-sm text-neutral-text">جهة حكومية تنظيمية</p>
-          </div>
-        </div>
-        <p class="text-sm text-neutral-text leading-relaxed mb-5">تعمل على تنظيم قطاع الأوقاف وتطويره وتعزيز إسهامه في التنمية الاقتصادية والاجتماعية.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="donor-tag">أوقاف</span>
-          <span class="donor-tag">تنمية</span>
-          <span class="donor-tag">مجتمعي</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-neutral-border/40">
-          <div class="flex gap-4">
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-              <span><strong class="text-navy">6</strong> فرص نشطة</span>
-            </div>
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>المملكة</span>
-            </div>
-          </div>
-          <a href="grants.html" class="text-sm font-bold text-jgreen hover:underline">عرض الفرص</a>
-        </div>
-      </div>
-
-      <!-- Donor 6 -->
-      <div class="donor-card reveal reveal-d2">
-        <div class="flex items-start gap-4 mb-5">
-          <div class="donor-logo-wrap">
-            <img src="/donors/abanumay.png" alt="وقف أبانمي" class="w-full h-full object-contain">
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-lg font-bold text-navy mb-1 truncate">وقف أبانمي</h3>
-            <p class="text-sm text-neutral-text">وقف خيري أهلي</p>
-          </div>
-        </div>
-        <p class="text-sm text-neutral-text leading-relaxed mb-5">وقف أهلي يركز على دعم المشاريع التعليمية والصحية والاجتماعية وبناء القدرات المؤسسية.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="donor-tag">تعليم</span>
-          <span class="donor-tag">صحة</span>
-          <span class="donor-tag">بناء قدرات</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-neutral-border/40">
-          <div class="flex gap-4">
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-              <span><strong class="text-navy">2</strong> فرص نشطة</span>
-            </div>
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>المملكة</span>
-            </div>
-          </div>
-          <a href="grants.html" class="text-sm font-bold text-jgreen hover:underline">عرض الفرص</a>
-        </div>
-      </div>
-
-      <!-- Donor 7 -->
-      <div class="donor-card reveal">
-        <div class="flex items-start gap-4 mb-5">
-          <div class="donor-logo-wrap">
-            <img src="/donors/aljumaih.png" alt="مؤسسة الجميح" class="w-full h-full object-contain">
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-lg font-bold text-navy mb-1 truncate">مؤسسة الجميح الخيرية</h3>
-            <p class="text-sm text-neutral-text">مؤسسة خيرية أهلية</p>
-          </div>
-        </div>
-        <p class="text-sm text-neutral-text leading-relaxed mb-5">مؤسسة تهتم بدعم المشاريع التنموية والمبادرات المجتمعية والتعليمية في المملكة العربية السعودية.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="donor-tag">مجتمعي</span>
-          <span class="donor-tag">تعليم</span>
-          <span class="donor-tag">تنمية</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-neutral-border/40">
-          <div class="flex gap-4">
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-              <span><strong class="text-navy">3</strong> فرص نشطة</span>
-            </div>
-            <div class="stat-mini">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>المملكة</span>
-            </div>
-          </div>
-          <a href="grants.html" class="text-sm font-bold text-jgreen hover:underline">عرض الفرص</a>
-        </div>
-      </div>
-
+    <!-- Grid View -->
+    <div id="gridView" class="grid-view active sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Cards rendered by JS -->
     </div>
+
+    <!-- Table View -->
+    <div id="tableView" class="table-view">
+      <div class="bg-white rounded-2xl border border-neutral-border overflow-hidden shadow-sys">
+        <div class="overflow-x-auto">
+          <table class="donors-table">
+            <thead>
+              <tr>
+                <th>الجهة المانحة</th>
+                <th>النوع</th>
+                <th>مجالات الدعم</th>
+                <th>النطاق الجغرافي</th>
+                <th>الفرص النشطة</th>
+                <th>الإجراء</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <!-- Rows rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Results -->
+    <div id="noResults" class="hidden text-center py-16">
+      <svg class="mx-auto mb-4" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8B929B" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m8 8 6 6"/><path d="m14 8-6 6"/></svg>
+      <h3 class="text-lg font-bold text-navy mb-2">لا توجد نتائج</h3>
+      <p class="text-sm text-neutral-text">جرّب تعديل كلمات البحث أو تغيير الفلاتر</p>
+    </div>
+
   </div>
 </section>
+
+<!-- ═══════════════════ MODAL ═══════════════════ -->
+<div id="donorModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6470" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <div id="modalBody">
+      <!-- Dynamic content -->
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════ CTA ═══════════════════ -->
-<section class="py-16 sm:py-20" style="background: linear-gradient(160deg, #07133F 0%, #0d1f5c 50%, #0a1745 100%);">
+<section class="py-14 sm:py-18" style="background: linear-gradient(160deg, #07133F 0%, #0d1f5c 50%, #0a1745 100%);">
   <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center">
     <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">هل أنت جهة مانحة؟</h2>
-    <p class="text-lg text-white/45 max-w-xl mx-auto mb-8 leading-relaxed">
+    <p class="text-base text-white/45 max-w-xl mx-auto mb-8 leading-relaxed">
       انضم إلى دليل المانحين في جزيل وانشر فرص المنح الخاصة بك لتصل لأكثر من 850 جمعية مسجلة في المنصة.
     </p>
     <div class="flex flex-wrap justify-center gap-3">
@@ -499,24 +430,559 @@
 (function() {
   'use strict';
 
-  // Reveal on Scroll
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
+  // ── Donors Data ──
+  const donors = [
+    {
+      id: 1, name: 'الراجحي الإنسانية', subtitle: 'مؤسسة سليمان بن عبدالعزيز الراجحي الخيرية',
+      type: 'مؤسسة خيرية', logo: '/donors/alrajhi.png',
+      desc: 'مؤسسة رائدة في العمل الخيري والإنساني، تركز على دعم المشاريع التنموية والتعليمية والصحية في المملكة العربية السعودية.',
+      fields: ['تعليم', 'صحة', 'تمكين'], region: 'المملكة', grants: 5,
+      founded: '1421هـ', website: 'alrajhi-humanitarian.com',
+      details: 'تأسست مؤسسة الراجحي الإنسانية كأحد أبرز المؤسسات الخيرية في المملكة، وتقدم برامج شاملة تشمل: بناء المساجد، دعم التعليم، الرعاية الصحية، كفالة الأيتام، ومشاريع التمكين الاقتصادي. تمتلك المؤسسة شراكات مع أكثر من 120 جمعية محلية.',
+      achievements: ['دعم أكثر من 200 مشروع تنموي', 'كفالة أكثر من 15,000 يتيم', 'بناء 80+ مسجد في مناطق المملكة']
+    },
+    {
+      id: 2, name: 'مركز الملك سلمان للإغاثة', subtitle: 'مركز إغاثي وإنساني دولي',
+      type: 'جهة حكومية', logo: '/donors/king-salman.png',
+      desc: 'مركز إنساني دولي رائد يقدم المساعدات الإغاثية والإنسانية والتنموية للمحتاجين حول العالم بأكثر من 80 دولة.',
+      fields: ['إنسانية', 'إغاثة', 'تنمية'], region: 'دولي', grants: 8,
+      founded: '1436هـ', website: 'ksrelief.org',
+      details: 'مركز الملك سلمان للإغاثة والأعمال الإنسانية هو الذراع الإنساني للمملكة العربية السعودية. يعمل على تقديم المساعدات في مجالات الصحة والتعليم والأمن الغذائي والمأوى والحماية.',
+      achievements: ['مشاريع في أكثر من 80 دولة', 'إنفاق إنساني يتجاوز 6 مليارات ريال', 'أكثر من 2,500 مشروع مُنفَّذ']
+    },
+    {
+      id: 3, name: 'منصة إحسان', subtitle: 'المنصة الوطنية للعمل الخيري',
+      type: 'منصة وطنية', logo: '/donors/ehsan.png',
+      desc: 'منصة وطنية تسعى لتسهيل العمل الخيري وتوحيد جهود التبرع والعطاء في المملكة العربية السعودية.',
+      fields: ['خيري', 'تمكين', 'مجتمعي'], region: 'المملكة', grants: 3,
+      founded: '1442هـ', website: 'ehsan.sa',
+      details: 'إحسان هي المنصة الوطنية للعمل الخيري في المملكة، تتيح للأفراد والمؤسسات المساهمة في المشاريع الخيرية بسهولة وشفافية عبر قنوات رقمية موثوقة.',
+      achievements: ['أكثر من 3 ملايين متبرع', 'دعم أكثر من 500 جمعية', 'تجاوز حجم التبرعات 4 مليارات ريال']
+    },
+    {
+      id: 4, name: 'بنك التنمية الاجتماعية', subtitle: 'جهة حكومية تمويلية',
+      type: 'جهة حكومية', logo: '/donors/sdb.png',
+      desc: 'يقدم حلولاً تمويلية للأفراد والمنشآت الصغيرة ويساهم في تمكين الأسر المنتجة والمشاريع الاجتماعية.',
+      fields: ['تمويل', 'تمكين', 'ريادة أعمال'], region: 'المملكة', grants: 4,
+      founded: '1391هـ', website: 'sdb.gov.sa',
+      details: 'بنك التنمية الاجتماعية هو مؤسسة حكومية تعنى بتقديم الحلول التمويلية والتأهيلية للأفراد والمنشآت الصغيرة والناشئة لتحقيق الاستقلال المالي.',
+      achievements: ['تمويل أكثر من 100,000 مشروع', 'دعم 50,000+ أسرة منتجة', 'محفظة تمويلية تتجاوز 80 مليار ريال']
+    },
+    {
+      id: 5, name: 'الهيئة العامة للأوقاف', subtitle: 'جهة حكومية تنظيمية',
+      type: 'وقف', logo: '/donors/awqaf.png',
+      desc: 'تعمل على تنظيم قطاع الأوقاف وتطويره وتعزيز إسهامه في التنمية الاقتصادية والاجتماعية.',
+      fields: ['أوقاف', 'تنمية', 'مجتمعي'], region: 'المملكة', grants: 6,
+      founded: '1437هـ', website: 'awqaf.gov.sa',
+      details: 'الهيئة العامة للأوقاف هي الجهة المنظمة لقطاع الأوقاف في المملكة، تسعى لتطوير القطاع وتعزيز الحوكمة والشفافية في إدارة الأوقاف.',
+      achievements: ['تسجيل أكثر من 5,000 وقف', 'إطلاق منصة نظارة الرقمية', 'تنظيم أكثر من 30 ورشة تدريبية']
+    },
+    {
+      id: 6, name: 'وقف أبانمي', subtitle: 'وقف خيري أهلي',
+      type: 'وقف', logo: '/donors/abanumay.png',
+      desc: 'وقف أهلي يركز على دعم المشاريع التعليمية والصحية والاجتماعية وبناء القدرات المؤسسية.',
+      fields: ['تعليم', 'صحة', 'بناء قدرات'], region: 'المملكة', grants: 2,
+      founded: '1430هـ', website: 'abanumay.org',
+      details: 'وقف أبانمي من الأوقاف الأهلية المتميزة في المملكة، يهتم بدعم المشاريع النوعية في التعليم والصحة وبناء القدرات المؤسسية للمنظمات غير الربحية.',
+      achievements: ['دعم 40+ مشروع تعليمي', 'بناء قدرات 25 جمعية', 'تقديم 15 منحة بحثية']
+    },
+    {
+      id: 7, name: 'مؤسسة الجميح الخيرية', subtitle: 'مؤسسة خيرية أهلية',
+      type: 'مؤسسة خيرية', logo: '/donors/aljumaih.png',
+      desc: 'مؤسسة تهتم بدعم المشاريع التنموية والمبادرات المجتمعية والتعليمية في المملكة العربية السعودية.',
+      fields: ['مجتمعي', 'تعليم', 'تنمية'], region: 'المملكة', grants: 3,
+      founded: '1425هـ', website: 'aljumaih.org',
+      details: 'مؤسسة الجميح الخيرية من المؤسسات الأهلية الفاعلة في العمل الخيري بالمملكة، تدعم مجموعة واسعة من المشاريع التنموية والاجتماعية.',
+      achievements: ['دعم 60+ مشروع مجتمعي', 'رعاية 10 مبادرات تعليمية', 'المساهمة في 5 مشاريع إسكان']
+    }
+  ];
 
-  // Filter pills
+  let activeFieldFilter = 'all';
+  let activeRegionFilter = 'all';
+  let activeTypeFilter = 'all';
+  let searchQuery = '';
+
+  // ── Render Functions ──
+  function getFilteredDonors() {
+    return donors.filter(d => {
+      const matchField = activeFieldFilter === 'all' || d.fields.some(f => f === activeFieldFilter);
+      const matchRegion = activeRegionFilter === 'all' || d.region === activeRegionFilter;
+      const matchType = activeTypeFilter === 'all' || d.type.includes(activeTypeFilter);
+      const matchSearch = !searchQuery || d.name.includes(searchQuery) || d.desc.includes(searchQuery) || d.fields.some(f => f.includes(searchQuery));
+      return matchField && matchRegion && matchType && matchSearch;
+    });
+  }
+
+  function renderGrid(filtered) {
+    const grid = document.getElementById('gridView');
+    if (!filtered.length) {
+      grid.innerHTML = '';
+      document.getElementById('noResults').classList.remove('hidden');
+      return;
+    }
+    document.getElementById('noResults').classList.add('hidden');
+    grid.innerHTML = filtered.map((d, i) => `
+      <div class="donor-card reveal visible" onclick="openModal(${d.id})" style="animation-delay:${i * 0.05}s;">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="donor-logo-wrap">
+            <img src="${d.logo}" alt="${d.name}" class="w-full h-full object-contain" onerror="this.src='/jazeel-logo.svg'">
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-base font-bold text-navy mb-0.5 truncate">${d.name}</h3>
+            <p class="text-xs text-neutral-text truncate">${d.subtitle}</p>
+            <span class="inline-block mt-1.5 text-[0.68rem] font-bold px-2 py-0.5 rounded-full" style="background:${d.type === 'جهة حكومية' ? '#EFF6FF;color:#2563EB' : d.type === 'وقف' ? '#F5F3FF;color:#7C3AED' : d.type === 'منصة وطنية' ? '#FEF3C7;color:#D97706' : '#EAF8F3;color:#149572'}">${d.type}</span>
+          </div>
+        </div>
+        <p class="text-sm text-neutral-text leading-relaxed mb-4 line-clamp-2" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${d.desc}</p>
+        <div class="flex flex-wrap gap-1.5 mb-4">
+          ${d.fields.map(f => `<span class="donor-tag">${f}</span>`).join('')}
+        </div>
+        <div class="flex items-center justify-between pt-3 border-t border-neutral-border/40">
+          <div class="flex gap-3">
+            <div class="stat-mini">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              <span><strong class="text-navy">${d.grants}</strong> فرصة</span>
+            </div>
+            <div class="stat-mini">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>${d.region}</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-jgreen flex items-center gap-1">
+            عرض التفاصيل
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m12 19-7-7 7-7"/></svg>
+          </span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderTable(filtered) {
+    const tbody = document.getElementById('tableBody');
+    if (!filtered.length) {
+      tbody.innerHTML = '<tr><td colspan="6" class="text-center py-12 text-neutral-light">لا توجد نتائج</td></tr>';
+      return;
+    }
+    tbody.innerHTML = filtered.map(d => `
+      <tr onclick="openModal(${d.id})">
+        <td>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-neutral-bg border border-neutral-border flex items-center justify-center p-1.5 flex-shrink-0">
+              <img src="${d.logo}" alt="${d.name}" class="w-full h-full object-contain" onerror="this.src='/jazeel-logo.svg'">
+            </div>
+            <div>
+              <div class="font-bold text-navy text-sm">${d.name}</div>
+              <div class="text-xs text-neutral-light">${d.subtitle}</div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background:${d.type === 'جهة حكومية' ? '#EFF6FF;color:#2563EB' : d.type === 'وقف' ? '#F5F3FF;color:#7C3AED' : d.type === 'منصة وطنية' ? '#FEF3C7;color:#D97706' : '#EAF8F3;color:#149572'}">${d.type}</span>
+        </td>
+        <td>
+          <div class="flex flex-wrap gap-1">${d.fields.map(f => `<span class="donor-tag" style="font-size:0.68rem;padding:2px 8px;">${f}</span>`).join('')}</div>
+        </td>
+        <td class="text-sm">${d.region}</td>
+        <td><span class="font-bold text-navy">${d.grants}</span> <span class="text-neutral-light text-xs">فرصة</span></td>
+        <td>
+          <button class="text-xs font-bold text-jgreen hover:text-jgreen-dark flex items-center gap-1">
+            التفاصيل
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m12 19-7-7 7-7"/></svg>
+          </button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  function updateView() {
+    const filtered = getFilteredDonors();
+    document.getElementById('resultsCount').textContent = filtered.length;
+    renderGrid(filtered);
+    renderTable(filtered);
+
+    const hasFilters = activeFieldFilter !== 'all' || activeRegionFilter !== 'all' || activeTypeFilter !== 'all' || searchQuery;
+    document.getElementById('clearFilters').classList.toggle('hidden', !hasFilters);
+  }
+
+  // ── Modal ──
+  window.openModal = function(id) {
+    const d = donors.find(x => x.id === id);
+    if (!d) return;
+    document.getElementById('modalBody').innerHTML = `
+      <div style="background:linear-gradient(135deg,#07133F,#0d1f5c);padding:2rem 2rem 1.5rem;border-radius:20px 20px 0 0;">
+        <div class="flex items-center gap-4">
+          <div class="w-16 h-16 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center p-2.5 flex-shrink-0">
+            <img src="${d.logo}" alt="${d.name}" class="w-full h-full object-contain brightness-0 invert" onerror="this.src='/jazeel-logo.svg'">
+          </div>
+          <div>
+            <h2 class="text-xl font-extrabold text-white">${d.name}</h2>
+            <p class="text-sm text-white/50">${d.subtitle}</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-4 mt-4">
+          <div class="flex items-center gap-2 text-xs text-white/40">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${d.region}
+          </div>
+          <div class="flex items-center gap-2 text-xs text-white/40">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>
+            تأسست: ${d.founded}
+          </div>
+          <div class="flex items-center gap-2 text-xs text-white/40">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            ${d.website}
+          </div>
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:${d.type === 'جهة حكومية' ? '#EFF6FF;color:#2563EB' : d.type === 'وقف' ? '#F5F3FF;color:#7C3AED' : d.type === 'منصة وطنية' ? '#FEF3C7;color:#D97706' : '#EAF8F3;color:#149572'}">${d.type}</span>
+          ${d.fields.map(f => `<span class="donor-tag">${f}</span>`).join('')}
+        </div>
+
+        <h3 class="text-sm font-bold text-navy mb-2">نبذة عن الجهة</h3>
+        <p class="text-sm text-neutral-text leading-relaxed mb-5">${d.details}</p>
+
+        <h3 class="text-sm font-bold text-navy mb-3">أبرز الإنجازات</h3>
+        <div class="space-y-2 mb-6">
+          ${d.achievements.map(a => `
+            <div class="flex items-start gap-2.5">
+              <div class="w-5 h-5 rounded-full bg-jgreen-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#19B58B" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+              </div>
+              <span class="text-sm text-neutral-text">${a}</span>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mb-5">
+          <div class="bg-neutral-bg rounded-xl p-4 text-center">
+            <div class="text-2xl font-extrabold text-navy">${d.grants}</div>
+            <div class="text-xs text-neutral-light mt-1">فرصة منح نشطة</div>
+          </div>
+          <div class="bg-neutral-bg rounded-xl p-4 text-center">
+            <div class="text-2xl font-extrabold" style="color:#19B58B;">${d.fields.length}</div>
+            <div class="text-xs text-neutral-light mt-1">مجالات دعم</div>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <a href="grants.html" class="btn-primary flex-1 justify-center" style="padding:0.7rem;">
+            استكشف الفرص
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m12 19-7-7 7-7"/></svg>
+          </a>
+          <a href="donor-portal.html" class="flex-1 text-center py-3 px-4 rounded-xl border border-neutral-border text-sm font-bold text-navy hover:bg-neutral-bg transition-all">
+            زيارة البوابة
+          </a>
+        </div>
+
+        <div class="mt-5 pt-4 border-t border-neutral-border/40 text-center">
+          <p class="text-[0.68rem] text-neutral-light">المعلومات المعروضة من دليل المانحين — <span class="text-jgreen font-bold">منصة جزيل</span></p>
+        </div>
+      </div>
+    `;
+    document.getElementById('donorModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeModal = function() {
+    document.getElementById('donorModal').classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  // ── View Toggle ──
+  document.querySelectorAll('.view-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const view = btn.dataset.view;
+      document.getElementById('gridView').classList.toggle('active', view === 'grid');
+      document.getElementById('tableView').classList.toggle('active', view === 'table');
+    });
+  });
+
+  // ── Filters ──
   document.querySelectorAll('.filter-pill').forEach(pill => {
     pill.addEventListener('click', () => {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
+      activeFieldFilter = pill.dataset.value;
+      updateView();
     });
   });
+
+  document.getElementById('regionFilter').addEventListener('change', function() {
+    activeRegionFilter = this.value;
+    updateView();
+  });
+
+  document.getElementById('typeFilter').addEventListener('change', function() {
+    activeTypeFilter = this.value;
+    updateView();
+  });
+
+  document.getElementById('searchInput').addEventListener('input', function() {
+    searchQuery = this.value.trim();
+    updateView();
+  });
+
+  window.clearAllFilters = function() {
+    activeFieldFilter = 'all';
+    activeRegionFilter = 'all';
+    activeTypeFilter = 'all';
+    searchQuery = '';
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    document.querySelector('.filter-pill[data-value="all"]').classList.add('active');
+    document.getElementById('regionFilter').value = 'all';
+    document.getElementById('typeFilter').value = 'all';
+    document.getElementById('searchInput').value = '';
+    updateView();
+  };
+
+  // ── PDF Export ──
+  window.exportPDF = function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+    // Colors
+    const navy = [7, 19, 63];
+    const green = [25, 181, 139];
+    const white = [255, 255, 255];
+    const gray = [91, 100, 112];
+    const lightGray = [248, 249, 250];
+    const pageW = 210, pageH = 297;
+    const margin = 15;
+
+    // ── Cover Header ──
+    doc.setFillColor(...navy);
+    doc.rect(0, 0, pageW, 65, 'F');
+
+    // Green accent line
+    doc.setFillColor(...green);
+    doc.rect(0, 65, pageW, 2, 'F');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(28);
+    doc.setTextColor(...white);
+    doc.text('Jazeel', pageW / 2, 25, { align: 'center' });
+
+    doc.setFontSize(11);
+    doc.setTextColor(255, 255, 255, 150);
+    doc.text('Donors Directory', pageW / 2, 35, { align: 'center' });
+
+    doc.setFontSize(9);
+    doc.setTextColor(255, 255, 255, 100);
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    doc.text(today, pageW / 2, 45, { align: 'center' });
+
+    // Stats row
+    const statsY = 55;
+    doc.setFontSize(12);
+    doc.setTextColor(...green);
+    doc.text(donors.length.toString(), pageW / 2 - 35, statsY, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setTextColor(200, 200, 220);
+    doc.text('Donors', pageW / 2 - 35, statsY + 5, { align: 'center' });
+
+    doc.setFontSize(12);
+    doc.setTextColor(...green);
+    const totalGrants = donors.reduce((s, d) => s + d.grants, 0);
+    doc.text(totalGrants.toString(), pageW / 2, statsY, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setTextColor(200, 200, 220);
+    doc.text('Active Grants', pageW / 2, statsY + 5, { align: 'center' });
+
+    const fieldsSet = new Set();
+    donors.forEach(d => d.fields.forEach(f => fieldsSet.add(f)));
+    doc.setFontSize(12);
+    doc.setTextColor(...green);
+    doc.text(fieldsSet.size.toString(), pageW / 2 + 35, statsY, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setTextColor(200, 200, 220);
+    doc.text('Support Areas', pageW / 2 + 35, statsY + 5, { align: 'center' });
+
+    // ── Table ──
+    let startY = 78;
+
+    const filtered = getFilteredDonors();
+    const tableData = filtered.map((d, i) => [
+      (i + 1).toString(),
+      d.name,
+      d.type,
+      d.fields.join(' | '),
+      d.region,
+      d.grants.toString()
+    ]);
+
+    doc.autoTable({
+      startY: startY,
+      head: [['#', 'Donor Name', 'Type', 'Support Areas', 'Region', 'Grants']],
+      body: tableData,
+      margin: { left: margin, right: margin },
+      styles: {
+        font: 'helvetica',
+        fontSize: 8.5,
+        cellPadding: 4,
+        valign: 'middle',
+        lineColor: [229, 232, 235],
+        lineWidth: 0.2,
+      },
+      headStyles: {
+        fillColor: navy,
+        textColor: white,
+        fontStyle: 'bold',
+        fontSize: 8,
+        halign: 'center',
+      },
+      bodyStyles: {
+        textColor: [30, 30, 50],
+      },
+      alternateRowStyles: {
+        fillColor: lightGray,
+      },
+      columnStyles: {
+        0: { halign: 'center', cellWidth: 10 },
+        1: { fontStyle: 'bold', cellWidth: 42 },
+        2: { halign: 'center', cellWidth: 28 },
+        3: { cellWidth: 50 },
+        4: { halign: 'center', cellWidth: 22 },
+        5: { halign: 'center', cellWidth: 16, fontStyle: 'bold', textColor: green },
+      },
+      didDrawPage: function(data) {
+        // Footer on each page
+        doc.setFillColor(...navy);
+        doc.rect(0, pageH - 14, pageW, 14, 'F');
+        doc.setFontSize(7);
+        doc.setTextColor(200, 200, 220);
+        doc.text('Jazeel Platform — Donors Directory', pageW / 2, pageH - 6, { align: 'center' });
+        doc.setTextColor(...green);
+        doc.text('jazeel.sa', pageW - margin, pageH - 6, { align: 'right' });
+        doc.setTextColor(150, 150, 170);
+        doc.text('Page ' + doc.internal.getNumberOfPages(), margin, pageH - 6);
+      }
+    });
+
+    // ── Donor Detail Pages ──
+    filtered.forEach(d => {
+      doc.addPage();
+
+      // Header bar
+      doc.setFillColor(...navy);
+      doc.rect(0, 0, pageW, 40, 'F');
+      doc.setFillColor(...green);
+      doc.rect(0, 40, pageW, 1.5, 'F');
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(18);
+      doc.setTextColor(...white);
+      doc.text(d.name, pageW / 2, 18, { align: 'center' });
+
+      doc.setFontSize(9);
+      doc.setTextColor(200, 200, 220);
+      doc.text(d.subtitle, pageW / 2, 27, { align: 'center' });
+
+      doc.setFontSize(7);
+      doc.setTextColor(...green);
+      doc.text(d.type + '  |  ' + d.region + '  |  ' + d.founded, pageW / 2, 35, { align: 'center' });
+
+      let y = 52;
+
+      // About
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(11);
+      doc.setTextColor(...navy);
+      doc.text('About', margin, y);
+      y += 7;
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      doc.setTextColor(...gray);
+      const aboutLines = doc.splitTextToSize(d.details, pageW - margin * 2);
+      doc.text(aboutLines, margin, y);
+      y += aboutLines.length * 5 + 8;
+
+      // Support Areas
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(11);
+      doc.setTextColor(...navy);
+      doc.text('Support Areas', margin, y);
+      y += 8;
+      d.fields.forEach(f => {
+        doc.setFillColor(...green);
+        doc.circle(margin + 2, y - 1.5, 1.5, 'F');
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9);
+        doc.setTextColor(...gray);
+        doc.text(f, margin + 7, y);
+        y += 7;
+      });
+      y += 4;
+
+      // Achievements
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(11);
+      doc.setTextColor(...navy);
+      doc.text('Key Achievements', margin, y);
+      y += 8;
+      d.achievements.forEach(a => {
+        doc.setFillColor(229, 232, 235);
+        doc.roundedRect(margin, y - 4, pageW - margin * 2, 10, 2, 2, 'F');
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8.5);
+        doc.setTextColor(...navy);
+        doc.text('✓  ' + a, margin + 4, y + 1);
+        y += 13;
+      });
+
+      // Stats boxes
+      y += 5;
+      const boxW = (pageW - margin * 2 - 10) / 2;
+      doc.setFillColor(240, 253, 248);
+      doc.roundedRect(margin, y, boxW, 20, 3, 3, 'F');
+      doc.setFillColor(245, 243, 255);
+      doc.roundedRect(margin + boxW + 10, y, boxW, 20, 3, 3, 'F');
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(16);
+      doc.setTextColor(...green);
+      doc.text(d.grants.toString(), margin + boxW / 2, y + 10, { align: 'center' });
+      doc.setFontSize(7);
+      doc.setTextColor(...gray);
+      doc.text('Active Grants', margin + boxW / 2, y + 16, { align: 'center' });
+
+      doc.setFontSize(16);
+      doc.setTextColor(124, 58, 237);
+      doc.text(d.fields.length.toString(), margin + boxW + 10 + boxW / 2, y + 10, { align: 'center' });
+      doc.setFontSize(7);
+      doc.setTextColor(...gray);
+      doc.text('Support Areas', margin + boxW + 10 + boxW / 2, y + 16, { align: 'center' });
+
+      // Footer
+      doc.setFillColor(...navy);
+      doc.rect(0, pageH - 14, pageW, 14, 'F');
+      doc.setFontSize(7);
+      doc.setTextColor(200, 200, 220);
+      doc.text('Jazeel Platform — Donors Directory', pageW / 2, pageH - 6, { align: 'center' });
+      doc.setTextColor(...green);
+      doc.text('jazeel.sa', pageW - margin, pageH - 6, { align: 'right' });
+    });
+
+    doc.save('Jazeel-Donors-Directory.pdf');
+  };
+
+  // ── Init ──
+  updateView();
+
+  // Reveal on Scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
+
+  // Keyboard: close modal with Escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
 })();
 </script>
 
