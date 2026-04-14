@@ -137,9 +137,9 @@ function TemplateShowcasePage() {
                 قالب HTML احترافي • {readyPages.length} صفحات جاهزة
               </div>
               <h1 className="mb-5 text-3xl font-extrabold leading-[1.25] text-white sm:text-4xl lg:text-[2.75rem]">
-                منصة موحدة لتنمية الموارد المالية
+                قالب <span className="text-[#19B58B]">جزيل</span> لمنصات المنح
                 <br className="hidden sm:block" />
-                وإدارة فرص <span className="text-[#19B58B]">المنح</span>
+                والقطاع غير الربحي
               </h1>
               <p className="mb-8 max-w-lg text-[0.9375rem] leading-relaxed text-white/45">
                 قالب احترافي عالي الجودة مصمم خصيصاً لمنصات المنح والجمعيات.
