@@ -24,15 +24,17 @@ jobs:
 
       - name: Prepare deployment folder
         run: |
-          mkdir -p _site/jazeel
-          # Copy the root index.html (redirect page)
+          mkdir -p _site/jazeel _site/donors
+          # Copy root index.html
           cp index.html _site/index.html
           # Copy all template files
           cp -r public/jazeel/* _site/jazeel/
-          # Copy logo and other public assets
-          cp -r public/jazeel-logo.svg _site/jazeel-logo.svg 2>/dev/null || true
-          cp -r public/placeholder.svg _site/placeholder.svg 2>/dev/null || true
-          # Fix the redirect path in root index.html (remove /public prefix)
+          # Copy shared assets
+          cp public/jazeel-logo.svg _site/jazeel-logo.svg 2>/dev/null || true
+          cp public/placeholder.svg _site/placeholder.svg 2>/dev/null || true
+          # Copy donors logos
+          cp -r public/donors/* _site/donors/ 2>/dev/null || true
+          # Fix redirect path in root index.html
           sed -i 's|./public/jazeel/home.html|./jazeel/home.html|g' _site/index.html
 
       - name: Setup GitHub Pages
