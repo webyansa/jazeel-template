@@ -1,4 +1,4 @@
-name: Deploy React app to GitHub Pages
+name: Deploy Jazeel Template to GitHub Pages
 
 on:
   push:
@@ -22,16 +22,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - name: Install dependencies
-        run: bun install
-
-      - name: Build project
-        run: bun run build
+      - name: Prepare deployment folder
+        run: |
+          mkdir -p _site/jazeel
+          # Copy the root index.html (redirect page)
+          cp index.html _site/index.html
+          # Copy all template files
+          cp -r public/jazeel/* _site/jazeel/
+          # Copy logo and other public assets
+          cp -r public/jazeel-logo.svg _site/jazeel-logo.svg 2>/dev/null || true
+          cp -r public/placeholder.svg _site/placeholder.svg 2>/dev/null || true
+          # Fix the redirect path in root index.html (remove /public prefix)
+          sed -i 's|./public/jazeel/home.html|./jazeel/home.html|g' _site/index.html
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
@@ -39,7 +41,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./_site
 
   deploy:
     needs: build
