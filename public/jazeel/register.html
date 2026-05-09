@@ -311,16 +311,48 @@
   function togglePwd(id,btn){const i=document.getElementById(id);i.type=i.type==='password'?'text':'password';btn.style.color=i.type==='text'?'#19B58B':'';}
   (function(){
     const plans = {
-      growth: { name:'النمو', price:'196' },
-      lead:   { name:'الريادة', price:'264' },
+      growth: { name:'النمو', tier:'النمو', price:'196', features:[
+        'حتى ٢٠ مستخدم داخل الجمعية',
+        'إدارة كاملة للمشاريع والمقترحات',
+        'وصول لكامل دليل فرص المنح',
+        'تقارير وتحليلات متقدمة',
+        'دعم فني خلال ساعات العمل',
+      ]},
+      lead: { name:'الريادة', tier:'الريادة', price:'264', features:[
+        'مستخدمون غير محدودين',
+        'كل مزايا باقة النمو',
+        'تكاملات مخصصة وAPI',
+        'مدير حساب مخصص',
+        'دعم فني على مدار الساعة',
+      ]},
     };
     const p = new URLSearchParams(location.search).get('plan');
-    const banner = document.getElementById('plan-banner');
+    const planAside = document.getElementById('plan-aside');
+    const visualAside = document.getElementById('visual-aside');
+    const mobileBanner = document.getElementById('plan-banner-mobile');
+    const title = document.getElementById('page-title');
+    const subtitle = document.getElementById('page-subtitle');
+
     if (p && plans[p]) {
-      document.getElementById('plan-name').textContent = plans[p].name;
-      document.getElementById('plan-price').textContent = plans[p].price;
-    } else if (banner) {
-      banner.style.display = 'none';
+      const plan = plans[p];
+      if (planAside) { planAside.classList.remove('hidden'); planAside.classList.add('lg:flex'); }
+      if (visualAside) { visualAside.classList.add('lg:hidden'); }
+      document.getElementById('plan-name').textContent = plan.name;
+      document.getElementById('plan-tier-label').textContent = plan.tier;
+      document.getElementById('plan-price').textContent = plan.price;
+      const feats = document.getElementById('plan-features');
+      feats.innerHTML = plan.features.map(f => `
+        <div class="flex items-start gap-2.5 text-sm text-white/85">
+          <svg class="w-4 h-4 text-jgreen flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <span>${f}</span>
+        </div>`).join('');
+      if (mobileBanner) {
+        mobileBanner.classList.remove('hidden');
+        document.getElementById('plan-name-mobile').textContent = plan.name;
+        document.getElementById('plan-price-mobile').textContent = plan.price;
+      }
+      if (title) title.textContent = 'إنشاء حسابك للاشتراك في باقة ' + plan.name;
+      if (subtitle) subtitle.innerHTML = 'أنشئ حسابك أولًا، ثم سنرشدك لاستكمال بيانات الجمعية ومراجعة الاشتراك. <strong class="text-navy">لن يتم خصم أي مبلغ في هذه المرحلة.</strong>';
     }
   })();
 </script>
