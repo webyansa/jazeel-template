@@ -254,6 +254,20 @@
 
 <script>
   function togglePwd(id,btn){const i=document.getElementById(id);i.type=i.type==='password'?'text':'password';btn.style.color=i.type==='text'?'#19B58B':'';}
+  (function(){
+    const plans = {
+      growth: { name:'النمو', price:'196' },
+      lead:   { name:'الريادة', price:'264' },
+    };
+    const p = new URLSearchParams(location.search).get('plan');
+    const banner = document.getElementById('plan-banner');
+    if (p && plans[p]) {
+      document.getElementById('plan-name').textContent = plans[p].name;
+      document.getElementById('plan-price').textContent = plans[p].price;
+    } else if (banner) {
+      banner.style.display = 'none';
+    }
+  })();
 </script>
 </body>
 </html>
