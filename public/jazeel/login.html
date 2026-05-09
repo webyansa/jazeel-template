@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول — جزيل</title>
+  <meta name="description" content="سجّل دخولك إلى منصة جزيل لإدارة جهتك غير الربحية بكفاءة وأمان.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../jazeel-logo.svg">
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#07133F', light: '#0d1f5c', dark: '#050e2d' },
+            jgreen: { DEFAULT: '#19B58B', light: '#1fcca0', dark: '#149572', 50: '#EAF8F3', 100: '#DDF5EE' },
+            neutral: { text: '#5B6470', light: '#8B929B', border: '#E5E8EB', bg: '#F8F9FA' },
+          },
+          borderRadius: { 'sys': '12px', 'sys-lg': '16px', 'sys-xl': '20px' },
+          boxShadow: {
+            'sys': '0 1px 3px rgba(7,19,63,0.04), 0 4px 12px rgba(7,19,63,0.03)',
+            'sys-md': '0 2px 8px rgba(7,19,63,0.05), 0 8px 24px rgba(7,19,63,0.04)',
+            'sys-lg': '0 4px 12px rgba(7,19,63,0.06), 0 16px 40px rgba(7,19,63,0.05)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Tajawal',sans-serif; color:#07133F; background:#F4F6FB; -webkit-font-smoothing:antialiased; }
+    .visual-bg { background: radial-gradient(circle at 20% 20%, #DDF5EE 0%, transparent 55%), radial-gradient(circle at 80% 80%, #EAF8F3 0%, transparent 60%), linear-gradient(160deg,#F4FBF8 0%,#EAF8F3 100%); }
+    .mesh-pattern { background-image: linear-gradient(rgba(25,181,139,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(25,181,139,0.08) 1px, transparent 1px); background-size: 32px 32px; }
+    .input-sys { width:100%; height:52px; padding:0 48px 0 16px; border:1.5px solid #E5E8EB; border-radius:12px; font-size:0.9375rem; font-family:'Tajawal',sans-serif; color:#07133F; background:#fff; transition:all .2s; }
+    .input-sys:focus { outline:none; border-color:#19B58B; box-shadow:0 0 0 4px rgba(25,181,139,0.12); }
+    .input-sys::placeholder { color:#8B929B; }
+    .field-icon { position:absolute; right:16px; top:50%; transform:translateY(-50%); color:#8B929B; pointer-events:none; }
+    .field-action { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:#8B929B; cursor:pointer; padding:6px; border-radius:6px; }
+    .field-action:hover { color:#07133F; background:#F4F6FB; }
+    .btn-primary { width:100%; height:52px; background:#19B58B; color:#fff; border:none; border-radius:12px; font-weight:700; font-size:1rem; cursor:pointer; transition:all .2s; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+    .btn-primary:hover { background:#149572; box-shadow:0 6px 20px rgba(25,181,139,0.28); transform:translateY(-1px); }
+    .btn-outline { width:100%; height:52px; background:#fff; color:#07133F; border:1.5px solid #E5E8EB; border-radius:12px; font-weight:700; font-size:1rem; cursor:pointer; transition:all .2s; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+    .btn-outline:hover { border-color:#07133F; background:#F8F9FA; }
+    .checkbox-sys { width:18px; height:18px; border:1.5px solid #C8CDD4; border-radius:5px; cursor:pointer; appearance:none; position:relative; transition:all .15s; flex-shrink:0; }
+    .checkbox-sys:checked { background:#19B58B; border-color:#19B58B; }
+    .checkbox-sys:checked::after { content:'✓'; color:#fff; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; }
+    .trust-chip { display:flex; align-items:center; gap:10px; padding:14px; background:#fff; border:1px solid #E5E8EB; border-radius:12px; }
+    .trust-icon { width:36px; height:36px; border-radius:10px; background:#EAF8F3; color:#19B58B; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .float-anim { animation: float 6s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+
+<div class="min-h-screen flex">
+
+  <!-- ═══ Visual column ═══ -->
+  <aside class="hidden lg:flex lg:w-[45%] xl:w-[48%] visual-bg relative overflow-hidden flex-col p-12">
+    <div class="absolute inset-0 mesh-pattern opacity-60"></div>
+    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full" style="background:radial-gradient(circle,#19B58B22,transparent 70%);"></div>
+    <div class="absolute -bottom-40 -left-20 w-[28rem] h-[28rem] rounded-full" style="background:radial-gradient(circle,#07133F18,transparent 70%);"></div>
+
+    <!-- Logo -->
+    <a href="home.html" class="relative z-10 inline-flex items-center gap-2">
+      <img src="../jazeel-logo.svg" alt="جزيل" class="h-9">
+    </a>
+
+    <!-- Illustration center -->
+    <div class="relative z-10 flex-1 flex items-center justify-center">
+      <div class="relative w-full max-w-md float-anim">
+        <!-- Dashboard mock card -->
+        <div class="bg-white rounded-3xl shadow-sys-lg p-6 border border-white/80">
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-jgreen-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-jgreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="h-3 bg-navy/10 rounded w-2/3 mb-1.5"></div>
+              <div class="h-2 bg-navy/5 rounded w-1/2"></div>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-jgreen-50 flex items-center justify-center">
+              <svg class="w-4 h-4 text-jgreen" fill="currentColor" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1117.07 2.93 10 10 0 012.93 17.07zm12.73-1.41A8 8 0 104.34 4.34a8 8 0 0011.32 11.32zM6.7 9.29l2.3 2.3 4.3-4.3 1.4 1.42L9 13.41 5.29 9.7l1.41-1.41z"/></svg>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mb-5">
+            <div class="rounded-xl bg-jgreen-50 p-3"><div class="h-2 bg-jgreen/30 rounded w-3/4 mb-2"></div><div class="h-4 bg-jgreen/60 rounded w-1/2"></div></div>
+            <div class="rounded-xl bg-navy/5 p-3"><div class="h-2 bg-navy/15 rounded w-3/4 mb-2"></div><div class="h-4 bg-navy/40 rounded w-2/3"></div></div>
+            <div class="rounded-xl bg-jgreen-50 p-3"><div class="h-2 bg-jgreen/30 rounded w-3/4 mb-2"></div><div class="h-4 bg-jgreen/60 rounded w-1/3"></div></div>
+          </div>
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-jgreen"></div><div class="h-2 bg-navy/10 rounded flex-1"></div><div class="h-2 bg-navy/5 rounded w-10"></div></div>
+            <div class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-navy/30"></div><div class="h-2 bg-navy/10 rounded flex-1"></div><div class="h-2 bg-navy/5 rounded w-10"></div></div>
+            <div class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-jgreen"></div><div class="h-2 bg-navy/10 rounded flex-1"></div><div class="h-2 bg-navy/5 rounded w-10"></div></div>
+          </div>
+        </div>
+        <!-- Floating shield -->
+        <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-sys-lg p-3 flex items-center gap-3 border border-white">
+          <div class="w-11 h-11 rounded-xl bg-jgreen flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs text-neutral-text">حماية متقدمة</div>
+            <div class="text-sm font-bold text-navy">SSL / 2FA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust copy -->
+    <div class="relative z-10">
+      <h2 class="text-2xl font-extrabold text-navy mb-3 leading-tight">منصة جزيل لإدارة الجهات غير الربحية</h2>
+      <p class="text-neutral-text leading-loose mb-6 text-[15px]">حل متكامل يساعد منظمتك على العمل بكفاءة أعلى وتحقيق أثر أكبر مع الامتثال للأنظمة.</p>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="trust-chip flex-col text-center !gap-2">
+          <div class="trust-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+          <div><div class="text-xs font-bold text-navy">وصول آمن</div><div class="text-[11px] text-neutral-text">حماية بياناتك</div></div>
+        </div>
+        <div class="trust-chip flex-col text-center !gap-2">
+          <div class="trust-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <div><div class="text-xs font-bold text-navy">بداية سريعة</div><div class="text-[11px] text-neutral-text">خلال دقائق</div></div>
+        </div>
+        <div class="trust-chip flex-col text-center !gap-2">
+          <div class="trust-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031M5.25 17.5h13.5m-13.5 0a3 3 0 01-3-3v-7.5a3 3 0 013-3h13.5a3 3 0 013 3v7.5a3 3 0 01-3 3"/></svg></div>
+          <div><div class="text-xs font-bold text-navy">دعم متخصص</div><div class="text-[11px] text-neutral-text">على مدار الساعة</div></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ Form column ═══ -->
+  <main class="flex-1 flex flex-col">
+    <!-- Top bar (mobile logo) -->
+    <div class="flex items-center justify-between px-6 lg:px-12 pt-6">
+      <a href="home.html" class="lg:hidden inline-flex items-center"><img src="../jazeel-logo.svg" alt="جزيل" class="h-8"></a>
+      <a href="home.html" class="hidden lg:inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-text hover:text-navy">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        العودة للرئيسية
+      </a>
+      <div class="flex items-center gap-2 text-sm">
+        <span class="text-neutral-text">ليس لديك حساب؟</span>
+        <a href="register.html" class="font-bold text-jgreen hover:text-jgreen-dark">إنشاء حساب</a>
+      </div>
+    </div>
+
+    <div class="flex-1 flex items-center justify-center px-6 lg:px-12 py-10">
+      <div class="w-full max-w-[440px]">
+        <div class="mb-8">
+          <h1 class="text-[2rem] font-extrabold text-navy mb-2 tracking-tight">تسجيل الدخول</h1>
+          <p class="text-neutral-text text-[15px] leading-loose">مرحباً بعودتك! سجّل دخولك للوصول إلى حسابك ومتابعة عملك.</p>
+        </div>
+
+        <form class="space-y-5">
+          <div>
+            <label class="block text-sm font-bold text-navy mb-2">البريد الإلكتروني</label>
+            <div class="relative">
+              <input type="email" class="input-sys" placeholder="name@example.com">
+              <span class="field-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></span>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label class="text-sm font-bold text-navy">كلمة المرور</label>
+              <a href="#" class="text-sm font-semibold text-jgreen hover:text-jgreen-dark">نسيت كلمة المرور؟</a>
+            </div>
+            <div class="relative">
+              <input id="pwd" type="password" class="input-sys" placeholder="أدخل كلمة المرور">
+              <span class="field-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></span>
+              <button type="button" onclick="togglePwd('pwd', this)" class="field-action" aria-label="إظهار كلمة المرور">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.46 12C3.73 7.94 7.52 5 12 5c4.48 0 8.27 2.94 9.54 7-1.27 4.06-5.06 7-9.54 7-4.48 0-8.27-2.94-9.54-7z"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <label class="flex items-center gap-2.5 cursor-pointer select-none">
+            <input type="checkbox" class="checkbox-sys" checked>
+            <span class="text-sm text-navy font-semibold">تذكّرني على هذا الجهاز</span>
+          </label>
+
+          <button type="submit" class="btn-primary">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            تسجيل الدخول
+          </button>
+
+          <div class="relative my-2">
+            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-neutral-border"></div></div>
+            <div class="relative flex justify-center"><span class="px-3 bg-[#F4F6FB] text-xs font-semibold text-neutral-light">أو</span></div>
+          </div>
+
+          <a href="register.html" class="btn-outline">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+            إنشاء حساب جديد
+          </a>
+
+          <!-- Plan callout -->
+          <a href="signup-checkout.html" class="block rounded-sys-lg border border-jgreen-100 bg-jgreen-50/60 p-4 mt-6 hover:border-jgreen transition-all group">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-white shadow-sys flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-jgreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/></svg>
+              </div>
+              <div class="flex-1">
+                <div class="text-sm font-extrabold text-navy">لديك خطة بالفعل؟</div>
+                <div class="text-xs text-neutral-text mt-0.5">ابدأ رحلتك مع جزيل وأنشئ حسابك خلال دقائق.</div>
+              </div>
+              <svg class="w-5 h-5 text-jgreen group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </div>
+          </a>
+        </form>
+
+        <p class="mt-8 text-center text-xs text-neutral-light flex items-center justify-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          منصة آمنة ومعتمدة تحمي بياناتك وتضمن خصوصيتك
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  function togglePwd(id, btn){
+    const i = document.getElementById(id);
+    i.type = i.type === 'password' ? 'text' : 'password';
+    btn.style.color = i.type === 'text' ? '#19B58B' : '';
+  }
+</script>
+</body>
+</html>
