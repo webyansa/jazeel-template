@@ -118,13 +118,46 @@
 
     <div class="flex-1 flex items-center justify-center px-6 lg:px-12 py-10">
       <div class="w-full max-w-[520px]">
-        <div class="mb-7">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-jgreen-50 text-jgreen text-xs font-bold mb-3">
-            <span class="w-1.5 h-1.5 rounded-full bg-jgreen"></span>
-            مجاني للبدء
+        <!-- Stepper -->
+        <div class="flex items-center gap-2 mb-6 text-xs font-bold">
+          <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-jgreen text-white">
+            <span class="w-5 h-5 rounded-full bg-white/25 flex items-center justify-center text-[11px]">1</span>
+            إنشاء الحساب
           </span>
+          <span class="w-4 h-px bg-neutral-border"></span>
+          <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neutral-bg text-neutral-text">
+            <span class="w-5 h-5 rounded-full bg-white border border-neutral-border flex items-center justify-center text-[11px]">2</span>
+            بيانات الجمعية
+          </span>
+          <span class="w-4 h-px bg-neutral-border"></span>
+          <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neutral-bg text-neutral-text">
+            <span class="w-5 h-5 rounded-full bg-white border border-neutral-border flex items-center justify-center text-[11px]">3</span>
+            مراجعة الاشتراك والدفع
+          </span>
+        </div>
+
+        <div class="mb-5">
           <h1 class="text-[2rem] font-extrabold text-navy mb-2 tracking-tight leading-tight">إنشاء حساب جديد</h1>
-          <p class="text-neutral-text text-[15px] leading-loose">ابدأ رحلتك مع جزيل وأنشئ حساب جهتك غير الربحية بخطوات بسيطة.</p>
+          <p class="text-neutral-text text-[15px] leading-loose">ابدأ بإنشاء حسابك. سنرشدك بعد ذلك خطوة بخطوة لاستكمال بيانات جمعيتك ومراجعة الاشتراك.</p>
+        </div>
+
+        <!-- Plan summary banner -->
+        <div id="plan-banner" class="mb-6 rounded-sys-lg border border-jgreen-100 bg-jgreen-50/60 p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-jgreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-2 flex-wrap">
+                <div class="text-[0.9375rem] font-extrabold text-navy">الباقة المختارة: <span id="plan-name">النمو</span></div>
+                <div class="text-sm"><span id="plan-price" class="font-extrabold text-navy">196</span> <span class="text-neutral-text">ريال / شهريًا</span></div>
+              </div>
+              <p class="text-xs text-neutral-text mt-1.5 leading-relaxed">
+                <strong class="text-navy">لن يُطلب منك الدفع الآن.</strong>
+                سيتم استكمال الدفع لاحقًا بعد إنشاء حسابك واستكمال بيانات جمعيتك ومراجعة الاشتراك.
+              </p>
+            </div>
+          </div>
         </div>
 
         <form class="space-y-4">
