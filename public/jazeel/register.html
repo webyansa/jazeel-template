@@ -199,27 +199,20 @@
         </div>
 
         <div class="mb-5">
-          <h1 class="text-[2rem] font-extrabold text-navy mb-2 tracking-tight leading-tight">إنشاء حساب جديد</h1>
-          <p class="text-neutral-text text-[15px] leading-loose">ابدأ بإنشاء حسابك. سنرشدك بعد ذلك خطوة بخطوة لاستكمال بيانات جمعيتك ومراجعة الاشتراك.</p>
+          <h1 id="page-title" class="text-[2rem] font-extrabold text-navy mb-2 tracking-tight leading-tight">إنشاء حساب جديد</h1>
+          <p id="page-subtitle" class="text-neutral-text text-[15px] leading-loose">ابدأ بإنشاء حسابك. سنرشدك بعد ذلك خطوة بخطوة لاستكمال بيانات جمعيتك ومراجعة الاشتراك.</p>
         </div>
 
-        <!-- Plan summary banner -->
-        <div id="plan-banner" class="mb-6 rounded-sys-lg border border-jgreen-100 bg-jgreen-50/60 p-4">
-          <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-jgreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center justify-between gap-2 flex-wrap">
-                <div class="text-[0.9375rem] font-extrabold text-navy">الباقة المختارة: <span id="plan-name">النمو</span></div>
-                <div class="text-sm"><span id="plan-price" class="font-extrabold text-navy">196</span> <span class="text-neutral-text">ريال / شهريًا</span></div>
-              </div>
-              <p class="text-xs text-neutral-text mt-1.5 leading-relaxed">
-                <strong class="text-navy">لن يُطلب منك الدفع الآن.</strong>
-                سيتم استكمال الدفع لاحقًا بعد إنشاء حسابك واستكمال بيانات جمعيتك ومراجعة الاشتراك.
-              </p>
-            </div>
+        <!-- Inline plan banner (mobile only when paid plan) -->
+        <div id="plan-banner-mobile" class="hidden mb-6 rounded-2xl border border-jgreen-100 bg-jgreen-50/60 p-4">
+          <div class="flex items-center justify-between gap-3 mb-2">
+            <div class="text-sm font-extrabold text-navy">باقة <span id="plan-name-mobile">النمو</span></div>
+            <div class="text-sm"><span id="plan-price-mobile" class="font-extrabold text-navy">196</span> <span class="text-neutral-text">ريال / شهريًا</span></div>
           </div>
+          <p class="text-xs text-neutral-text leading-relaxed">
+            <strong class="text-navy">لن يُطلب منك الدفع الآن.</strong>
+            سيتم استكمال الدفع لاحقًا بعد إنشاء حسابك واستكمال بيانات جمعيتك.
+          </p>
         </div>
 
         <form class="space-y-4">
