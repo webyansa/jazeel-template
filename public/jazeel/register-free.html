@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ابدأ تجربتك المجانية — جزيل</title>
+  <meta name="description" content="ابدأ تجربتك المجانية مع منصة جزيل لمدة 14 يومًا. لا حاجة لبطاقة ائتمان، ولا أي دفع الآن.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../jazeel-logo.svg">
+  <script>
+    tailwind.config = {
+      theme: { fontFamily:{sans:['Tajawal','sans-serif']},
+        extend: {
+          colors: {
+            navy:{DEFAULT:'#07133F',light:'#0d1f5c'},
+            jgreen:{DEFAULT:'#19B58B',light:'#1fcca0',dark:'#149572',50:'#EAF8F3',100:'#DDF5EE'},
+            neutral:{text:'#5B6470',light:'#8B929B',border:'#E5E8EB',bg:'#F8F9FA'},
+          },
+          borderRadius: { 'sys': '12px', 'sys-lg': '16px', 'sys-xl': '20px' },
+        }
+      }
+    }
+  </script>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Tajawal',sans-serif;color:#07133F;background:#F4F6FB;-webkit-font-smoothing:antialiased;}
+    .visual-bg{background:radial-gradient(circle at 20% 20%,#DDF5EE 0%,transparent 55%),radial-gradient(circle at 80% 80%,#EAF8F3 0%,transparent 60%),linear-gradient(160deg,#F4FBF8 0%,#EAF8F3 100%);}
+    .mesh-pattern{background-image:linear-gradient(rgba(25,181,139,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(25,181,139,0.08) 1px,transparent 1px);background-size:32px 32px;}
+    .input-sys{width:100%;height:50px;padding:0 44px 0 14px;border:1.5px solid #E5E8EB;border-radius:12px;font-size:0.9375rem;font-family:'Tajawal',sans-serif;color:#07133F;background:#fff;transition:all .2s;}
+    .input-sys:focus{outline:none;border-color:#19B58B;box-shadow:0 0 0 4px rgba(25,181,139,0.12);}
+    .input-sys::placeholder{color:#8B929B;}
+    .field-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#8B929B;pointer-events:none;}
+    .field-action{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#8B929B;cursor:pointer;padding:6px;border-radius:6px;}
+    .field-action:hover{color:#07133F;background:#F4F6FB;}
+    .btn-primary{width:100%;height:52px;background:#19B58B;color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
+    .btn-primary:hover{background:#149572;box-shadow:0 6px 20px rgba(25,181,139,0.28);transform:translateY(-1px);}
+    .checkbox-sys{width:18px;height:18px;border:1.5px solid #C8CDD4;border-radius:5px;cursor:pointer;appearance:none;position:relative;transition:all .15s;flex-shrink:0;margin-top:2px;}
+    .checkbox-sys:checked{background:#19B58B;border-color:#19B58B;}
+    .checkbox-sys:checked::after{content:'✓';color:#fff;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+    .step-card{display:flex;align-items:flex-start;gap:12px;padding:14px;background:#fff;border:1px solid #E5E8EB;border-radius:14px;}
+    .step-num{width:36px;height:36px;border-radius:10px;background:#EAF8F3;color:#19B58B;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;}
+  </style>
+</head>
+<body>
+
+<div class="min-h-screen flex">
+
+  <!-- Visual column -->
+  <aside class="hidden lg:flex lg:w-[42%] xl:w-[44%] visual-bg relative overflow-hidden flex-col p-12">
+    <div class="absolute inset-0 mesh-pattern opacity-50"></div>
+    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full" style="background:radial-gradient(circle,#19B58B22,transparent 70%);"></div>
+    <div class="absolute -bottom-40 -left-20 w-[28rem] h-[28rem] rounded-full" style="background:radial-gradient(circle,#07133F18,transparent 70%);"></div>
+
+    <a href="home.html" class="relative z-10 inline-flex items-center gap-2"><img src="../jazeel-logo.svg" alt="جزيل" class="h-9"></a>
+
+    <div class="relative z-10 flex-1 flex flex-col justify-center my-8">
+      <span class="inline-flex w-fit items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-jgreen text-xs font-extrabold mb-5 shadow-sm border border-jgreen/15">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
+        تجربة مجانية 14 يومًا
+      </span>
+      <h2 class="text-3xl font-extrabold text-navy mb-3 leading-tight">جرّب جزيل مجانًا قبل أن تقرر</h2>
+      <p class="text-neutral-text leading-loose mb-7 text-[15px]">أنشئ حسابك خلال دقيقة واستفد من كامل المنصة لمدة 14 يومًا. لا حاجة لبطاقة ائتمان، ولا أي التزام.</p>
+
+      <div class="space-y-3">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div><div class="text-sm font-bold text-navy mb-0.5">أنشئ حسابك</div><div class="text-xs text-neutral-text leading-relaxed">بريدك الإلكتروني وكلمة مرور فقط — تستغرق أقل من دقيقة.</div></div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div><div class="text-sm font-bold text-navy mb-0.5">فعّل بريدك الإلكتروني</div><div class="text-xs text-neutral-text leading-relaxed">رابط تأكيد سريع لحماية حسابك وضمان وصول إشعاراتك.</div></div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div><div class="text-sm font-bold text-navy mb-0.5">أكمل بيانات جمعيتك لاحقًا</div><div class="text-xs text-neutral-text leading-relaxed">يمكنك استكشاف المنصة فورًا، وإكمال البيانات في أي وقت خلال فترة التجربة.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative z-10 flex items-center gap-2 text-xs text-neutral-text">
+      <svg class="w-4 h-4 text-jgreen" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
+      دون بطاقة ائتمان · يمكنك الإلغاء في أي وقت
+    </div>
+  </aside>
+
+  <!-- Form column -->
+  <main class="flex-1 flex flex-col">
+    <div class="flex items-center justify-between px-6 lg:px-12 pt-6">
+      <a href="home.html" class="lg:hidden inline-flex items-center"><img src="../jazeel-logo.svg" alt="جزيل" class="h-8"></a>
+      <a href="pricing.html" class="hidden lg:inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-text hover:text-navy">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        العودة للباقات
+      </a>
+      <div class="flex items-center gap-2 text-sm">
+        <span class="text-neutral-text">لديك حساب؟</span>
+        <a href="login.html" class="font-bold text-jgreen hover:text-jgreen-dark">تسجيل الدخول</a>
+      </div>
+    </div>
+
+    <div class="flex-1 flex items-center justify-center px-6 lg:px-12 py-10">
+      <div class="w-full max-w-[460px]">
+        <div class="mb-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-jgreen-50 text-jgreen text-xs font-bold mb-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-jgreen"></span>
+            مجاني · 14 يومًا
+          </span>
+          <h1 class="text-[2rem] font-extrabold text-navy mb-2 tracking-tight leading-tight">ابدأ تجربتك المجانية</h1>
+          <p class="text-neutral-text text-[15px] leading-loose">أنشئ حسابك أولًا، ثم أكمل بيانات جمعيتك لتفعيل 14 يومًا مجانًا. <strong class="text-navy">لا حاجة للدفع الآن.</strong></p>
+        </div>
+
+        <form class="space-y-4">
+          <div>
+            <label class="block text-sm font-bold text-navy mb-2">اسمك الكامل</label>
+            <div class="relative">
+              <input type="text" class="input-sys" placeholder="الاسم الكامل">
+              <span class="field-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-navy mb-2">البريد الإلكتروني للعمل</label>
+            <div class="relative">
+              <input type="email" class="input-sys" placeholder="name@example.com">
+              <span class="field-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></span>
+            </div>
+            <p class="text-xs text-neutral-light mt-1.5">سنرسل رابط تفعيل الحساب على هذا البريد.</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-navy mb-2">كلمة المرور</label>
+            <div class="relative">
+              <input id="pwd1" type="password" class="input-sys" placeholder="٨ أحرف على الأقل">
+              <span class="field-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></span>
+              <button type="button" onclick="togglePwd('pwd1',this)" class="field-action"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.46 12C3.73 7.94 7.52 5 12 5c4.48 0 8.27 2.94 9.54 7-1.27 4.06-5.06 7-9.54 7-4.48 0-8.27-2.94-9.54-7z"/></svg></button>
+            </div>
+          </div>
+
+          <label class="flex items-start gap-2.5 cursor-pointer select-none pt-1">
+            <input type="checkbox" class="checkbox-sys">
+            <span class="text-sm text-navy leading-relaxed">أوافق على <a href="#" class="text-jgreen font-bold hover:underline">شروط الاستخدام</a> و <a href="#" class="text-jgreen font-bold hover:underline">سياسة الخصوصية</a></span>
+          </label>
+
+          <button type="submit" class="btn-primary mt-2">
+            ابدأ تجربتي المجانية
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+
+          <!-- Reassurance row -->
+          <div class="grid grid-cols-3 gap-2 pt-3">
+            <div class="text-center p-2.5 rounded-xl bg-neutral-bg/60 border border-neutral-border/60">
+              <svg class="w-4 h-4 mx-auto text-jgreen mb-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
+              <div class="text-[11px] font-bold text-navy leading-tight">دون بطاقة ائتمان</div>
+            </div>
+            <div class="text-center p-2.5 rounded-xl bg-neutral-bg/60 border border-neutral-border/60">
+              <svg class="w-4 h-4 mx-auto text-jgreen mb-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
+              <div class="text-[11px] font-bold text-navy leading-tight">إلغاء في أي وقت</div>
+            </div>
+            <div class="text-center p-2.5 rounded-xl bg-neutral-bg/60 border border-neutral-border/60">
+              <svg class="w-4 h-4 mx-auto text-jgreen mb-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
+              <div class="text-[11px] font-bold text-navy leading-tight">وصول كامل للمزايا</div>
+            </div>
+          </div>
+
+          <div class="text-center text-sm text-neutral-text pt-2">
+            تبحث عن باقة مدفوعة؟ <a href="pricing.html" class="font-bold text-jgreen hover:text-jgreen-dark">عرض الباقات</a>
+          </div>
+        </form>
+
+        <p class="mt-8 text-center text-xs text-neutral-light flex items-center justify-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          بياناتك مشفّرة ومحمية وفق أعلى المعايير
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  function togglePwd(id,btn){const i=document.getElementById(id);i.type=i.type==='password'?'text':'password';btn.style.color=i.type==='text'?'#19B58B':'';}
+</script>
+</body>
+</html>
