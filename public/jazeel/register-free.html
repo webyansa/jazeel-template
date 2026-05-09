@@ -15,11 +15,10 @@
       theme: { fontFamily:{sans:['Tajawal','sans-serif']},
         extend: {
           colors: {
-            navy:{DEFAULT:'#07133F',light:'#0d1f5c'},
+            navy:{DEFAULT:'#07133F',light:'#0d1f5c',900:'#050d2c'},
             jgreen:{DEFAULT:'#19B58B',light:'#1fcca0',dark:'#149572',50:'#EAF8F3',100:'#DDF5EE'},
             neutral:{text:'#5B6470',light:'#8B929B',border:'#E5E8EB',bg:'#F8F9FA'},
-          },
-          borderRadius: { 'sys': '12px', 'sys-lg': '16px', 'sys-xl': '20px' },
+          }
         }
       }
     }
@@ -27,67 +26,120 @@
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:'Tajawal',sans-serif;color:#07133F;background:#F4F6FB;-webkit-font-smoothing:antialiased;}
-    .visual-bg{background:radial-gradient(circle at 20% 20%,#DDF5EE 0%,transparent 55%),radial-gradient(circle at 80% 80%,#EAF8F3 0%,transparent 60%),linear-gradient(160deg,#F4FBF8 0%,#EAF8F3 100%);}
-    .mesh-pattern{background-image:linear-gradient(rgba(25,181,139,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(25,181,139,0.08) 1px,transparent 1px);background-size:32px 32px;}
-    .input-sys{width:100%;height:50px;padding:0 44px 0 14px;border:1.5px solid #E5E8EB;border-radius:12px;font-size:0.9375rem;font-family:'Tajawal',sans-serif;color:#07133F;background:#fff;transition:all .2s;}
-    .input-sys:focus{outline:none;border-color:#19B58B;box-shadow:0 0 0 4px rgba(25,181,139,0.12);}
-    .input-sys::placeholder{color:#8B929B;}
-    .field-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#8B929B;pointer-events:none;}
-    .field-action{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#8B929B;cursor:pointer;padding:6px;border-radius:6px;}
+    .visual-bg{background:radial-gradient(circle at 18% 18%,#DDF5EE 0%,transparent 55%),radial-gradient(circle at 85% 85%,#EAF8F3 0%,transparent 60%),linear-gradient(160deg,#F4FBF8 0%,#E8F6F0 100%);}
+    .mesh-pattern{background-image:linear-gradient(rgba(25,181,139,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(25,181,139,0.07) 1px,transparent 1px);background-size:36px 36px;}
+    .input-sys{width:100%;height:52px;padding:0 46px 0 14px;border:1.5px solid #E5E8EB;border-radius:14px;font-size:0.9375rem;font-family:'Tajawal',sans-serif;color:#07133F;background:#fff;transition:all .2s;}
+    .input-sys:focus{outline:none;border-color:#19B58B;box-shadow:0 0 0 4px rgba(25,181,139,0.13);}
+    .input-sys::placeholder{color:#9AA0AA;}
+    .field-icon{position:absolute;right:15px;top:50%;transform:translateY(-50%);color:#8B929B;pointer-events:none;}
+    .field-action{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#8B929B;cursor:pointer;padding:6px;border-radius:8px;}
     .field-action:hover{color:#07133F;background:#F4F6FB;}
-    .btn-primary{width:100%;height:52px;background:#19B58B;color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
-    .btn-primary:hover{background:#149572;box-shadow:0 6px 20px rgba(25,181,139,0.28);transform:translateY(-1px);}
+    .btn-primary{width:100%;height:54px;background:linear-gradient(135deg,#19B58B 0%,#149572 100%);color:#fff;border:none;border-radius:14px;font-weight:800;font-size:1.0625rem;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 4px 14px rgba(25,181,139,0.28);}
+    .btn-primary:hover{box-shadow:0 10px 28px rgba(25,181,139,0.36);transform:translateY(-1px);}
     .checkbox-sys{width:18px;height:18px;border:1.5px solid #C8CDD4;border-radius:5px;cursor:pointer;appearance:none;position:relative;transition:all .15s;flex-shrink:0;margin-top:2px;}
     .checkbox-sys:checked{background:#19B58B;border-color:#19B58B;}
     .checkbox-sys:checked::after{content:'✓';color:#fff;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
-    .step-card{display:flex;align-items:flex-start;gap:12px;padding:14px;background:#fff;border:1px solid #E5E8EB;border-radius:14px;}
-    .step-num{width:36px;height:36px;border-radius:10px;background:#EAF8F3;color:#19B58B;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;}
+    .timeline-step{position:relative;display:flex;align-items:flex-start;gap:14px;padding:16px;background:#fff;border:1px solid #E8EBF0;border-radius:18px;transition:all .2s;box-shadow:0 1px 2px rgba(7,19,63,0.03);}
+    .timeline-step:hover{border-color:#19B58B33;box-shadow:0 8px 22px rgba(7,19,63,0.06);transform:translateX(-2px);}
+    .step-num{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#19B58B,#149572);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;font-size:1rem;box-shadow:0 4px 12px rgba(25,181,139,0.3);}
+    .step-num.muted{background:#fff;color:#19B58B;border:1.5px dashed #19B58B66;box-shadow:none;}
+    .trust-pill{display:flex;align-items:center;gap:8px;padding:11px 12px;background:#fff;border:1px solid #E8EBF0;border-radius:12px;}
+    .trust-pill svg{flex-shrink:0;}
+    .preview-card{background:#fff;border-radius:24px;box-shadow:0 30px 60px -25px rgba(7,19,63,0.22),0 12px 28px -10px rgba(7,19,63,0.08);border:1px solid rgba(255,255,255,0.8);}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    .float-anim{animation:float 7s ease-in-out infinite;}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+    .pulse-dot{animation:pulse-dot 2s ease-in-out infinite;}
   </style>
 </head>
 <body>
 
 <div class="min-h-screen flex">
 
-  <!-- Visual column -->
-  <aside class="hidden lg:flex lg:w-[42%] xl:w-[44%] visual-bg relative overflow-hidden flex-col p-12">
-    <div class="absolute inset-0 mesh-pattern opacity-50"></div>
-    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full" style="background:radial-gradient(circle,#19B58B22,transparent 70%);"></div>
-    <div class="absolute -bottom-40 -left-20 w-[28rem] h-[28rem] rounded-full" style="background:radial-gradient(circle,#07133F18,transparent 70%);"></div>
+  <!-- Visual / onboarding column -->
+  <aside class="hidden lg:flex lg:w-[46%] xl:w-[44%] visual-bg relative overflow-hidden flex-col px-10 xl:px-14 py-10">
+    <div class="absolute inset-0 mesh-pattern opacity-40"></div>
+    <div class="absolute -top-40 -right-32 w-[28rem] h-[28rem] rounded-full" style="background:radial-gradient(circle,#19B58B22,transparent 70%);"></div>
+    <div class="absolute -bottom-44 -left-24 w-[30rem] h-[30rem] rounded-full" style="background:radial-gradient(circle,#07133F14,transparent 70%);"></div>
 
     <a href="home.html" class="relative z-10 inline-flex items-center gap-2"><img src="../jazeel-logo.svg" alt="جزيل" class="h-9"></a>
 
-    <div class="relative z-10 flex-1 flex flex-col justify-center my-8">
-      <span class="inline-flex w-fit items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-jgreen text-xs font-extrabold mb-5 shadow-sm border border-jgreen/15">
-        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
-        تجربة مجانية 14 يومًا
+    <div class="relative z-10 flex-1 flex flex-col justify-center my-6">
+      <span class="inline-flex w-fit items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-jgreen-dark text-xs font-extrabold mb-5 shadow-sm border border-jgreen/20">
+        <span class="w-2 h-2 rounded-full bg-jgreen pulse-dot"></span>
+        تجربة مجانية مدتها 14 يومًا
       </span>
-      <h2 class="text-3xl font-extrabold text-navy mb-3 leading-tight">جرّب جزيل مجانًا قبل أن تقرر</h2>
-      <p class="text-neutral-text leading-loose mb-7 text-[15px]">أنشئ حسابك خلال دقيقة واستفد من كامل المنصة لمدة 14 يومًا. لا حاجة لبطاقة ائتمان، ولا أي التزام.</p>
+      <h2 class="text-[2rem] xl:text-[2.25rem] font-extrabold text-navy mb-3 leading-[1.2] tracking-tight">جرّب جزيل بالكامل<br/>دون أي التزام مالي</h2>
+      <p class="text-neutral-text leading-loose mb-7 text-[15px] max-w-md">حساب جاهز خلال دقيقة، ووصول كامل لجميع مزايا المنصة طوال فترة التجربة. أكمل بيانات جمعيتك في الوقت الذي يناسبك.</p>
 
-      <div class="space-y-3">
-        <div class="step-card">
+      <!-- Onboarding timeline -->
+      <div class="space-y-3 mb-7">
+        <div class="timeline-step">
           <div class="step-num">1</div>
-          <div><div class="text-sm font-bold text-navy mb-0.5">أنشئ حسابك</div><div class="text-xs text-neutral-text leading-relaxed">بريدك الإلكتروني وكلمة مرور فقط — تستغرق أقل من دقيقة.</div></div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <div class="text-[15px] font-extrabold text-navy">أنشئ حسابك</div>
+              <span class="text-[10px] font-bold text-jgreen bg-jgreen-50 px-2 py-0.5 rounded-full">~ 60 ثانية</span>
+            </div>
+            <div class="text-[13px] text-neutral-text leading-relaxed">بريدك الإلكتروني وكلمة مرور آمنة فقط. لا حاجة لبطاقة ائتمان.</div>
+          </div>
         </div>
-        <div class="step-card">
+        <div class="timeline-step">
           <div class="step-num">2</div>
-          <div><div class="text-sm font-bold text-navy mb-0.5">فعّل بريدك الإلكتروني</div><div class="text-xs text-neutral-text leading-relaxed">رابط تأكيد سريع لحماية حسابك وضمان وصول إشعاراتك.</div></div>
+          <div class="flex-1">
+            <div class="text-[15px] font-extrabold text-navy mb-1">فعّل بريدك الإلكتروني</div>
+            <div class="text-[13px] text-neutral-text leading-relaxed">رابط تأكيد لحظي يحمي حسابك ويفعّل وصولك الكامل للمنصة.</div>
+          </div>
         </div>
-        <div class="step-card">
-          <div class="step-num">3</div>
-          <div><div class="text-sm font-bold text-navy mb-0.5">أكمل بيانات جمعيتك لاحقًا</div><div class="text-xs text-neutral-text leading-relaxed">يمكنك استكشاف المنصة فورًا، وإكمال البيانات في أي وقت خلال فترة التجربة.</div></div>
+        <div class="timeline-step">
+          <div class="step-num muted">3</div>
+          <div class="flex-1">
+            <div class="text-[15px] font-extrabold text-navy mb-1">استكشف وأكمل بيانات جمعيتك</div>
+            <div class="text-[13px] text-neutral-text leading-relaxed">ابدأ التجربة فورًا، وأكمل بيانات الجمعية في أي وقت خلال الـ 14 يومًا.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust pills -->
+      <div class="grid grid-cols-2 gap-2.5">
+        <div class="trust-pill">
+          <svg class="w-4 h-4 text-jgreen" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
+          <span class="text-[12px] font-bold text-navy">دون بطاقة ائتمان</span>
+        </div>
+        <div class="trust-pill">
+          <svg class="w-4 h-4 text-jgreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span class="text-[12px] font-bold text-navy">تفعيل فوري</span>
+        </div>
+        <div class="trust-pill">
+          <svg class="w-4 h-4 text-jgreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.6-4A12 12 0 0112 3a12 12 0 01-8.6 3 12 12 0 00-.4 3c0 5.6 3.8 10.3 9 11.6 5.2-1.3 9-6 9-11.6 0-1-.1-2-.4-3z"/></svg>
+          <span class="text-[12px] font-bold text-navy">آمن ومحمي</span>
+        </div>
+        <div class="trust-pill">
+          <svg class="w-4 h-4 text-jgreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6h.01M18 18h.01"/></svg>
+          <span class="text-[12px] font-bold text-navy">إلغاء بأي وقت</span>
         </div>
       </div>
     </div>
 
-    <div class="relative z-10 flex items-center gap-2 text-xs text-neutral-text">
-      <svg class="w-4 h-4 text-jgreen" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
-      دون بطاقة ائتمان · يمكنك الإلغاء في أي وقت
+    <div class="relative z-10 pt-5 border-t border-navy/10 flex items-center justify-between gap-3 text-[12px]">
+      <div class="flex items-center gap-2 text-neutral-text">
+        <div class="flex -space-x-1.5 space-x-reverse">
+          <div class="w-7 h-7 rounded-full bg-jgreen border-2 border-white flex items-center justify-center text-white text-[10px] font-bold">ن</div>
+          <div class="w-7 h-7 rounded-full bg-navy border-2 border-white flex items-center justify-center text-white text-[10px] font-bold">ج</div>
+          <div class="w-7 h-7 rounded-full bg-jgreen-dark border-2 border-white flex items-center justify-center text-white text-[10px] font-bold">م</div>
+        </div>
+        <span class="font-bold text-navy">+850 جمعية</span>
+        <span>تستخدم جزيل</span>
+      </div>
+      <div class="flex items-center gap-1 text-jgreen">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.05 2.93a1 1 0 011.9 0l1.5 4.6h4.83a1 1 0 01.59 1.81l-3.91 2.84 1.5 4.6a1 1 0 01-1.54 1.12L10 15.07l-3.92 2.83a1 1 0 01-1.54-1.12l1.5-4.6L2.13 9.34a1 1 0 01.59-1.81h4.83l1.5-4.6z"/></svg>
+        <span class="font-extrabold text-navy">4.9</span>
+      </div>
     </div>
   </aside>
 
   <!-- Form column -->
-  <main class="flex-1 flex flex-col">
+  <main class="flex-1 flex flex-col bg-white">
     <div class="flex items-center justify-between px-6 lg:px-12 pt-6">
       <a href="home.html" class="lg:hidden inline-flex items-center"><img src="../jazeel-logo.svg" alt="جزيل" class="h-8"></a>
       <a href="pricing.html" class="hidden lg:inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-text hover:text-navy">
@@ -102,37 +154,37 @@
 
     <div class="flex-1 flex items-center justify-center px-6 lg:px-12 py-10">
       <div class="w-full max-w-[460px]">
-        <div class="mb-6">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-jgreen-50 text-jgreen text-xs font-bold mb-3">
+        <div class="mb-7">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-jgreen-50 text-jgreen-dark text-[11px] font-extrabold mb-3.5 border border-jgreen/15">
             <span class="w-1.5 h-1.5 rounded-full bg-jgreen"></span>
-            مجاني · 14 يومًا
+            تجربة مجانية · 14 يومًا
           </span>
-          <h1 class="text-[2rem] font-extrabold text-navy mb-2 tracking-tight leading-tight">ابدأ تجربتك المجانية</h1>
-          <p class="text-neutral-text text-[15px] leading-loose">أنشئ حسابك أولًا، ثم أكمل بيانات جمعيتك لتفعيل 14 يومًا مجانًا. <strong class="text-navy">لا حاجة للدفع الآن.</strong></p>
+          <h1 class="text-[2.125rem] font-extrabold text-navy mb-2.5 tracking-tight leading-[1.15]">ابدأ تجربتك الآن</h1>
+          <p class="text-neutral-text text-[15px] leading-loose">أنشئ حسابك خلال أقل من دقيقة. <strong class="text-navy">لا حاجة للدفع</strong> ولا حتى إدخال بطاقة ائتمان.</p>
         </div>
 
         <form class="space-y-4">
           <div>
-            <label class="block text-sm font-bold text-navy mb-2">اسمك الكامل</label>
+            <label class="block text-[13px] font-extrabold text-navy mb-2">اسمك الكامل</label>
             <div class="relative">
-              <input type="text" class="input-sys" placeholder="الاسم الكامل">
+              <input type="text" class="input-sys" placeholder="مثال: أحمد عبدالله">
               <span class="field-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></span>
             </div>
           </div>
 
           <div>
-            <label class="block text-sm font-bold text-navy mb-2">البريد الإلكتروني للعمل</label>
+            <label class="block text-[13px] font-extrabold text-navy mb-2">البريد الإلكتروني للعمل</label>
             <div class="relative">
               <input type="email" class="input-sys" placeholder="name@example.com">
               <span class="field-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></span>
             </div>
-            <p class="text-xs text-neutral-light mt-1.5">سنرسل رابط تفعيل الحساب على هذا البريد.</p>
+            <p class="text-[12px] text-neutral-light mt-1.5">سنرسل رابط تفعيل الحساب على هذا البريد.</p>
           </div>
 
           <div>
-            <label class="block text-sm font-bold text-navy mb-2">كلمة المرور</label>
+            <label class="block text-[13px] font-extrabold text-navy mb-2">كلمة المرور</label>
             <div class="relative">
-              <input id="pwd1" type="password" class="input-sys" placeholder="٨ أحرف على الأقل">
+              <input id="pwd1" type="password" class="input-sys" placeholder="٨ أحرف على الأقل، تشمل رقمًا">
               <span class="field-icon"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></span>
               <button type="button" onclick="togglePwd('pwd1',this)" class="field-action"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.46 12C3.73 7.94 7.52 5 12 5c4.48 0 8.27 2.94 9.54 7-1.27 4.06-5.06 7-9.54 7-4.48 0-8.27-2.94-9.54-7z"/></svg></button>
             </div>
@@ -140,38 +192,32 @@
 
           <label class="flex items-start gap-2.5 cursor-pointer select-none pt-1">
             <input type="checkbox" class="checkbox-sys">
-            <span class="text-sm text-navy leading-relaxed">أوافق على <a href="#" class="text-jgreen font-bold hover:underline">شروط الاستخدام</a> و <a href="#" class="text-jgreen font-bold hover:underline">سياسة الخصوصية</a></span>
+            <span class="text-[13px] text-navy leading-relaxed">أوافق على <a href="#" class="text-jgreen-dark font-bold hover:underline">شروط الاستخدام</a> و<a href="#" class="text-jgreen-dark font-bold hover:underline">سياسة الخصوصية</a> الخاصة بمنصة جزيل.</span>
           </label>
 
-          <button type="submit" class="btn-primary mt-2">
+          <button type="submit" class="btn-primary mt-3">
             ابدأ تجربتي المجانية
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
           </button>
 
-          <!-- Reassurance row -->
-          <div class="grid grid-cols-3 gap-2 pt-3">
-            <div class="text-center p-2.5 rounded-xl bg-neutral-bg/60 border border-neutral-border/60">
-              <svg class="w-4 h-4 mx-auto text-jgreen mb-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
-              <div class="text-[11px] font-bold text-navy leading-tight">دون بطاقة ائتمان</div>
-            </div>
-            <div class="text-center p-2.5 rounded-xl bg-neutral-bg/60 border border-neutral-border/60">
-              <svg class="w-4 h-4 mx-auto text-jgreen mb-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
-              <div class="text-[11px] font-bold text-navy leading-tight">إلغاء في أي وقت</div>
-            </div>
-            <div class="text-center p-2.5 rounded-xl bg-neutral-bg/60 border border-neutral-border/60">
-              <svg class="w-4 h-4 mx-auto text-jgreen mb-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.7 6.3l-4 4a1 1 0 01-1.4 0l-2-2a1 1 0 111.4-1.4L9 10.6l3.3-3.3a1 1 0 111.4 1.4z"/></svg>
-              <div class="text-[11px] font-bold text-navy leading-tight">وصول كامل للمزايا</div>
-            </div>
+          <p class="text-center text-[12px] text-neutral-light flex items-center justify-center gap-1.5 pt-1">
+            <svg class="w-3.5 h-3.5 text-jgreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            بإنشاء الحساب تبدأ تجربتك فورًا — دون أي خصم.
+          </p>
+
+          <div class="relative my-2">
+            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-neutral-border/70"></div></div>
+            <div class="relative flex justify-center"><span class="px-3 bg-white text-[11px] font-bold text-neutral-light">أو</span></div>
           </div>
 
-          <div class="text-center text-sm text-neutral-text pt-2">
-            تبحث عن باقة مدفوعة؟ <a href="pricing.html" class="font-bold text-jgreen hover:text-jgreen-dark">عرض الباقات</a>
+          <div class="text-center text-sm text-neutral-text">
+            تبحث عن باقة مدفوعة؟ <a href="pricing.html" class="font-bold text-jgreen-dark hover:text-jgreen">عرض الباقات والأسعار</a>
           </div>
         </form>
 
-        <p class="mt-8 text-center text-xs text-neutral-light flex items-center justify-center gap-1.5">
+        <p class="mt-7 text-center text-[11.5px] text-neutral-light flex items-center justify-center gap-1.5">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          بياناتك مشفّرة ومحمية وفق أعلى المعايير
+          بياناتك مشفّرة بمعايير عالمية ومحمية بالكامل
         </p>
       </div>
     </div>
